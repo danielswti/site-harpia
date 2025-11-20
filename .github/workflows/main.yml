@@ -1,0 +1,22 @@
+on: 
+  push:
+    branches:
+      - main
+
+name: 🚀 Deploy LP Vendedor Externo on push
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: 📂 Deploy no servidor Daniel
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.ftp_host_danieln }}
+        username: ${{ secrets.ftp_user_danieln }}
+        password: ${{ secrets.ftp_password_danieln }}
+        server-dir: harpia.danieln.com.br/
