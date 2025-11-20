@@ -3966,6 +3966,79 @@ Primary use:	Showcase Portfolio
 }
 
 .img-mask {
-	width: 80%;
-  height: 75%;
+	width: 35vw;
+	height: 75%;
+}
+
+/* Layout em coluna: um item por "linha" */
+.showcase-portfolio.layout-three {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: visible; /* importante para o pedaço do próximo item aparecer */
+}
+
+/* Cada item do portfólio em uma linha */
+.showcase-portfolio.layout-three .clapat-item {
+    width: 100%;
+    display: flex;
+    margin: 0 0 1vh; /* espaço "normal" para baixo */
+}
+
+/* Garante que as classes de alinhamento funcionem */
+.showcase-portfolio.layout-three .clapat-item.justify-start {
+    justify-content: flex-start;
+}
+
+.showcase-portfolio.layout-three .clapat-item.justify-end {
+    justify-content: flex-end;
+}
+
+/* A partir do segundo item, sobe um pouco para "invadir" o anterior */
+.showcase-portfolio.layout-three .clapat-item:nth-child(n+2) {
+    margin-top: -35vh; /* ajuste fino do quanto aparece do próximo item */
+}
+
+/* Bloco interno que contém a imagem */
+.showcase-portfolio.layout-three .slide-inner {
+    width: min(40vw, 600px); /* largura do bloco de imagem */
+}
+
+/* Máscara de imagem ocupando toda a largura do slide-inner */
+.showcase-portfolio.layout-three .img-mask {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Garante que as imagens apareçam e preencham o bloco */
+.showcase-portfolio.layout-three .img-mask img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Responsivo: sem overlap e tudo centralizado no mobile */
+@media (max-width: 900px) {
+    .showcase-portfolio.layout-three {
+        gap: 4rem;
+    }
+
+    .showcase-portfolio.layout-three .clapat-item {
+        justify-content: center;
+        margin: 0 0 4rem;
+    }
+
+    .showcase-portfolio.layout-three .clapat-item:nth-child(n+2) {
+        margin-top: 0; /* remove o overlap no mobile */
+    }
+
+    .showcase-portfolio.layout-three .slide-inner {
+        width: 100%;
+    }
 }
