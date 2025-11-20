@@ -3952,3 +3952,20 @@ Primary use:	Showcase Portfolio
 .text-white {
 	color: #ffffff !important;
 }
+
+.justify-start {
+	display: flex !important;
+	justify-content: flex-start !important;
+}
+
+.justify-end .img-mask {
+	display: flex !important;
+	justify-content: flex-end !important;
+	right: 0;
+	left: 0;
+}
+
+.img-mask {
+	width: 80%;
+  height: 75%;
+}

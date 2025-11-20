@@ -2169,8 +2169,8 @@
 	}
 	
 	.showcase-portfolio.layout-three .clapat-item {
-		width: calc(33.333% - 60px);
-		margin:60px 30px;
+		width: calc(50% - 60px);
+		margin: 60px 30px;
 	}
 	
 	.showcase-portfolio.layout-two .clapat-item .slide-caption {
@@ -2443,7 +2443,7 @@
 	}
 	
 	.showcase-portfolio.layout-three .clapat-item {
-		width: calc(33.333% - 40px);
+		width: calc(50% - 40px);
 		margin:40px 20px 60px 20px;
 	}
 	
@@ -2958,3 +2958,12 @@
 	}
 	
 }			
+
+.justify-end .img-mask {
+	right: 0 !important;
+	left: auto !important;
+}
+
+.showcase-portfolio .clapat-item {
+	max-height: 600px;
+}
