@@ -202,19 +202,21 @@
 	}
 	
 	.subtitle-padding-left .hero-subtitle {
-		margin-left:0;
-		margin-right:0;
+		margin-left:auto;
+		margin-right:auto;
 		box-sizing:border-box;
-		padding-left:50%;
+		/* padding-left:50%; */
 		text-align:left;
 	}
 	
 	.hero-subtitle span {
 		position:relative;
-		display:block;
+		display:flex;
 		opacity:0;
 		transform: translateY(60px);
 		-webkit-transform: translateY(60px);
+		align-items: start;
+		padding-top: 10px;
 	}
 	
 	.inline-title .hero-subtitle span {

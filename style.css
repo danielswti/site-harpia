@@ -4042,3 +4042,8 @@ Primary use:	Showcase Portfolio
         width: 100%;
     }
 }
+
+.shapes-value {
+	max-width: 125px;
+	margin-top: -10px;
+}
