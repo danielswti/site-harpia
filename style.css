@@ -3982,8 +3982,6 @@ Primary use:	Showcase Portfolio
 	height: 75%;
 }
 
-
-
 /* Layout em coluna: um item por "linha" */
 .showcase-portfolio.layout-three {
     position: relative;
@@ -4154,4 +4152,19 @@ Primary use:	Showcase Portfolio
     display: inline-block;
     transform-origin: left center;
     /* garante que o texto nasce à esquerda */
+}
+
+.portfolio-page .img-mask {
+	width: 40vw;
+	height: 100%;
+}
+
+@media (max-width: 900px) {
+	.portfolio-page .img-mask {
+		width: 100%;
+		height: 100%;
+	}
+	.portfolio-page .img-mask {
+		transform: scale(1.3);
+	}
 }

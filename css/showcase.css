@@ -2967,3 +2967,23 @@
 /* .showcase-portfolio .clapat-item {
 	max-height: 600px;
 } */
+
+
+@media (max-width: 900px) {
+	.portfolio-page .img-mask {
+		width: 100%;
+		height: 100%;
+	}
+	.portfolio-page .has-scale-medium .img-mask {
+		transform: scale(1.3) !important;
+	}
+	.showcase-portfolio .slide-inner {
+		padding-top: 0;
+		width: 100%;
+		height: auto;
+		margin:0;
+		overflow:visible;
+		aspect-ratio: 10/14;
+		max-height: 360px;
+	}
+}
