@@ -4047,3 +4047,78 @@ Primary use:	Showcase Portfolio
 	max-width: 125px;
 	margin-top: -10px;
 }
+
+/* coloca o fundo atrás do texto, mantendo ele à direita */
+/* #hero-description .inner {
+    position: relative;
+    padding-left: calc(50% - 13px);
+    z-index: 1;
+} */
+
+/* “cartão” semi-transparente por trás do bloco de texto */
+/* #hero-description .inner::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    bottom: -30px;
+    left: calc(50% - 40px);
+    right: 0;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: -1;
+} */
+
+/* #hero-description .inner {
+    position: relative;
+    padding-left: calc(50% - 13px);
+    z-index: 1;
+} */
+
+/* sombra em fade de baixo para cima */
+/* #hero-description .inner::before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 40px);
+    right: 0;
+    bottom: -10px;
+    height: 460px;
+    background: linear-gradient( to top, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0) 100% );
+	border-radius: 5px;
+    z-index: -1;
+    pointer-events: none;
+} */
+
+.dark-content .hero-title {
+	color: #0d0d0d !important;
+}
+
+/* Hero com fade geral de baixo pra cima */
+#hero.hero-fade {
+    position: relative;
+    z-index: 1; /* garante que o conteúdo fique num contexto próprio */
+}
+
+/* faz o degradê escuro no fundo do hero inteiro */
+#hero.hero-fade::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90vh; /* altura do fade – ajuste aqui */
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 2.1875rem,
+        rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 0; /* atrás do texto, na frente da imagem */
+}
+
+/* garante que todo o conteúdo do hero fique acima do fade */
+#hero.hero-fade > * {
+    position: relative;
+    z-index: 1;
+}

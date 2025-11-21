@@ -1405,3 +1405,7 @@
 	}
 		
 }			
+
+.dark-content .hero-title {
+	color: #0d0d0d !important;
+}
