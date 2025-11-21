@@ -40,7 +40,7 @@ $comments = htmlspecialchars($comments);
 // Configuration option.
 // Enter the email address that you want to emails to be sent to.
 
-$address = "contato@harpia.com";
+$address = "contact@harpia.com";
 
 
 // Configuration option.
