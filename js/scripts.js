@@ -32,10 +32,7 @@ Function CustomFunction
 ---------------------------------------------------*/
 
 function CustomFunction() {
-    
-    //Add here your custom js code
 
-    // Sticky + expansão do "Work" no portfólio
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -43,36 +40,56 @@ function CustomFunction() {
         const portfolioTitle = document.querySelector('#portfolio-title');
 
         if (portfolioRow && portfolioTitle) {
-            
-            // 1) PIN: mantém o título fixo
+
             ScrollTrigger.create({
                 trigger: portfolioRow,
                 start: "top 30%",
                 end: "bottom bottom",
                 pin: portfolioTitle,
                 pinSpacing: false
-                // markers: true
             });
 
-            // 2) EXPANSÃO: anima scale + letter-spacing conforme o scroll
-            gsap.fromTo(portfolioTitle,
+            const finalScale = 1.25; // aumenta o zoom aqui
+
+            const computeTargetX = () => {
+                const w = portfolioTitle.offsetWidth;
+                const centerBase = window.innerWidth / 2 - w / 2;          // centro “normal”
+                const extraShift = w * (finalScale - 1) / 2;               // quanto o scale empurra pra direita
+                return centerBase - extraShift;                            // corrige o empurrão
+            };
+
+            const targetX = computeTargetX();
+
+            gsap.fromTo(
+                portfolioTitle,
                 {
+                    x: 0,
                     scale: 0.9,
-                    letterSpacing: "0.08em"
+                    letterSpacing: "0.08em",
+                    opacity: 0.85,
+                    transformOrigin: "left center"
                 },
                 {
-                    scale: 1.7,
+                    x: targetX,
+                    scale: finalScale,
                     letterSpacing: "0.35em",
+                    opacity: 1,
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: portfolioRow,
-                        start: "top 30%",       // começa a expandir assim que entra no sticky
-                        end: "top+=400",        // ajusta esse valor pra controlar "quanto" de scroll expande
-                        scrub: true             // deixa ligado ao scroll (bem premium)
-                        // markers: true
+                        start: "top 30%",
+                        end: "top+=900",
+                        scrub: true
                     }
                 }
             );
+
+            // Recalcular em resize
+            window.addEventListener('resize', () => {
+                const newX = computeTargetX();
+                gsap.set(portfolioTitle, { x: newX, scale: finalScale });
+                ScrollTrigger.refresh();
+            });
         }
     }
 

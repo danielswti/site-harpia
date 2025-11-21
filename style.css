@@ -855,7 +855,7 @@ Primary use:	Showcase Portfolio
 	}
 
 	.row_padding_top_custom {
-		padding-top:3vw;
+		padding-top:7vw;
 	}
 	
 	.row_padding_bottom {
@@ -4144,3 +4144,9 @@ Primary use:	Showcase Portfolio
     z-index: 10;
 }
 
+#portfolio-title {
+    position: relative;
+    display: inline-block;
+    transform-origin: left center;
+    /* garante que o texto nasce à esquerda */
+}
