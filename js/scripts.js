@@ -31,11 +31,11 @@ jQuery(function ($) {
 Function CustomFunction
 ---------------------------------------------------*/
 
-	function CustomFunction() {
-		
-		//Add here your custom js code
+function CustomFunction() {
+    
+    //Add here your custom js code
 
-    // Sticky "Work" no portfólio
+    // Sticky + expansão do "Work" no portfólio
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -43,18 +43,40 @@ Function CustomFunction
         const portfolioTitle = document.querySelector('#portfolio-title');
 
         if (portfolioRow && portfolioTitle) {
+            
+            // 1) PIN: mantém o título fixo
             ScrollTrigger.create({
                 trigger: portfolioRow,
-                start: "top 20%",        // quando o topo da seção encostar no topo da viewport
-                end: "bottom bottom",    // até o final da seção
-                pin: portfolioTitle,     // mantém o título fixo
-                pinSpacing: false        // não adiciona espaço extra
-                // markers: true         // descomenta se quiser debugar
+                start: "top 30%",
+                end: "bottom bottom",
+                pin: portfolioTitle,
+                pinSpacing: false
+                // markers: true
             });
+
+            // 2) EXPANSÃO: anima scale + letter-spacing conforme o scroll
+            gsap.fromTo(portfolioTitle,
+                {
+                    scale: 0.9,
+                    letterSpacing: "0.08em"
+                },
+                {
+                    scale: 1.7,
+                    letterSpacing: "0.35em",
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: portfolioRow,
+                        start: "top 30%",       // começa a expandir assim que entra no sticky
+                        end: "top+=400",        // ajusta esse valor pra controlar "quanto" de scroll expande
+                        scrub: true             // deixa ligado ao scroll (bem premium)
+                        // markers: true
+                    }
+                }
+            );
         }
     }
-		
-	}// End CustomFunction
+
+}// End CustomFunction
 	
 /*--------------------------------------------------
 	Function Cleanup Before Ajax

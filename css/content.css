@@ -1418,3 +1418,7 @@
 .items-center {
   align-items: center;
 }
+
+#portfolio-title {
+    transform-origin: center center; /* ou center left, se preferir crescer pra direita */
+}

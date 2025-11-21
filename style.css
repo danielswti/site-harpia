@@ -3970,6 +3970,15 @@ Primary use:	Showcase Portfolio
 	height: 75%;
 }
 
+@media (max-width: 900px) {
+	.img-mask {
+		width: 35vw;
+		height: 100%;
+	}
+}
+
+
+
 /* Layout em coluna: um item por "linha" */
 .showcase-portfolio.layout-three {
     position: relative;
@@ -4031,7 +4040,7 @@ Primary use:	Showcase Portfolio
 
     .showcase-portfolio.layout-three .clapat-item {
         justify-content: center;
-        margin: 0 0 4rem;
+        margin: 0 0 .5rem;
     }
 
     .showcase-portfolio.layout-three .clapat-item:nth-child(n+2) {
@@ -4134,3 +4143,4 @@ Primary use:	Showcase Portfolio
     position: relative;   /* deixa o GSAP cuidar dos transforms */
     z-index: 10;
 }
+
