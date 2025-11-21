@@ -1642,7 +1642,7 @@
 	
 	.gallery-zoom-wrapper .trigger-item {
 		width: 100%;
-		aspect-ratio: 10/14;
+		aspect-ratio: 14/10;
 		position: relative;
 		align-self: center;	
 	}

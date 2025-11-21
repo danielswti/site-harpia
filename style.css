@@ -3966,8 +3966,8 @@ Primary use:	Showcase Portfolio
 }
 
 .img-mask {
-	width: 35vw;
-	height: 75%;
+	width: 100%;
+	height: 100%;
 }
 
 @media (max-width: 900px) {
@@ -3975,6 +3975,11 @@ Primary use:	Showcase Portfolio
 		width: 35vw;
 		height: 100%;
 	}
+}
+
+.home-portfolio .img-mask {
+	width: 35vw;
+	height: 75%;
 }
 
 

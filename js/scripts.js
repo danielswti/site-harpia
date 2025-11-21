@@ -93,6 +93,36 @@ function CustomFunction() {
         }
     }
 
+	    // ============
+    // LINKS DO PORTFÓLIO (SHOWCASE GALLERY)
+    // ============
+    const gallerySlides = document.querySelectorAll('.showcase-gallery .clapat-slide');
+
+    gallerySlides.forEach(slide => {
+        const link = slide.querySelector('a.slide-link');
+        if (!link) return;
+
+        // tudo isso deve abrir o projeto
+        const clickTargets = slide.querySelectorAll(
+            '.trigger-item, .trigger-item-link, .img-mask, .section-image'
+        );
+
+        clickTargets.forEach(target => {
+            target.style.cursor = 'pointer';
+
+            // evita múltiplos listeners se o Ajax recarregar
+            target.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation(); // impede o grid/preview do Clapat
+
+                const href = link.getAttribute('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            }, { passive: false });
+        });
+    });
+
 }// End CustomFunction
 	
 /*--------------------------------------------------
