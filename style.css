@@ -1625,7 +1625,7 @@ Primary use:	Showcase Portfolio
 	#header-container {
 		box-sizing: border-box;
 		height: inherit;
-		padding: 20px 80px;
+		padding: 10px 80px;
 		margin: 0 auto;
 		position: relative;
 		width: 100%;
@@ -1642,7 +1642,7 @@ Primary use:	Showcase Portfolio
 		display: table;
 		pointer-events: initial;
 		z-index: 10;
-		top: 15px;
+		top: 7px;
 		float: left;
 	}
 	
@@ -1746,7 +1746,7 @@ Primary use:	Showcase Portfolio
 			transition: all 0.2s ease-in-out 0.5s;
 			display:block;
 			float:right;
-			height: 60px;
+			height: 35px;
 			margin: 10px 0;
 			background-color:transparent!important;
 			opacity: 1 !important;
@@ -1775,8 +1775,8 @@ Primary use:	Showcase Portfolio
 		.classic-menu .flexnav li {    
 			background: transparent none repeat scroll 0 0;
 			padding:0 30px;
-			padding-bottom:20px;
-			padding-top:20px;
+			padding-bottom:5px;
+			padding-top:5px;
 		}
 		
 		.classic-menu .menu-timeline {
@@ -3946,7 +3946,7 @@ Primary use:	Showcase Portfolio
 
 	
 .red-text {
-	color: #ff0000 !important;
+	color: #FF015B !important;
 }
 
 .text-white {
@@ -4048,6 +4048,13 @@ Primary use:	Showcase Portfolio
 	margin-top: -10px;
 }
 
+@media only screen and (max-width: 767px) {
+	.shapes-value {
+		max-width: 75px;
+		margin-top: 0px;
+	}
+}
+
 /* coloca o fundo atrás do texto, mantendo ele à direita */
 /* #hero-description .inner {
     position: relative;
@@ -4121,4 +4128,9 @@ Primary use:	Showcase Portfolio
 #hero.hero-fade > * {
     position: relative;
     z-index: 1;
+}
+
+#portfolio-title {
+    position: relative;   /* deixa o GSAP cuidar dos transforms */
+    z-index: 10;
 }

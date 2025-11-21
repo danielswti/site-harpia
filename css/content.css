@@ -188,7 +188,7 @@
 	}
 	
 	.hero-subtitle {
-		font-size: 20px;
+		font-size: 25px;
 		font-weight:500;
 		line-height:30px;
 		margin-top:30px;
@@ -1408,4 +1408,13 @@
 
 .dark-content .hero-title {
 	color: #0d0d0d !important;
+}
+
+
+.text-align-center {
+	text-align: center;
+}
+
+.items-center {
+  align-items: center;
 }
