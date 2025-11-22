@@ -4248,3 +4248,7 @@ Primary use:	Showcase Portfolio
     position: relative;
     z-index: 1;
 }
+
+.uppercase-titles h3 {
+	text-transform: none !important;
+}
