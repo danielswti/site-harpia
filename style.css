@@ -3982,6 +3982,13 @@ Primary use:	Showcase Portfolio
 	height: 75%;
 }
 
+@media (max-width: 900px) {
+	.home-portfolio .img-mask {
+		height: 100%;
+		width: 80%;
+	}
+}
+
 /* Layout em coluna: um item por "linha" */
 .showcase-portfolio.layout-three {
     position: relative;
@@ -4051,7 +4058,7 @@ Primary use:	Showcase Portfolio
     }
 
     .showcase-portfolio.layout-three .slide-inner {
-        width: 100%;
+        width: 80%;
     }
 }
 

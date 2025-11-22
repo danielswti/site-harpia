@@ -2767,6 +2767,12 @@
 		width: 20%;
 		aspect-ratio: 10/14;
 	}
+
+	.showcase-portfolio .slide-inner::before {
+		float: left;
+		padding-top: 100%;
+		content: "";
+	}
 	
 }
 
@@ -2984,6 +2990,6 @@
 		margin:0;
 		overflow:visible;
 		aspect-ratio: 10/14;
-		max-height: 360px;
+		max-height: 415px;
 	}
 }
