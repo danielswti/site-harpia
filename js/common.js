@@ -712,7 +712,7 @@ Function Scroll Effects
 			
 			function setClippedImageWrapperProperties() {
 				gsap.set(clippedImageContent, { paddingTop:""});											
-				gsap.set(clippedImageGradient, { height: window.innerHeight * 0.3});
+				gsap.set(clippedImageGradient, { height: window.innerHeight * 1.3});
 				gsap.set(clippedImage, { height: window.innerHeight, });								
 				gsap.set(clippedImageContent, { paddingTop: (window.innerHeight/2) + clippedImageContent.offsetHeight});
 				gsap.set(clippedImageWrapper, { height: window.innerHeight + clippedImageContent.offsetHeight});

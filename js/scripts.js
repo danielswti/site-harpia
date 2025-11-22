@@ -33,65 +33,51 @@ Function CustomFunction
 
 function CustomFunction() {
 
-    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
+    //Add here your custom js code
 
-        const portfolioRow   = document.querySelector('.portfolio-row');
-        const portfolioTitle = document.querySelector('#portfolio-title');
+	// Sticky + expansão do "Work" no portfólio
+	if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+		gsap.registerPlugin(ScrollTrigger);
 
-        if (portfolioRow && portfolioTitle) {
+		const portfolioRow   = document.querySelector('.portfolio-row');
+		const portfolioTitle = document.querySelector('#portfolio-title');
 
-            ScrollTrigger.create({
-                trigger: portfolioRow,
-                start: "top 30%",
-                end: "bottom bottom",
-                pin: portfolioTitle,
-                pinSpacing: false
-            });
+		if (portfolioRow && portfolioTitle) {
+			
+			// 1) PIN: mantém o título fixo
+			ScrollTrigger.create({
+				trigger: portfolioRow,
+				start: "top 20%",
+				end: "bottom bottom",
+				pin: portfolioTitle,
+				pinSpacing: false
+				// markers: true
+			});
 
-            const finalScale = 1.25; // aumenta o zoom aqui
+			// 2) EXPANSÃO: anima scale + letter-spacing conforme o scroll
+			gsap.fromTo(
+				portfolioTitle,
+				{
+					scale: 1,
+					letterSpacing: "0.08em",
+					transformOrigin: "50% 50%"
+				},
+				{
+					scale: 1.2,
+					letterSpacing: "0.35em",
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: portfolioRow,
+						start: "top 20%",
+						end: "top+=200",
+						scrub: true
+						// markers: true
+					}
+				}
+			);
+		}
+	}
 
-            const computeTargetX = () => {
-                const w = portfolioTitle.offsetWidth;
-                const centerBase = window.innerWidth / 2 - w / 2;          // centro “normal”
-                const extraShift = w * (finalScale - 1) / 2;               // quanto o scale empurra pra direita
-                return centerBase - extraShift;                            // corrige o empurrão
-            };
-
-            const targetX = computeTargetX();
-
-            gsap.fromTo(
-                portfolioTitle,
-                {
-                    x: 0,
-                    scale: 0.9,
-                    letterSpacing: "0.08em",
-                    opacity: 0.85,
-                    transformOrigin: "left center"
-                },
-                {
-                    x: targetX,
-                    scale: finalScale,
-                    letterSpacing: "0.35em",
-                    opacity: 1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: portfolioRow,
-                        start: "top 30%",
-                        end: "top+=900",
-                        scrub: true
-                    }
-                }
-            );
-
-            // Recalcular em resize
-            window.addEventListener('resize', () => {
-                const newX = computeTargetX();
-                gsap.set(portfolioTitle, { x: newX, scale: finalScale });
-                ScrollTrigger.refresh();
-            });
-        }
-    }
 
 	    // ============
     // LINKS DO PORTFÓLIO (SHOWCASE GALLERY)

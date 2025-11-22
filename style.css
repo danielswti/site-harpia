@@ -27,6 +27,38 @@ Primary use:	Showcase Portfolio
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Light';
+  src: url('fonts/NeueHaasGroteskDisplayLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Regular';
+  src: url('fonts/NeueHaasGroteskDisplayRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Medium';
+  src: url('fonts/NeueHaasGroteskDisplayMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Bold';
+  src: url('fonts/NeueHaasGroteskDisplayBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Black';
+  src: url('fonts/NeueHaasGroteskDisplayBlack.otf') format('opentype');
+}
+
+/* Body font */
+@font-face {
+  font-family: 'Karu Light';
+  src: url('fonts/karu-light.otf') format('opentype');
+}
+
+
 /*------------------------------------------------------------------
 
 01. General Styles
@@ -45,7 +77,7 @@ Primary use:	Showcase Portfolio
 ---------------------------------------------------*/
 
 	html,body{
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Karu Light', sans-serif;
 		font-weight: 400;
 		font-size:16px;
 		height:100%;
@@ -567,7 +599,7 @@ Primary use:	Showcase Portfolio
 	}
 		
 	h1, h2, h3, h4, h5, h6 {		
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Neue Haas Grotesk Display Black', sans-serif;
 		color:#000;
 		margin-bottom:20px;
 	}
@@ -603,6 +635,7 @@ Primary use:	Showcase Portfolio
 	h3{
 		font-size: calc(1rem + 2vw);
 		line-height: calc(1rem + 2.5vw);
+		font-weight: 700;
 	}
 	
 	h4{
@@ -653,7 +686,7 @@ Primary use:	Showcase Portfolio
 	p {
 		font-size:16px;
 		line-height: 30px;
-		font-weight:500;
+		font-weight:400;
 		margin-bottom: 20px;
 		color:#444;
 	}
@@ -4155,11 +4188,18 @@ Primary use:	Showcase Portfolio
     z-index: 10;
 }
 
+/* Ajusta o título do portfólio */
 #portfolio-title {
     position: relative;
-    display: inline-block;
-    transform-origin: left center;
-    /* garante que o texto nasce à esquerda */
+    margin: 0 auto;           /* centraliza o bloco */
+    text-align: center;       /* centraliza o texto dentro dele */
+    max-width: 1300px;        /* controla a largura máxima */
+    padding: 0 3vw;           /* respiro lateral pra não grudar nas bordas */
+    transform-origin: center center; /* garante expansão a partir do centro */
+}
+
+.portfolio-row #portfolio-title {
+    text-align: center !important;
 }
 
 .portfolio-page .img-mask {
@@ -4178,4 +4218,33 @@ Primary use:	Showcase Portfolio
 	#first-title {
 		max-width: 307px;
 	}
+}
+
+/* Fade no texto do vídeo */
+#video.video-fade {
+    position: relative;
+    z-index: 1; /* garante que o conteúdo fique num contexto próprio */
+}
+
+/* faz o degradê escuro no fundo do hero inteiro */
+#video.video-fade::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90vh; /* altura do fade – ajuste aqui */
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 2.1875rem,
+        rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 0; /* atrás do texto, na frente da imagem */
+}
+
+/* garante que todo o conteúdo do hero fique acima do fade */
+#video.video-fade > * {
+    position: relative;
+    z-index: 1;
 }

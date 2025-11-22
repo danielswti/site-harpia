@@ -112,7 +112,7 @@
 	.hero-title {
 		font-size: calc(1rem + 4.15vw);
 		line-height: calc(1rem + 4.5vw);
-		font-weight:500;
+		font-weight:700;
 		position: relative;
 		display:block;
 		display:inline-block;
@@ -1430,5 +1430,5 @@
 }
 
 #portfolio-title {
-    transform-origin: center center; /* ou center left, se preferir crescer pra direita */
+    /* transform-origin: center center !important; */
 }
