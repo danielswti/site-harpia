@@ -1020,8 +1020,8 @@ Function Scroll Effects
 				
 			// Roling Text	
 			let direction = 1;				
-			const marqueeFw = roll(".marquee-text.fw", {duration: 50});
-			const marqueeBw = roll(".marquee-text.bw", {duration: 50}, true);
+			const marqueeFw = roll(".marquee-text.fw", {duration: 70});
+			const marqueeBw = roll(".marquee-text.bw", {duration: 70}, true);
 			
 					
 			scroll = ScrollTrigger.create({

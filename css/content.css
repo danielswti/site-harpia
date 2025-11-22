@@ -1286,12 +1286,16 @@
 	
 	.hero-title, .next-hero-title {
 		font-size: calc(1rem + 4.15vw);
-		line-height: calc(1rem + 4.5vw);
+		line-height: calc(1rem + 4.7vw);
 	}
 	
 	.hero-subtitle {
   		margin-top: 10px;
 		font-size: 16px;
+	}
+
+	.hero-subtitle span {
+		padding-top: 5px;
 	}
 	
 	.subtitle-padding-left .hero-subtitle {

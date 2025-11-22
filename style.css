@@ -3695,7 +3695,7 @@ Primary use:	Showcase Portfolio
 	
 	#logo {
 		left: 30px;
-		top: 9px;
+		top: 15px;
 	}
 	
 	.button-wrap.right.menu {
@@ -4070,8 +4070,8 @@ Primary use:	Showcase Portfolio
 
 @media only screen and (max-width: 767px) {
 	.shapes-value {
-		max-width: 75px;
-		margin-top: 0px;
+		max-width: 60px;
+		margin-top: 5px;
 	}
 }
 

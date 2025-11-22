@@ -3701,6 +3701,7 @@
 	
 	.list-rotator li {
 		padding:0 30px;
+		font-size: calc(1rem + 0.5vw);
 	}
 	
 	.news-post {
