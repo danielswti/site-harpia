@@ -47,39 +47,18 @@ function CustomFunction() {
 			// 1) PIN: mantém o título fixo
 			ScrollTrigger.create({
 				trigger: portfolioRow,
-				start: "top 20%",
+				start: "top 100px",
 				end: "bottom bottom",
 				pin: portfolioTitle,
 				pinSpacing: false
 				// markers: true
 			});
-
-			// 2) EXPANSÃO: anima scale + letter-spacing conforme o scroll
-			gsap.fromTo(
-				portfolioTitle,
-				{
-					scale: 1,
-					letterSpacing: "0.08em",
-					transformOrigin: "50% 50%"
-				},
-				{
-					scale: 1.2,
-					letterSpacing: "0.35em",
-					ease: "power2.out",
-					scrollTrigger: {
-						trigger: portfolioRow,
-						start: "top 20%",
-						end: "top+=200",
-						scrub: true
-						// markers: true
-					}
-				}
-			);
+			
 		}
 	}
 
 
-	    // ============
+	// ============
     // LINKS DO PORTFÓLIO (SHOWCASE GALLERY)
     // ============
     const gallerySlides = document.querySelectorAll('.showcase-gallery .clapat-slide');

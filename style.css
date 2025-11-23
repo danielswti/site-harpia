@@ -4248,3 +4248,17 @@ Primary use:	Showcase Portfolio
     position: relative;
     z-index: 1;
 }
+
+/* Ajusta o título do portfólio */
+#portfolio-title {
+    position: relative;
+    margin: 0 auto;           /* centraliza o bloco */
+    text-align: center;       /* centraliza o texto dentro dele */
+    max-width: 1100px;        /* controla a largura máxima */
+    padding: 0 5vw;           /* respiro lateral pra não grudar nas bordas */
+    transform-origin: center center; /* garante expansão a partir do centro */
+}
+
+.portfolio-row #portfolio-title {
+    text-align: center !important;
+}
