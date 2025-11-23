@@ -1467,6 +1467,13 @@
 	font-size: 1vw;
 }
 
+.portfolio-content-title {
+	font-size: calc(1rem + 2vw) !important;
+	line-height: calc(1rem + 4vw) !important;
+	text-align: left !important;
+	font-style: italic !important;
+}
+
 @media (max-width: 767px) {
 	.hero-title {
 		font-size: calc(1rem + 4.3vw) !important;
@@ -1491,3 +1498,4 @@
 .align-left {
 	text-align: left !important;
 }
+
