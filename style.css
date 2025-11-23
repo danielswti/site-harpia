@@ -4335,3 +4335,15 @@ Primary use:	Showcase Portfolio
 .project-idividual-page .content-full-width {
 	padding: 0px !important;
 }
+
+.continuous-image {
+	margin: 35px 0 !important;
+}
+
+	@media only screen and (max-width: 767px) {
+
+		.continuous-image {
+			margin: 15px 0 !important;
+		}
+		
+	}

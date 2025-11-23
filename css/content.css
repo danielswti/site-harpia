@@ -1025,6 +1025,13 @@
 		color:#fff;
 	}
 	
+	@media only screen and (max-width: 767px) {
+		
+		.next-project-image-wrapper {
+			padding-top: 20px;
+		}
+		
+	}
 	
 	
 /*--------------------------------------------------
