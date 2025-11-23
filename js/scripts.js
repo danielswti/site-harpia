@@ -47,39 +47,17 @@ function CustomFunction() {
 			// 1) PIN: mantém o título fixo
 			ScrollTrigger.create({
 				trigger: portfolioRow,
-				start: "top 20%",
-				end: "bottom bottom",
+				start: "top 18%",
+				end: "bottom bottom-=20%",
 				pin: portfolioTitle,
 				pinSpacing: false
 				// markers: true
 			});
-
-			// 2) EXPANSÃO: anima scale + letter-spacing conforme o scroll
-			gsap.fromTo(
-				portfolioTitle,
-				{
-					scale: 1,
-					letterSpacing: "0.08em",
-					transformOrigin: "50% 50%"
-				},
-				{
-					scale: 1.2,
-					letterSpacing: "0.35em",
-					ease: "power2.out",
-					scrollTrigger: {
-						trigger: portfolioRow,
-						start: "top 20%",
-						end: "top+=200",
-						scrub: true
-						// markers: true
-					}
-				}
-			);
 		}
 	}
 
 
-	    // ============
+	// ============
     // LINKS DO PORTFÓLIO (SHOWCASE GALLERY)
     // ============
     const gallerySlides = document.querySelectorAll('.showcase-gallery .clapat-slide');
@@ -108,6 +86,73 @@ function CustomFunction() {
             }, { passive: false });
         });
     });
+
+	if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const methodSection = document.querySelector('.method-section');
+
+    if (methodSection) {
+			// Timeline principal ao entrar na seção
+			const tlMethod = gsap.timeline({
+				scrollTrigger: {
+					trigger: methodSection,
+					start: "top 70%",       // quando o topo da seção estiver 70% da viewport
+					end: "bottom 40%",
+					toggleActions: "play none none reverse" // anima ao entrar, reverte ao sair pra cima
+					// markers: true
+				}
+			});
+
+			// 1) Título linha a linha
+			tlMethod.from(".method-title span", {
+				yPercent: 120,
+				opacity: 0,
+				duration: 0.7,
+				ease: "power3.out",
+				stagger: 0.12
+			});
+
+			// 2) Subtítulo
+			tlMethod.from(".method-subtitle", {
+				y: 20,
+				opacity: 0,
+				duration: 0.5,
+				ease: "power2.out"
+			}, "-=0.3");
+
+			// 3) Imagem
+			tlMethod.from(".method-image-wrapper", {
+				y: 40,
+				opacity: 0,
+				scale: 0.96,
+				duration: 0.8,
+				ease: "power3.out"
+			}, "-=0.2");
+
+			// 4) Cards com stagger
+			tlMethod.from(".method-card", {
+				y: 40,
+				opacity: 0,
+				duration: 0.6,
+				ease: "power3.out",
+				stagger: 0.18
+			}, "-=0.1");
+
+			// Parallax suave na imagem enquanto rola a página
+			gsap.to(".method-image", {
+				yPercent: -10,
+				ease: "none",
+				scrollTrigger: {
+					trigger: methodSection,
+					start: "top bottom",
+					end: "bottom top",
+					scrub: true
+					// markers: true
+				}
+			});
+		}
+	}
 
 }// End CustomFunction
 	

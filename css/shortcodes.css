@@ -1062,6 +1062,16 @@
   		background-size: 0% 100%;
 	}
 	
+	.has-mask-fill > i {
+		position: relative;
+		display: inline;
+		-webkit-text-fill-color: rgba(0,0,0,0.1);
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(#FF015B, #FF015B);
+  		background-size: 0% 100%;
+	}
+	
 	.has-mask-fill.block-title > span {
 		display: block;
 	}
@@ -1069,6 +1079,19 @@
 	.light-content .has-mask-fill > span, .dark-section .has-mask-fill > span {
 		-webkit-text-fill-color: rgba(255,255,255,0.1);
 		background-image: linear-gradient(#fff, #fff);;
+	}
+	
+	.light-content .has-mask-fill > i, .dark-section .has-mask-fill > i {
+		-webkit-text-fill-color: rgba(255,255,255,0.1);
+		background-image: linear-gradient(#FF015B, #FF015B);
+		font-style: italic !important;
+	}
+	
+	.light-content .light-section .has-mask-fill > span {
+		-webkit-text-fill-color: rgba(0,0,0,0.1);
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(#000, #000);
 	}
 	
 	.light-content .light-section .has-mask-fill > span {
@@ -2064,7 +2087,7 @@
 	
 	input, textarea {
 		color: rgba(0,0,0,1);
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Raleway', sans-serif;
 		font-size: 16px;
 		font-weight: 500;
 		height: 50px;
@@ -2201,7 +2224,7 @@
 		background:transparent;
 		border:none;
 		color:#fff;
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Raleway', sans-serif;
 		font-size: 18px;
 		font-weight: 500;
 		padding-left:50px;
@@ -3101,6 +3124,21 @@
 		padding-top:45px;
 		z-index: 100;
 		line-height: 30px;
+		font-size: 32px;
+		font-weight:600;
+		color: #fff;
+	}
+	
+	.list-rotator-subtitle {
+		position:absolute;
+		margin:0 auto;
+		display:table;
+		top:0px;
+		left:0;
+		right:0;
+		padding-top:77px;
+		z-index: 100;
+		line-height: 30px;
 		font-size: 16px;
 		font-weight:600;
 		color: #fff;
@@ -3831,4 +3869,15 @@
 		padding-right: 20px;
 	}
 		
+}
+
+.method-wrapper {
+	position:relative;
+	display:block;
+	margin-left: calc(50% - 50vw)!important;
+	margin-right: calc(50% - 50vw)!important;
+	max-width: 1000%!important;
+	width: 100vw!important;
+	height:300vh;
+	overflow:hidden;
 }

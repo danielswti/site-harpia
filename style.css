@@ -79,9 +79,9 @@ Primary use:	Showcase Portfolio
 	html,body{
 		font-family: 'Karu Light', sans-serif;
 		font-weight: 400;
-		font-size:16px;
-		height:100%;
-		width:100%;
+		font-size: 13px;
+		height: 100%;
+		width: 100%;
 		color:#444;
 		background-color:#fff;
 		user-select: none; /* supported by Chrome and Opera */
@@ -598,10 +598,17 @@ Primary use:	Showcase Portfolio
 		height:auto;
 	}
 		
-	h1, h2, h3, h4, h5, h6 {		
+	h1 {		
 		font-family: 'Neue Haas Grotesk Display Black', sans-serif;
 		color:#000;
 		margin-bottom:20px;
+	}
+		
+	h2, h3, h4, h5, h6 {		
+		font-family: 'Raleway', sans-serif;
+		color:#000;
+		margin-bottom:20px;
+		font-weight: 400;
 	}
 	
 	/* .uppercase-titles h1, .uppercase-titles h2, .uppercase-titles h3, .uppercase-titles h4, .uppercase-titles h5, .uppercase-titles h6 {
@@ -609,11 +616,11 @@ Primary use:	Showcase Portfolio
 	} */
 	
 	.primary-font-title {
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Neue Haas Grotesk Display Regular', sans-serif;
 	}
 	
 	.secondary-font-title, em {
-		font-family: 'mona-sanslight_wide';
+		font-family: 'Raleway', sans-serif;
 		font-style:normal;
 	}
 	
@@ -633,9 +640,9 @@ Primary use:	Showcase Portfolio
 	}
 	
 	h3{
-		font-size: calc(1rem + 2vw);
-		line-height: calc(1rem + 2.5vw);
-		font-weight: 700;
+		font-size: calc(1rem + 1.5vw);
+		line-height: calc(1rem + 2vw);
+		/* font-weight: 700; */
 	}
 	
 	h4{
@@ -888,7 +895,7 @@ Primary use:	Showcase Portfolio
 	}
 
 	.row_padding_top_custom {
-		padding-top:7vw;
+		padding-top:2vw;
 	}
 	
 	.row_padding_bottom {
@@ -1553,7 +1560,7 @@ Primary use:	Showcase Portfolio
 	
 	.percentage {
 		opacity: 1;
-		font-family: 'mona-sanslight_wide';
+		font-family: 'Raleway', sans-serif;
 		font-size: calc(1rem + 2vw);
 		line-height: calc(1rem + 2.5vw);
 		font-weight: 500;
@@ -1629,7 +1636,7 @@ Primary use:	Showcase Portfolio
 	.preloader-intro span {
 		position: relative;
 		display:block;
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Karu Light', sans-serif;
 		font-weight:500;
 		position: relative;
 		font-size: calc(1rem + 2vw);
@@ -2125,7 +2132,7 @@ Primary use:	Showcase Portfolio
 		}
 		
 		.fullscreen-menu .flexnav li a {
-			font-family: 'mona-sansextrabold_wide';
+			font-family: 'Karu Light', sans-serif;
 			font-weight: 500;
 			font-size: calc(1rem + 5.15vw);
 			line-height: 120px;
@@ -2179,7 +2186,7 @@ Primary use:	Showcase Portfolio
 		
 		.fullscreen-menu .flexnav li ul li a {
 			padding:0;
-			font-family: 'Poppins', sans-serif;
+			font-family: 'Karu Light', sans-serif;
 			font-size: 16px;
 			line-height: 30px;
 			font-weight:500;
@@ -2233,7 +2240,7 @@ Primary use:	Showcase Portfolio
 		}
 		
 		.fullscreen-menu .flexnav li a span:nth-child(1) {
-			font-family: 'mona-sansextrabold_wide';
+			font-family: 'Karu Light', sans-serif;
 			color:transparent;
 			position: relative;
 			width:100%;
@@ -2241,7 +2248,7 @@ Primary use:	Showcase Portfolio
 		}
 		
 		.fullscreen-menu .flexnav li a span:nth-child(2) {
-			font-family: 'mona-sansextrabold_wide';
+			font-family: 'Karu Light', sans-serif;
 			color:#222;
 			position: absolute;
 			top: 0;
@@ -2260,7 +2267,7 @@ Primary use:	Showcase Portfolio
 		}
 		
 		.fullscreen-menu .flexnav li a span:nth-child(3) {
-			font-family: 'mona-sanslight_wide';
+			font-family: '';
 			color:#222;
 			position: absolute;
 			top: 50%;
@@ -3358,7 +3365,7 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.flexnav li a {
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Karu Light', sans-serif;
 		font-weight: 500;
 		font-size: calc(1rem + 4.15vw);
 		line-height: calc(1rem + 4.5vw);
@@ -3426,7 +3433,7 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.flexnav li a span:nth-child(1) {
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Karu Light', sans-serif;
 		color:transparent;
 		position: relative;
 		width:100%;
@@ -3434,7 +3441,7 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.flexnav li a span:nth-child(2) {
-		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Karu Light', sans-serif;
 		color:#222;
 		position: absolute;
 		top: 0;
@@ -3481,7 +3488,7 @@ Primary use:	Showcase Portfolio
 	
 	.flexnav li ul li a {
 		padding:0;
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Karu Light', sans-serif;
 		font-size: 16px;
 		line-height: 30px;
 		font-weight:500;
@@ -4103,7 +4110,7 @@ Primary use:	Showcase Portfolio
 
 @media only screen and (max-width: 767px) {
 	.shapes-value {
-		max-width: 60px;
+		max-width: 100px;
 		margin-top: 5px;
 	}
 }
@@ -4193,13 +4200,19 @@ Primary use:	Showcase Portfolio
     position: relative;
     margin: 0 auto;           /* centraliza o bloco */
     text-align: center;       /* centraliza o texto dentro dele */
-    max-width: 1300px;        /* controla a largura máxima */
-    padding: 0 3vw;           /* respiro lateral pra não grudar nas bordas */
+    max-width: 1000px;        /* controla a largura máxima */
+    padding: 5% 3vw;           /* respiro lateral pra não grudar nas bordas */
     transform-origin: center center; /* garante expansão a partir do centro */
 }
 
 .portfolio-row #portfolio-title {
     text-align: center !important;
+}
+
+#portfolio-title h2 {
+    font-family: 'Neue Haas Grotesk Display Medium', sans-serif !important;
+	font-size: calc(1rem + 2.5vw);
+	line-height: calc(1rem + 2.5vw);
 }
 
 .portfolio-page .img-mask {
@@ -4251,4 +4264,147 @@ Primary use:	Showcase Portfolio
 
 .uppercase-titles h3 {
 	text-transform: none !important;
+}
+
+.italic-text {
+	font-style: italic !important;
+	color: #FF015B !important;
+}
+
+.video-caption h3 {
+	font-size: calc(1rem + 1.5vw) !important;
+}
+
+@media (min-width: 768px) {
+	.mobile {
+		display: none !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.desktop {
+		display: none !important;
+	}
+}
+
+/* SERVIÇOS */
+.method-section {
+    background-color: rgb(249, 249, 249);
+    color: #000000;
+    padding: 120px 5vw;
+}
+
+.method-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.method-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.method-title {
+    font-size: clamp(2.4rem, 3vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.method-title span {
+    display: block;
+}
+
+.method-subtitle {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.method-image-wrapper {
+    margin: 56px auto 64px auto;
+    max-width: 960px;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.method-image {
+    width: 100%;
+    display: block;
+    transform-origin: center center;
+}
+
+/* Grid das três dimensões */
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+}
+
+.method-card {
+    border-top: 1px solid rgba(0,0,0,0.12);
+    padding-top: 24px;
+}
+
+.method-card-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.method-tag {
+    font-weight: 600;
+}
+
+.method-tag-sub {
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.method-card-text {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+    .method-section {
+        padding: 80px 6vw;
+    }
+
+    .method-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .method-image-wrapper {
+        margin: 40px auto 48px auto;
+    }
+}
+
+/* Limita a largura da área da seção e centraliza */
+.list-rotator-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    overflow: hidden; /* garante que nada estoure para fora da largura */
+}
+
+/* Títulos (li com <em>) – você pode ajustar como preferir */
+
+
+/* Texto dos spans: corpo normal */
+.list-rotator li span {
+    display: block;
+    font-size: 17px;          /* corpo do site */
+    line-height: 1.7;
+    font-weight: 400;
+    max-width: 640px;         /* não deixa a linha esticar demais */
+    text-align: left;
+    opacity: 0.9;
 }

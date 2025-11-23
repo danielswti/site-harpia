@@ -112,7 +112,6 @@
 	.hero-title {
 		font-size: calc(1rem + 4.15vw);
 		line-height: calc(1rem + 4.5vw);
-		font-weight:700;
 		position: relative;
 		display:block;
 		display:inline-block;
@@ -122,6 +121,12 @@
 		padding: 0;
 		margin-bottom:0;
 		color:#000;		
+	}
+
+	.hero-title em {
+		font-family: 'Neue Haas Grotesk Display Bold', sans-serif !important;
+		font-style: normal;
+		font-weight: bold;
 	}
 	
 	.hero-title-wrapper {
@@ -188,8 +193,9 @@
 	}
 	
 	.hero-subtitle {
+		font-family: 'Raleeway', sans-serif;
 		font-size: 25px;
-		font-weight:500;
+		font-weight:400;
 		line-height:30px;
 		margin-top:30px;
 		width: 100%;
@@ -216,6 +222,9 @@
 		transform: translateY(60px);
 		-webkit-transform: translateY(60px);
 		align-items: start;
+	}
+	
+	.hero-subtitle {
 		padding-top: 10px;
 	}
 	
@@ -1294,15 +1303,15 @@
 		font-size: 16px;
 	}
 
-	.hero-subtitle span {
+	/* .hero-subtitle span {
 		padding-top: 5px;
-	}
+	} */
 	
 	.subtitle-padding-left .hero-subtitle {
 		margin-left: 0;
 		margin-right: 0;
 		margin: auto;
-		margin-top: 10px;
+		/* margin-top: 10px; */
 		padding-left: 0;
 		text-align: center;	
 	}

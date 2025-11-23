@@ -607,6 +607,7 @@ Function Scroll Effects
 		gsap.utils.toArray('.list-rotator-wrapper').forEach((listRotatorWrapper) => {
   						
 			const listRotatorTitle = listRotatorWrapper.querySelector(".list-rotator-title");
+			const listRotatorSubtitle = listRotatorWrapper.querySelector(".list-rotator-subtitle");
 			const listRotatorHeight = listRotatorWrapper.querySelector(".list-rotator-height");
 			const listRotatorPin = listRotatorWrapper.querySelector(".list-rotator-pin");
 			const listRotator = listRotatorWrapper.querySelector(".list-rotator");			
@@ -646,6 +647,23 @@ Function Scroll Effects
 				gsap.to(listRotatorTitle, {
 					scrollTrigger: {
 						trigger: listRotatorTitle,
+						start: function() {
+							const startPin = 0;
+							return "top +=" + startPin;
+						},
+						end: function() {
+							const endPin = window.innerHeight * 2.5;
+							return "+=" + endPin;
+						},
+						pin:true,
+						scrub: true,
+						pinSpacing: false,
+					}
+				});
+				
+				gsap.to(listRotatorSubtitle, {
+					scrollTrigger: {
+						trigger: listRotatorSubtitle,
 						start: function() {
 							const startPin = 0;
 							return "top +=" + startPin;
@@ -1350,7 +1368,7 @@ Function Scroll Effects
 		
 		var hasMaskFill = gsap.utils.toArray('.has-mask-fill');			
 		hasMaskFill.forEach(function(hMaskFill) {				
-			var spanFillMask = hMaskFill.querySelectorAll("span");
+			var spanFillMask = hMaskFill.querySelectorAll("span, i");
 			gsap.to(spanFillMask, { 					
 				scrollTrigger: {
 					trigger: hMaskFill,
