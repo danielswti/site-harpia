@@ -1466,3 +1466,11 @@
 .about-h2 {
 	font-size: 1vw;
 }
+
+@media (max-width: 767px) {
+	.hero-title {
+		font-size: calc(1rem + 3.8vw) !important;
+		line-height: calc(1rem + 4.8vw) !important;
+		padding: 0px 0px !important;
+	}
+}
