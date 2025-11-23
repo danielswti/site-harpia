@@ -4347,5 +4347,9 @@ Primary use:	Showcase Portfolio
 			margin: 15px 0 !important;
 		}
 		
+		.hero-caption {
+			padding-left: 2px;
+			padding-right: 2px;
+		}
 	}
 	
