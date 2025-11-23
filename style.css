@@ -20,6 +20,13 @@ Primary use:	Showcase Portfolio
 }
 
 @font-face {
+    font-family: 'mona-sans-semibold_wide';
+    src: url('webfonts/Mona-Sans-SemiBoldWide.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'mona-sanslight_wide';
     src: url('webfonts/mona-sans-lightwide-webfont.woff2') format('woff2'),
          url('webfonts/mona-sans-lightwide-webfont.woff') format('woff');
@@ -598,8 +605,8 @@ Primary use:	Showcase Portfolio
 		height:auto;
 	}
 		
-	h1, h2, h3, h4, h5, h6 {		
-		font-family: 'Neue Haas Grotesk Display Black', sans-serif;
+	h1, h2, h3, h5, h6 {		
+		font-family: 'mona-sansextrabold_wide';
 		color:#000;
 		margin-bottom:20px;
 	}
@@ -615,6 +622,10 @@ Primary use:	Showcase Portfolio
 	.secondary-font-title, em {
 		font-family: 'mona-sanslight_wide';
 		font-style:normal;
+	}
+
+	h4 {
+		font-family: 'mona-sans-semibold_wide';
 	}
 	
 	.big-title{
@@ -633,8 +644,8 @@ Primary use:	Showcase Portfolio
 	}
 	
 	h3{
-		font-size: calc(1rem + 2vw);
-		line-height: calc(1rem + 2.5vw);
+		font-size: calc(1rem + 1.7vw);
+		line-height: calc(1rem + 2vw);
 		font-weight: 700;
 	}
 	
@@ -4103,7 +4114,7 @@ Primary use:	Showcase Portfolio
 
 @media only screen and (max-width: 767px) {
 	.shapes-value {
-		max-width: 60px;
+		max-width: 100px;
 		margin-top: 5px;
 	}
 }
@@ -4194,7 +4205,7 @@ Primary use:	Showcase Portfolio
     margin: 0 auto;           /* centraliza o bloco */
     text-align: center;       /* centraliza o texto dentro dele */
     max-width: 1300px;        /* controla a largura máxima */
-    padding: 0 3vw;           /* respiro lateral pra não grudar nas bordas */
+    padding: 5% 3vw;           /* respiro lateral pra não grudar nas bordas */
     transform-origin: center center; /* garante expansão a partir do centro */
 }
 
@@ -4261,4 +4272,25 @@ Primary use:	Showcase Portfolio
 
 .portfolio-row #portfolio-title {
     text-align: center !important;
+}
+
+@media (min-width: 768px) {
+	.mobile {
+		display: none !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.desktop {
+		display: none !important;
+	}
+}
+
+#portfolio-title {
+	padding-bottom: 100px !important;
+	z-index: -10;
+}
+
+.showcase-portfolio {
+	margin-bottom: 150px !important;
 }

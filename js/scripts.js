@@ -43,17 +43,32 @@ function CustomFunction() {
 		const portfolioTitle = document.querySelector('#portfolio-title');
 
 		if (portfolioRow && portfolioTitle) {
-			
-			// 1) PIN: mantém o título fixo
-			ScrollTrigger.create({
-				trigger: portfolioRow,
-				start: "top 100px",
-				end: "bottom bottom",
-				pin: portfolioTitle,
-				pinSpacing: false
-				// markers: true
+
+			const mm = gsap.matchMedia();
+
+			// DESKTOP
+			mm.add("(min-width: 1025px)", () => {
+				ScrollTrigger.create({
+					trigger: portfolioRow,
+					start: "top 17%",
+					end: "bottom bottom-=20%", // seu comportamento atual
+					pin: portfolioTitle,
+					pinSpacing: false
+					// markers: true
+				});
 			});
-			
+
+			// MOBILE / TABLET
+			mm.add("(max-width: 1024px)", () => {
+				ScrollTrigger.create({
+					trigger: portfolioRow,
+					start: "top 50px",      // ajusta conforme o layout mobile
+					end: "bottom bottom-=60%",     // aqui ele solta quando a seção termina
+					pin: portfolioTitle,
+					pinSpacing: false
+					// markers: true
+				});
+			});
 		}
 	}
 

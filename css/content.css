@@ -216,7 +216,10 @@
 		transform: translateY(60px);
 		-webkit-transform: translateY(60px);
 		align-items: start;
-		padding-top: 10px;
+	}
+
+	.hero-subtitle {
+		padding-top: 10px !important;
 	}
 	
 	.inline-title .hero-subtitle span {
@@ -1294,7 +1297,7 @@
 		font-size: 16px;
 	}
 
-	.hero-subtitle span {
+	.subtitle-span {
 		padding-top: 5px;
 	}
 	
@@ -1302,7 +1305,7 @@
 		margin-left: 0;
 		margin-right: 0;
 		margin: auto;
-		margin-top: 10px;
+		margin-top: 0px;
 		padding-left: 0;
 		text-align: center;	
 	}
@@ -1431,4 +1434,8 @@
 
 #portfolio-title {
     /* transform-origin: center center !important; */
+}
+
+#video-caption h4 {
+	font-weight: 500;
 }
