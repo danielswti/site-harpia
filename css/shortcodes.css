@@ -106,6 +106,9 @@
 		color:#000;
 	}
 	
+	.marquee-text em {
+		font-weight: 900;
+	}
 	
 /*--------------------------------------------------
 	Hover Reveal Image
