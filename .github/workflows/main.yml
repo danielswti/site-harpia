@@ -1,7 +1,7 @@
 on: 
   push:
     branches:
-      - main
+      - harpia-antigo
 
 name: 🚀 Deploy LP Vendedor Externo on push
 
