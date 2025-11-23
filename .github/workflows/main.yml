@@ -20,3 +20,11 @@ jobs:
         username: ${{ secrets.ftp_user_danieln }}
         password: ${{ secrets.ftp_password_danieln }}
         server-dir: harpia.danieln.com.br/
+
+    - name: 📂 Deploy no servidor Regis Duran
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.ftp_host_regis }}
+        username: ${{ secrets.ftp_user_regis }}
+        password: ${{ secrets.ftp_password_regis }}
+        server-dir: public_html/
