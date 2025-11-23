@@ -50,8 +50,8 @@ function CustomFunction() {
 			mm.add("(min-width: 1025px)", () => {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
-					start: "top 17%",
-					end: "bottom bottom-=20%", // seu comportamento atual
+					start: "top 22%",
+					end: "bottom bottom-=45%",
 					pin: portfolioTitle,
 					pinSpacing: false
 					// markers: true
@@ -62,7 +62,7 @@ function CustomFunction() {
 			mm.add("(max-width: 1024px)", () => {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
-					start: "top 50px",      // ajusta conforme o layout mobile
+					start: "top 30%",      // ajusta conforme o layout mobile
 					end: "bottom bottom-=60%",     // aqui ele solta quando a seção termina
 					pin: portfolioTitle,
 					pinSpacing: false

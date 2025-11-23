@@ -4034,6 +4034,7 @@ Primary use:	Showcase Portfolio
 	}
 }
 
+
 /* Layout em coluna: um item por "linha" */
 .showcase-portfolio.layout-three {
     position: relative;
@@ -4292,7 +4293,7 @@ Primary use:	Showcase Portfolio
 }
 
 .showcase-portfolio {
-	margin-bottom: 150px !important;
+	margin-bottom: 50px !important;
 }
 
 .about-h2 {

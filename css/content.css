@@ -1458,6 +1458,9 @@
 		font-weight: 400;
 		text-transform: none !important;
 	}
+	.row-buttom-portfolio {
+		margin-top: 5rem !important;
+	}
 }
 
 .about-h2 {
