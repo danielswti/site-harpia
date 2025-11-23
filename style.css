@@ -4351,5 +4351,10 @@ Primary use:	Showcase Portfolio
 			padding-left: 2px;
 			padding-right: 2px;
 		}
+
+		p {
+			font-size: 18px;
+			line-height: 140%;
+		}
 	}
 	
