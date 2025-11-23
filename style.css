@@ -4408,3 +4408,7 @@ Primary use:	Showcase Portfolio
     text-align: left;
     opacity: 0.9;
 }
+
+.link-icon {
+	max-width: 35px;
+}
