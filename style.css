@@ -4294,3 +4294,40 @@ Primary use:	Showcase Portfolio
 .showcase-portfolio {
 	margin-bottom: 150px !important;
 }
+
+.about-h2 {
+	font-family: 'mona-sans-semibold_wide', sans-serif;
+	font-size: 1.7vw;
+	line-height: 120%;
+	font-weight: 500;
+}
+
+.next-hero-title-about, .hero-title-contact {
+	font-size: calc(1rem + 3vw) !important;
+	line-height: calc(1rem + 4vw) !important;
+}
+
+.link-icon {
+	max-width: 27px;
+	margin-bottom: 10px;
+}
+
+.hero-subtitle {
+	font-family: 'mona-sans-semibold_wide', sans-serif;
+	font-weight: 500;
+	text-transform: unset !important;
+}
+
+@media (max-width: 767px) {
+	.about-h2 {
+		font-size: 7vw;
+	}
+	.next-hero-title-about {
+		font-size: calc(1rem + 1.6vw) !important;
+		line-height: calc(1rem + 2.7vw) !important;
+	}
+}
+
+.hero-caption-contact {
+	padding-bottom: 100px !important;
+}

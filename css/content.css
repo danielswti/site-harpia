@@ -650,6 +650,11 @@
 		font-size: calc(1rem + 2vw);
 		line-height: calc(1rem + 2.5vw);
 	}
+
+	.next-hero-title-about {
+		font-size: calc(1rem + 3vw) !important;
+		line-height: calc(1rem + 4vw) !important;
+	}
 	
 	.text-align-center .next-hero-title, .text-align-center .next-hero-subtitle {
 		display:table;
@@ -1438,4 +1443,8 @@
 
 #video-caption h4 {
 	font-weight: 500;
+}
+
+.about-h2 {
+	font-size: 1vw;
 }
