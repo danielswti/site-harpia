@@ -1471,6 +1471,7 @@
 	.hero-title {
 		font-size: calc(1rem + 3.8vw) !important;
 		line-height: calc(1rem + 4.8vw) !important;
-		padding: 0px 0px !important;
+		padding: 0px !important;
+		
 	}
 }
