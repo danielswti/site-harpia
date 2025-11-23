@@ -1473,4 +1473,10 @@
     	line-height: calc(1rem + 5vw) !important;
 		padding: 0px !important;
 	}
+
+	.about-hero .hero-title {
+		font-size: calc(1rem + 6.3vw) !important;
+		line-height: calc(1rem + 7vw) !important;
+		padding: 0px !important;
+	}
 }
