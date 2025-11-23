@@ -1,30 +1,35 @@
-on: 
+on:
   push:
     branches:
       - harpia-antigo
 
-name: 🚀 Deploy LP Vendedor Externo on push
+name: "🚀 Deploy Site Harpia on push"
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: "🎉 Deploy"
     runs-on: ubuntu-latest
+
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
+      - name: "🚚 Get latest code"
+        uses: actions/checkout@v4
 
-    - name: 📂 Deploy no servidor Daniel
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.ftp_host_danieln }}
-        username: ${{ secrets.ftp_user_danieln }}
-        password: ${{ secrets.ftp_password_danieln }}
-        server-dir: harpia.danieln.com.br/
+      - name: "📂 Deploy no servidor Daniel"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_host_danieln }}
+          username: ${{ secrets.ftp_user_danieln }}
+          password: ${{ secrets.ftp_password_danieln }}
+          # opcional, se suportar:
+          # protocol: ftps
+          server-dir: harpia.danieln.com.br/
 
-    - name: 📂 Deploy no servidor Regis Duran
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.ftp_host_regis }}
-        username: ${{ secrets.ftp_user_regis }}
-        password: ${{ secrets.ftp_password_regis }}
-        server-dir: public_html/
+      - name: "📂 Deploy no servidor Regis Duran"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_host_regis }}
+          username: ${{ secrets.ftp_user_regis }}
+          password: ${{ secrets.ftp_password_regis }}
+          # opcional, se suportar:
+          # protocol: ftps
+          server-dir: public_html/
