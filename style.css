@@ -4331,3 +4331,7 @@ Primary use:	Showcase Portfolio
 .hero-caption-contact {
 	padding-bottom: 100px !important;
 }
+
+.project-idividual-page .content-full-width {
+	padding: 0px !important;
+}
