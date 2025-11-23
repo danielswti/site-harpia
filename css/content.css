@@ -618,7 +618,8 @@
 	
 	
 	.next-hero-title-wrapper {
-		margin-left:-0.3vw;		
+		margin-left:-0.3vw;
+		max-width: 1080px;	
 	}
 	
 	.text-align-center .next-hero-title-wrapper {
@@ -646,6 +647,11 @@
 		overflow:hidden;
 		padding: 0;
 		color:#000;				
+	}
+
+	.about-page .next-hero-title {
+		font-size: calc(1rem + 3vw) !important;
+  		line-height: calc(1rem + 3.2vw) !important;
 	}
 	
 	.uppercase-titles .next-hero-title {

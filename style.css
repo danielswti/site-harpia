@@ -4412,3 +4412,53 @@ Primary use:	Showcase Portfolio
 .link-icon {
 	max-width: 35px;
 }
+
+.about-numbers {
+	font-size: calc(1rem + 1vw) !important;
+  	line-height: calc(1rem + 1vw) !important;
+}
+
+/* HERO COM BACKGROUND */
+#hero.hero-with-bg {
+    position: relative;
+    min-height: 100vh; /* garante tela cheia */
+    background-image: url('images/about/about-hero-bg.webp'); /* ajuste o caminho */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    overflow: hidden; /* evita qualquer transbordo estranho */
+}
+
+/* overlay escuro pra dar contraste no texto */
+#hero.hero-with-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.3), rgba(0,0,0,0.75));
+    /* ou algo mais simples:
+       background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+    */
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* garante que o conteúdo fique acima do overlay */
+#hero-styles,
+#hero-caption,
+#hero-caption .inner {
+    position: relative;
+    z-index: 2;
+}
+
+/* se precisar reforçar a centralização vertical */
+#hero-styles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.custom-margin-bottom {
+	margin-bottom: 20px !important;
+}
