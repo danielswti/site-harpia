@@ -4228,7 +4228,7 @@ Primary use:	Showcase Portfolio
 		transform: scale(1.3);
 	}
 	#first-title {
-		max-width: 307px;
+		max-width: 100%;
 	}
 }
 
@@ -4348,3 +4348,4 @@ Primary use:	Showcase Portfolio
 		}
 		
 	}
+	
