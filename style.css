@@ -4361,3 +4361,19 @@ Primary use:	Showcase Portfolio
 .contacts .one_half {
 	margin-right: 0px !important;
 }
+
+.align-left {
+	text-align: left !important;
+}
+
+.portfolio-content {
+	padding-left: 5% !important;
+	padding-right: 5% !important;
+}
+
+@media (max-width: 900px) {
+	.portfolio-content {
+		padding-left: 5% !important;
+		padding-right: 5% !important;
+	}
+}

@@ -1479,4 +1479,15 @@
 		line-height: calc(1rem + 7vw) !important;
 		padding: 0px !important;
 	}
+
+	.portfolio-content-title {
+		font-size: calc(1rem + 3.3vw) !important;
+		line-height: calc(1rem + 4vw) !important;
+		text-align: left !important;
+		font-style: italic !important;
+	}
+}
+
+.align-left {
+	text-align: left !important;
 }
