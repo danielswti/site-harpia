@@ -45,9 +45,21 @@ function CustomFunction() {
 		if (portfolioRow && portfolioTitle) {
 
 			const mm = gsap.matchMedia();
+			
+						// Full HD DESKTOP
+						mm.add("(min-width: 1920px)", () => {
+							ScrollTrigger.create({
+								trigger: portfolioRow,
+								start: "top 15%",
+								end: "bottom bottom-=40%",
+								pin: portfolioTitle,
+								pinSpacing: false
+								// markers: true
+							});
+						});
 
-			// DESKTOP
-			mm.add("(min-width: 1025px)", () => {
+			// Notebook
+			mm.add("(min-width: 1025px) and (max-width: 1919px)", () => {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 22%",
