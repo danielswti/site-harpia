@@ -645,8 +645,8 @@ Primary use:	Showcase Portfolio
 	
 	h3{
 		font-size: calc(1rem + 1.7vw);
-		line-height: calc(1rem + 2vw);
-		font-weight: 700;
+		line-height: calc(1rem + 2.2vw);
+		font-weight: 500;
 	}
 	
 	h4{
@@ -4182,7 +4182,7 @@ Primary use:	Showcase Portfolio
     height: 90vh; /* altura do fade – ajuste aqui */
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 1) 2.1875rem,
+        #0C0C0C 2.1875rem,
         rgba(0, 0, 0, 0) 100%
     );
     pointer-events: none;
@@ -4337,15 +4337,15 @@ Primary use:	Showcase Portfolio
 	padding: 0px !important;
 }
 
-.continuous-image {
+/* .continuous-image {
 	margin: 35px 0 !important;
-}
+} */
 
 	@media only screen and (max-width: 767px) {
 
-		.continuous-image {
+		/* .continuous-image {
 			margin: 15px 0 !important;
-		}
+		} */
 		
 		#hero-caption {
 			padding-left: 2px;
@@ -4376,4 +4376,37 @@ Primary use:	Showcase Portfolio
 		padding-left: 5% !important;
 		padding-right: 5% !important;
 	}
+}
+
+.screen-height {
+	min-height: 100vh !important;
+	max-width: 100% !important;
+	max-height: 1080px !important;
+}
+
+/* Seção do vídeo full viewport, sem padding, conteúdo centralizado */
+.video-hero-section {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    
+    /* Garante altura de tela inteira */
+    min-height: 100vh;
+
+    /* Centraliza o vídeo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Vídeo centralizado, sem bordas e ocupando a largura */
+.video-hero-section video {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100vh;
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
 }

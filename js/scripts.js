@@ -51,7 +51,7 @@ function CustomFunction() {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 22%",
-					end: "bottom bottom-=45%",
+					end: "bottom bottom-=42%",
 					pin: portfolioTitle,
 					pinSpacing: false
 					// markers: true

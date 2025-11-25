@@ -503,6 +503,7 @@
 		margin-bottom: 0;
 		overflow:hidden;
 		max-width:none;
+		/* background-color: #000; */
 	}
 	
 	#main-page-content::after {
@@ -1499,3 +1500,18 @@
 	text-align: left !important;
 }
 
+.text-portfolio {
+  font-size: 1.75rem;
+  line-height: 120%;
+}
+
+.portfolio_row_padding_bottom {
+  padding-bottom: 5vw;
+}
+.portfolio_row_padding_top {
+  padding-top: 5vw;
+}
+
+.subtitle-project h2 {
+	text-align: center !important;
+}
