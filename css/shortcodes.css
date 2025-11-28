@@ -2917,29 +2917,28 @@
 		height: 100%!important;
 		position:relative;
 		display:block;
-		z-index:0;	
+		z-index:-10;	
 		object-position: center; 
 		object-fit: cover;
 	}
 	
 	.clipped-image-gradient {
 		position:absolute;
-		height:30%;
+		height:35%;
 		width:100%;
 		bottom:0;
-		opacity:0;
-		background-color:#000;
+		opacity:1;
+		background-color:#0c0c0c;
 		z-index:10;
 		-webkit-mask-image: linear-gradient(transparent, black 85%);
 		mask-image: linear-gradient(transparent, black 85%);
-
 	}
 	
 	.clipped-image-content {
 		position:relative;
 		width:100%;
 		height:auto;
-		padding-bottom:40px;
+		padding-bottom:60px;
 		margin:0 auto;
 		z-index:10;
 	}
