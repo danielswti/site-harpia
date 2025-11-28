@@ -5030,3 +5030,20 @@ Primary use:	Showcase Portfolio
 		width: 90%;
 	}
 }
+
+/* Section do vídeo: sem padding/margem, full-bleed */
+.hb-full-video-section {
+    padding: 0;
+    margin: 0;
+}
+
+/* Vídeo centralizado, ocupando a tela sem sobrar */
+.hb-full-video {
+    display: block;
+    width: 100vw;        /* 100% da largura da janela */
+    height: 100vh;       /* 100% da altura da janela */
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: cover;   /* preenche sem distorcer; corta só o excedente */
+    margin: 0 auto;
+}
