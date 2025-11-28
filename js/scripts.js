@@ -126,8 +126,197 @@ function CustomFunction() {
     // Estado inicial dos cards
     gsap.set(".counter_animation .counter__anim", { y: -100, opacity: 0 });
 
+    // MOBILE – anima cada card individualmente quando entra na viewport
+    if (device_width < 1023) {
+        const counterArray = gsap.utils.toArray(".counter_animation .counter__anim");
 
+        counterArray.forEach((item) => {
+            let counterTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%", // um pouco antes de entrar totalmente na tela
+                    toggleActions: "play none none none"
+                }
+            });
+
+            counterTl.to(item, {
+                y: 0,
+                opacity: 1,
+                ease: "bounce.out",
+                duration: 1.5
+            });
+        });
+
+    // DESKTOP – todos entram juntos com stagger
+    } else {
+        gsap.to(".counter_animation .counter__anim", {
+            scrollTrigger: {
+                trigger: ".counter_animation",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: 0,
+            opacity: 1,
+            ease: "bounce.out",
+            duration: 1.5,
+            stagger: {
+                each: 0.3
+            }
+        });
+    }
+
+    // CONTADOR NUMÉRICO (usando data-target e mantendo o "+", se existir)
+    const numbers = gsap.utils.toArray(".counter__number");
+
+    numbers.forEach((el) => {
+        const targetAttr = el.getAttribute("data-target");
+        const finalValue = targetAttr ? parseInt(targetAttr, 10) : parseInt(el.textContent, 10) || 0;
+        const hasPlus = /\+/.test(el.textContent);
+
+        const counterObj = { value: 0 };
+
+        gsap.to(counterObj, {
+            value: finalValue,
+            duration: 1,
+            delay: 0.3,
+            ease: "power1.in",
+            snap: { value: 1 },
+            scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            onUpdate: () => {
+                const current = Math.floor(counterObj.value);
+                el.textContent = current + (hasPlus ? "+" : "");
+            }
+        });
+    });
+
+	document.querySelectorAll('.hb-method-column').forEach((col) => {
+	const toggle = col.querySelector('.hb-method-toggle');
+	const panel  = col.querySelector('.hb-method-panel');
+	if (!toggle || !panel) return;
+
+	// clique (funciona em desktop e mobile)
+	toggle.addEventListener('click', (e) => {
+		e.preventDefault();
+		const isOpen = col.classList.toggle('is-open');
+		toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+	});
+
+	// hover só para dispositivos com hover real (desktop)
+	if (window.matchMedia('(hover: hover)').matches) {
+		col.addEventListener('mouseenter', () => {
+		col.classList.add('is-open');
+		toggle.setAttribute('aria-expanded', 'true');
+		});
+		col.addEventListener('mouseleave', () => {
+		col.classList.remove('is-open');
+		toggle.setAttribute('aria-expanded', 'false');
+		});
+	}
+	});
 	
+	// Navegação de projetos com GSAP (3 capas)
+	if (typeof gsap !== "undefined") {
+		const cards = gsap.utils.toArray('.hb-project-card');
+		if (!cards.length) return;
+
+		// índice inicial do card ativo (central)
+		let activeIndex = cards.findIndex(card => card.classList.contains('is-active'));
+		if (activeIndex === -1) activeIndex = 1;
+
+		function applyLayout() {
+			cards.forEach((card, i) => {
+				const isActive = i === activeIndex;
+				const bg = card.querySelector('.hb-project-bg');
+
+				gsap.to(card, {
+					flexBasis: isActive ? '70%' : '15%',
+					duration: 0.6,
+					ease: 'power3.inOut'
+				});
+
+				if (bg) {
+					gsap.to(bg, {
+						scale: isActive ? 1.02 : 1,
+						filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+						duration: 0.6,
+						ease: 'power3.inOut'
+					});
+				}
+			});
+		}
+
+		function setActive(index) {
+			activeIndex = index;
+
+			cards.forEach((card, i) => {
+				card.classList.toggle('is-active', i === activeIndex);
+				card.classList.toggle('is-left',   i <  activeIndex);
+				card.classList.toggle('is-right',  i >  activeIndex);
+			});
+
+			applyLayout();
+		}
+
+		// layout inicial
+		setActive(activeIndex);
+
+		// Hover em desktop: traz a capa pro centro
+		if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+			cards.forEach((card, index) => {
+				card.addEventListener('mouseenter', () => {
+					if (index !== activeIndex) {
+						setActive(index);
+					}
+				});
+			});
+		}
+
+		// Clique: anima e depois navega
+		cards.forEach((card, index) => {
+			const link = card.querySelector('.hb-project-link');
+			if (!link) return;
+
+			link.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				const href = link.getAttribute('href');
+				if (!href) return;
+
+				// se for lateral, primeiro traz pro centro
+				if (index !== activeIndex) {
+					setActive(index);
+				}
+
+				const bg = card.querySelector('.hb-project-bg');
+
+				const tl = gsap.timeline({
+					onComplete() {
+						// navega “na mão” sem chamar link.click() de novo
+						window.location.href = href;
+					}
+				});
+
+				if (bg) {
+					tl.to(bg, {
+						scale: 1.08,
+						duration: 0.4,
+						ease: 'power2.out'
+					}).to(bg, {
+						opacity: 0.0,
+						duration: 0.3,
+						ease: 'power2.in'
+					}, '-=0.1');
+				} else {
+					// fallback: se não tiver bg, só navega rápido
+					tl.to(card, { duration: 0.2 });
+				}
+			});
+		});
+	}
 }
 
 }// End CustomFunction
