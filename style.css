@@ -66,6 +66,7 @@ Primary use:	Showcase Portfolio
 }
 
 
+
 /*------------------------------------------------------------------
 
 01. General Styles
@@ -625,7 +626,8 @@ Primary use:	Showcase Portfolio
 	}
 
 	h4 {
-		font-family: 'mona-sans-semibold_wide';
+		/* font-family: 'mona-sans-semibold_wide'; */
+		font-family: 'Raleway', sans-serif;
 	}
 	
 	.big-title{
@@ -3992,6 +3994,7 @@ Primary use:	Showcase Portfolio
 	
 .red-text {
 	color: #FF015B !important;
+	font-style: italic;
 }
 
 .text-white {
@@ -4081,7 +4084,7 @@ Primary use:	Showcase Portfolio
     display: block;
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
 
     opacity: 1 !important;
     visibility: visible !important;
@@ -4409,4 +4412,286 @@ Primary use:	Showcase Portfolio
     width: 100%;
     height: auto;
     object-fit: cover; 
+}
+
+.normal-title {
+	text-transform: unset !important;
+}
+
+
+
+/* Counter 360 */
+
+.row-360 {
+	padding-bottom: 7%;
+}
+
+/* SEÇÃO (aplica nessa row específica) */
+.hb-counter-section {
+  background: #111111;          /* bem escuro, igual ao print */
+  padding: 120px 0;
+}
+
+/* WRAPPER DOS CÍRCULOS */
+.hb-counter-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+/* PRIMEIRO CÍRCULO SEM OVERLAP À ESQUERDA */
+.hb-counter-item:first-child {
+  margin-left: 0;
+}
+
+/* CÍRCULO */
+.hb-counter-item {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 1px solid #2c2c2c; /* borda bem suave */
+  margin-left: -50px;                           /* overlap forte como no print */
+  /* background: #111111; */
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* z-index para o “empilhamento” ficar bonito */
+.hb-counter-item { z-index: 1; }
+.hb-counter-item:nth-child(2) { z-index: 2; }
+.hb-counter-item:nth-child(3) { z-index: 3; }
+.hb-counter-item:nth-child(4) { z-index: 4; }
+
+/* NÚMERO */
+.hb-counter-number {
+  font-size: 4.2rem;            /* bem grande, como na referência */
+  font-weight: 300;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* TEXTO */
+.hb-counter-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6); /* cinza claro, não 100% branco */
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  .hb-counter-section {
+    padding: 80px 0;
+  }
+
+  .hb-counter-wrapper {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .hb-counter-item {
+    margin-left: 0;                         /* sem overlap no mobile */
+    width: min(260px, 70vw);
+    height: min(260px, 70vw);
+  }
+
+  .hb-counter-number {
+    font-size: 2.4rem;
+  }
+
+  .hb-counter-item p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ROW DOS TEXTOS */
+.hb-methods-row {
+  padding-top: 0;               /* gruda um pouco mais nas bolas */
+  /* padding-bottom: 120px; */
+}
+
+/* WRAPPER DAS 3 COLUNAS */
+.hb-methods-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+/* CADA COLUNA – alinhada às bolas por overlap semelhante */
+.hb-method-column {
+  width: 380px;
+  margin-left: -60px;
+  position: relative;
+}
+
+.hb-method-column:first-child {
+  margin-left: 0;
+}
+
+/* BOTÃO + */
+.hb-method-toggle {
+  margin-top: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  cursor: pointer;
+
+  position: relative;   /* necessário para centralizar o ícone */
+  padding: 0;
+  outline: none;
+}
+
+.hb-method-toggle-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-51%, -58%);  /* centro exato do círculo */
+
+  font-size: 18px;
+  line-height: 1;
+  color: #ff1b57; /* seu rosa */
+  display: block;
+}
+
+.hb-method-column.is-open .hb-method-toggle, .hb-method-column.is-open .hb-method-toggle-icon {
+  background: #ff2f68;
+  border-color: #ff2f68;
+  color: #0c0c0c !important;
+}
+
+/* PAINEL DE TEXTO (toggle) */
+.hb-method-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+
+/* quando aberto */
+.hb-method-column.is-open .hb-method-panel {
+  max-height: 600px; /* grande o suficiente para o conteúdo */
+  opacity: 1;
+}
+
+/* TÍTULOS E TEXTOS (mantendo o que já tínhamos) */
+.hb-method-title {
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: none !important;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.hb-method-title span:first-child {
+  	color: #ff2f68;
+  	font-weight: 500;
+	/* font-style: italic; */
+}
+
+.hb-method-lead {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+}
+
+/* LISTA NUMERADA */
+.hb-method-list {
+  list-style: none;
+  margin: 12px 0 0 0;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.7);
+  counter-reset: method-counter;
+}
+
+.hb-method-list li {
+  counter-increment: method-counter;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 7px;
+}
+
+.hb-method-list li::before {
+  content: counter(method-counter, decimal-leading-zero) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.8rem;
+  color: #ff2f68;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  .hb-methods-wrapper {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 24px;
+  }
+
+  .hb-method-column {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* WRAPPER DAS 3 COLUNAS */
+.hb-methods-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;  /* espaça as colunas sem invadir */
+  gap: 60px;                       /* respiro entre elas */
+  padding: 0 40px;                 /* segura o texto dentro da área segura */
+}
+
+/* CADA COLUNA – agora sem overlap */
+.hb-method-column {
+  flex: 1 1 0;
+  max-width: 360px;   /* mantém uma largura “de cartão”, mas sem invadir o vizinho */
+  margin-left: 0;
+  position: relative;
+}
+
+.hb-method-column:first-child {
+  margin-left: 0;
+}
+
+/* Mobile: círculos empilhados e sobrepostos verticalmente */
+@media (max-width: 767px) {
+
+  .hb-counter-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;                 /* sem espaço entre os itens */
+    overflow: visible;      /* deixa a sobreposição aparecer */
+  }
+
+  .hb-counter-item {
+    margin-left: 0;         /* remove o offset horizontal usado no desktop */
+    width: min(280px, 80vw);
+    height: min(280px, 80vw);
+
+    /* sobreposição vertical (ajusta o valor até ficar do jeito que você curtir) */
+    margin-top: -50px;
+  }
+
+  .hb-counter-item:first-child {
+    margin-top: 0;          /* o primeiro não sobe, começa normal */
+  }
 }

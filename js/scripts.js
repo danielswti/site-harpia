@@ -46,23 +46,23 @@ function CustomFunction() {
 
 			const mm = gsap.matchMedia();
 			
-						// Full HD DESKTOP
-						mm.add("(min-width: 1920px)", () => {
-							ScrollTrigger.create({
-								trigger: portfolioRow,
-								start: "top 15%",
-								end: "bottom bottom-=40%",
-								pin: portfolioTitle,
-								pinSpacing: false
-								// markers: true
-							});
-						});
+			// Full HD DESKTOP
+			mm.add("(min-width: 1920px)", () => {
+				ScrollTrigger.create({
+					trigger: portfolioRow,
+					start: "top 15%",
+					end: "bottom bottom-=40%",
+					pin: portfolioTitle,
+					pinSpacing: false
+					// markers: true
+				});
+			});
 
 			// Notebook
 			mm.add("(min-width: 1025px) and (max-width: 1919px)", () => {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
-					start: "top 22%",
+					start: "top 20%",
 					end: "bottom bottom-=42%",
 					pin: portfolioTitle,
 					pinSpacing: false
@@ -115,6 +115,109 @@ function CustomFunction() {
         });
     });
 	
+	// ============
+    // Método 3600 de contadores animados
+    // ============
+	if (typeof window !== "undefined" && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    let device_width = window.innerWidth;
+
+    // Estado inicial dos cards
+    gsap.set(".counter_animation .counter__anim", { y: -100, opacity: 0 });
+
+    // MOBILE – anima cada card individualmente quando entra na viewport
+    if (device_width < 1023) {
+        const counterArray = gsap.utils.toArray(".counter_animation .counter__anim");
+
+        counterArray.forEach((item) => {
+            let counterTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%", // um pouco antes de entrar totalmente na tela
+                    toggleActions: "play none none none"
+                }
+            });
+
+            counterTl.to(item, {
+                y: 0,
+                opacity: 1,
+                ease: "bounce.out",
+                duration: 1.5
+            });
+        });
+
+    // DESKTOP – todos entram juntos com stagger
+    } else {
+        gsap.to(".counter_animation .counter__anim", {
+            scrollTrigger: {
+                trigger: ".counter_animation",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: 0,
+            opacity: 1,
+            ease: "bounce.out",
+            duration: 1.5,
+            stagger: {
+                each: 0.3
+            }
+        });
+    }
+
+    // CONTADOR NUMÉRICO (usando data-target e mantendo o "+", se existir)
+    const numbers = gsap.utils.toArray(".counter__number");
+
+    numbers.forEach((el) => {
+        const targetAttr = el.getAttribute("data-target");
+        const finalValue = targetAttr ? parseInt(targetAttr, 10) : parseInt(el.textContent, 10) || 0;
+        const hasPlus = /\+/.test(el.textContent);
+
+        const counterObj = { value: 0 };
+
+        gsap.to(counterObj, {
+            value: finalValue,
+            duration: 1,
+            delay: 0.3,
+            ease: "power1.in",
+            snap: { value: 1 },
+            scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            onUpdate: () => {
+                const current = Math.floor(counterObj.value);
+                el.textContent = current + (hasPlus ? "+" : "");
+            }
+        });
+    });
+
+	document.querySelectorAll('.hb-method-column').forEach((col) => {
+	const toggle = col.querySelector('.hb-method-toggle');
+	const panel  = col.querySelector('.hb-method-panel');
+	if (!toggle || !panel) return;
+
+	// clique (funciona em desktop e mobile)
+	toggle.addEventListener('click', (e) => {
+		e.preventDefault();
+		const isOpen = col.classList.toggle('is-open');
+		toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+	});
+
+	// hover só para dispositivos com hover real (desktop)
+	if (window.matchMedia('(hover: hover)').matches) {
+		col.addEventListener('mouseenter', () => {
+		col.classList.add('is-open');
+		toggle.setAttribute('aria-expanded', 'true');
+		});
+		col.addEventListener('mouseleave', () => {
+		col.classList.remove('is-open');
+		toggle.setAttribute('aria-expanded', 'false');
+		});
+	}
+	});
+}
 
 }// End CustomFunction
 	
