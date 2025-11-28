@@ -5031,19 +5031,20 @@ Primary use:	Showcase Portfolio
 	}
 }
 
-/* Section do vídeo: sem padding/margem, full-bleed */
 .hb-full-video-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
     padding: 0;
-    margin: 0;
 }
 
-/* Vídeo centralizado, ocupando a tela sem sobrar */
 .hb-full-video {
-    display: block;
-    width: 100vw;        /* 100% da largura da janela */
-    height: 100vh;       /* 100% da altura da janela */
     max-width: 100%;
     max-height: 100vh;
-    object-fit: cover;   /* preenche sem distorcer; corta só o excedente */
+    height: auto;
+    width: auto;
+    display: block;
     margin: 0 auto;
+    object-fit: contain; /* mantém proporção sem cortar */
 }
