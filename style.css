@@ -4950,7 +4950,7 @@ Primary use:	Showcase Portfolio
 
 /* infos */
 .hb-project-info {
-    position: relative;
+    position: absolute;
     z-index: 2;
     padding: 32px 40px;
     display: flex;
