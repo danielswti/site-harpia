@@ -5004,3 +5004,29 @@ Primary use:	Showcase Portfolio
   height: auto;
   display: block;
 }
+
+@media only screen and (min-width: 1000px) {
+
+	.row-img-metodologia {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.img-metodologia {
+		width: 60%;
+	}
+}
+
+@media (max-width: 767px) {
+	
+	.row-img-metodologia {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.img-metodologia {
+		width: 90%;
+	}
+}
