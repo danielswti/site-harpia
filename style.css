@@ -4695,3 +4695,7 @@ Primary use:	Showcase Portfolio
     margin-top: 0;          /* o primeiro não sobe, começa normal */
   }
 }
+
+.white-icon {
+	color: #fff !important;
+}

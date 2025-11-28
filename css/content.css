@@ -392,79 +392,63 @@
 	}
 	
 	#share {
-		top:-3px;
-		right: -10px;
-		position: relative;
-		font-size:16px;
-	}
-	
-	#share::before {
-		position: absolute;
-		top: 0;
-		left: -140px;
-		content: attr(data-text);
-		width: 120px;
-		text-align:right;
-	}
-	
-	#share .parallax-wrap {
-		width: 50px;
-		height: 60px;
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		float: left;
-	}
-	
-	.jssocials-share-link i {
-		opacity:0;
-	}
-	
-	.jssocials-share-facebook a:before {
-		content:"Fb";
-		position:absolute;
-	}
-	
-	.jssocials-share-linkedin a:before {
-		content:"Li";
-		position:absolute;
-	}
-	
-	.jssocials-share-twitter a:before {
-		content:"Tw";
-		position:absolute;
-	}
-	
-	.jssocials-share-pinterest a:before {
-		content:"Pn";
-		position:absolute;
-	}
-	
-	.jssocials-share-stumbleupon a:before {
-		content:"St";
-		position:absolute;
-	}
-	
-	.jssocials-share-whatsapp a:before {
-		content:"Wa";
-		position:absolute;
-	}
-	
-	.jssocials-share-viber a:before {
-		content:"Vb";
-		position:absolute;
-	}
-	
-	.jssocials-share-email a:before {
-		content:"Em";
-		position:absolute;
-	}
-	
-	.jssocials-share-vkontakte a:before {
-		content:"Vk";
-		position:absolute;
-	}
+    top: -3px;
+    right: -10px;
+    position: relative;
+    font-size: 16px;
+}
+
+/* texto "Share" à esquerda pode permanecer igual */
+#share::before {
+    position: absolute;
+    top: 0;
+    left: -140px;
+    content: attr(data-text);
+    width: 120px;
+    text-align: right;
+}
+
+#share .parallax-wrap {
+    width: 50px;
+    height: 60px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    float: left;
+}
+
+/* MOSTRAR o <i> do jsSocials (ícone do Font Awesome) */
+.jssocials-share-link i {
+    opacity: 1;
+}
+
+/* centralizar o link dentro do wrap */
+.jssocials-share-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* tamanho dos ícones */
+.jssocials-share-logo {
+    font-size: 16px; /* ajusta aqui se quiser maior/menor */
+}
+
+/* remover as letras "Fb", "Tw", "Pn"... */
+.jssocials-share-facebook a:before,
+.jssocials-share-linkedin a:before,
+.jssocials-share-twitter a:before,
+.jssocials-share-pinterest a:before,
+.jssocials-share-stumbleupon a:before,
+.jssocials-share-whatsapp a:before,
+.jssocials-share-viber a:before,
+.jssocials-share-email a:before,
+.jssocials-share-vkontakte a:before {
+    content: none !important;
+}
 	
 
 /*--------------------------------------------------
@@ -1514,4 +1498,8 @@
 
 .subtitle-project h2 {
 	text-align: center !important;
+}
+
+.white-icon p {
+	color: #fff !important;
 }

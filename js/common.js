@@ -2370,13 +2370,18 @@ Function Shortcodes
 		
 		// Project Share	
 		
+		// Project Share	
 		$("#share").jsSocials({
-            showLabel: false,
-    		showCount: false,
-    		shares: ["facebook", "twitter", "pinterest"]
-        });
-		
-		$('.jssocials-share').wrap( "<div class='parallax-wrap'><div class='parallax-element'></div></div>" );
+			showLabel: false,
+			showCount: false,
+			shares: [
+				{ share: "facebook",  logo: "fa-brands fa-facebook-f" },
+				{ share: "twitter",   logo: "fa-brands fa-x" }, // ou fa-twitter se preferir
+				{ share: "pinterest", logo: "fa-brands fa-pinterest-p" }
+			]
+		});
+
+		$('.jssocials-share').wrap("<div class='parallax-wrap'><div class='parallax-element'></div></div>");
 		
 		if( $('.random-collage-wrap').length > 0 ){
 		
