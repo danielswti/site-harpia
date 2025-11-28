@@ -4998,3 +4998,9 @@ Primary use:	Showcase Portfolio
         padding: 24px 20px;
     }
 }
+
+.video-portfolio-section video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
