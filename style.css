@@ -4969,6 +4969,7 @@ Primary use:	Showcase Portfolio
 
 .hb-project-title {
     font-size: 20px;
+	line-height: calc(1rem + 1vw) !important;
 }
 
 /* hover / foco – anima levemente as laterais */
