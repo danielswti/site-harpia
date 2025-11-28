@@ -4699,3 +4699,301 @@ Primary use:	Showcase Portfolio
 .white-icon {
 	color: #fff !important;
 }
+
+/* Video portfolio */
+.video-portfolio-section {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Vídeo centralizado, sem bordas e ocupando a largura */
+.video-portfolio-section video {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100vh;
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+}
+
+/* Row com duas imagens lado a lado no desktop, sem gap nas laterais */
+.continuous-two-images {
+    display: flex;
+    justify-content: space-between; /* espaço só entre as imagens */
+    align-items: stretch;
+}
+
+/* Cada bloco ocupa metade da largura menos metade do espaçamento central */
+.continuous-two-images .continuous-image {
+    width: calc(50% - 10px); /* se quiser um "gap" de ~20px entre elas */
+}
+
+/* Garante que a imagem ocupe todo o bloco */
+.continuous-two-images .continuous-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile: volta a ficar uma abaixo da outra, sem sobrar espaço lateral extra */
+@media (max-width: 767px) {
+    .continuous-two-images {
+        flex-direction: column;
+    }
+
+    .continuous-two-images .continuous-image {
+        width: 100%;
+    }
+}
+
+
+/* nova navegação de projetos */
+/* Wrapper geral do nav de projetos */
+.hb-project-nav {
+    background-color: #0c0c0c;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Trilho horizontal */
+.hb-project-rail {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    width: 100%;
+    min-height: 85vh;
+}
+
+/* Cada capa de projeto */
+.hb-project-card {
+    position: relative;
+    flex-shrink: 0;
+    height: clamp(220px, 75vh, 90vh);
+    cursor: pointer;
+    transition: filter 0.3s ease-out;
+}
+
+/* Capa central aberta */
+.hb-project-card.is-active {
+    flex-basis: 70%;
+}
+
+/* Capas laterais “fechadas” (somente parte visível) */
+.hb-project-card.is-left,
+.hb-project-card.is-right {
+    flex-basis: 15%;
+}
+
+/* Link ocupa toda a capa */
+.hb-project-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Background da capa */
+.hb-project-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform-origin: center center;
+}
+
+/* Overlay com título / label */
+.hb-project-info {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    color: #ffffff;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hb-project-label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.hb-project-title {
+    margin-top: 6px;
+    font-size: 20px;
+}
+
+/* Efeito “fechado”: escurece laterais */
+.hb-project-card.is-left .hb-project-bg,
+.hb-project-card.is-right .hb-project-bg {
+    filter: brightness(0.7);
+}
+
+/* Hover suave em desktop */
+@media (hover: hover) and (pointer: fine) {
+    .hb-project-card.is-active:hover .hb-project-bg {
+        filter: brightness(1.05);
+    }
+}
+
+/* Responsivo – no mobile, vira stack vertical */
+@media (max-width: 767px) {
+    .hb-project-rail {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hb-project-card,
+    .hb-project-card.is-active,
+    .hb-project-card.is-left,
+    .hb-project-card.is-right {
+        flex-basis: auto;
+        width: 100%;
+        height: 55vh;
+    }
+
+    .hb-project-card + .hb-project-card {
+        margin-top: 16px;
+    }
+}
+
+
+/* --- Project Nav: layout mobile --- */
+@media (max-width: 767px) {
+
+  /* garante que o bloco aparece */
+  #project-nav {
+    display: block !important;
+    overflow: hidden;
+  }
+
+  /* container dos cards (ajusta para a classe que você usou) */
+  .hb-projects-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    min-height: auto;
+  }
+
+  /* cada card vira um bloco 100% */
+  .hb-project-card {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 220px;
+    border-radius: 0;
+  }
+
+  /* remove qualquer deslocamento lateral que tenhamos aplicado no desktop */
+  .hb-project-card.is-left,
+  .hb-project-card.is-right {
+    transform: none !important;
+  }
+
+  .hb-project-bg {
+    border-radius: 0;
+  }
+
+  /* título e textos alinhados ao centro (opcional) */
+  .hb-project-meta {
+    text-align: center;
+  }
+}
+
+/* --- BASE GERAL: DESKTOP E MOBILE --- */
+.hb-project-rail {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* cards base */
+.hb-project-card {
+    position: relative;
+    flex: 0 0 32vw;         /* laterais “fechadas” */
+    min-height: 260px;
+    cursor: pointer;
+    color: #fff;
+    transition:
+        flex-basis 0.6s ease,
+        transform 0.6s ease,
+        opacity 0.6s ease;
+}
+
+.hb-project-card.is-active {
+    flex: 0 0 56vw;         /* card central “aberto” */
+}
+
+/* fundo das capas */
+.hb-project-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: inherit;
+}
+
+/* infos */
+.hb-project-info {
+    position: relative;
+    z-index: 2;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* label “Next” / “Now” e título – mantém seu tema */
+.hb-project-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.hb-project-title {
+    font-size: 20px;
+}
+
+/* hover / foco – anima levemente as laterais */
+.hb-project-card:not(.is-active):hover .hb-project-bg {
+    transform: scale(1.03);
+    opacity: 0.85;
+}
+
+/* --- MOBILE: MANTER LAYOUT EM LINHA --- */
+@media (max-width: 767px) {
+
+    .hb-project-rail {
+        padding: 0 16px;          /* respiro lateral, mas continua em linha */
+    }
+
+    .hb-project-card {
+        flex: 0 0 60vw;           /* laterais um pouco menores */
+        min-height: 220px;
+    }
+
+    .hb-project-card.is-active {
+        flex: 0 0 80vw;           /* central domina, mas ainda sobra “espiadinha” dos lados */
+    }
+
+    .hb-project-info {
+        padding: 24px 20px;
+    }
+}

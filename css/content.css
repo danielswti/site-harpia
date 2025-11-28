@@ -92,7 +92,7 @@
 	}
 	
 	#hero-bg-image {
-		background-size:auto;
+		background-size: cover;
 		position:absolute;
 		background-position:center center;
 		width:100%;
@@ -1487,6 +1487,11 @@
 .text-portfolio {
   font-size: 1.75rem;
   line-height: 120%;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.text-portfolio span {
+  font-family: 'Raleway', sans-serif !important;
 }
 
 .portfolio_row_padding_bottom {
@@ -1502,4 +1507,24 @@
 
 .white-icon p {
 	color: #fff !important;
+}
+
+/* Wrapper padrão para títulos centralizados */
+.title-default {
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* centraliza horizontalmente o h3 */
+    text-align: center;        /* fallback geral */
+    margin: 0 auto 70px;       /* ajuste o bottom conforme o espaçamento do tema */
+}
+
+/* Garante que qualquer título dentro da wrapper fique centralizado */
+.title-default .page-title {
+    text-align: center;
+    margin: 0;                 /* evita margens estranhas do navegador */
+}
+
+/* Caso queira reaproveitar como utilitário global */
+.text-align-center {
+    text-align: center;
 }
