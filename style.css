@@ -5005,7 +5005,7 @@ Primary use:	Showcase Portfolio
   display: block;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1920px) {
 
 	.row-img-metodologia {
 		display: flex;
@@ -5014,7 +5014,28 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.img-metodologia {
-		width: 50%;
+		width: 40%;
+	}
+
+	.row-360 {
+		padding-top: 6vw;
+	}
+}
+
+@media only screen and (min-width: 768px ) and (max-width: 1919px) {
+
+	.row-img-metodologia {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.img-metodologia {
+		width: 55%;
+	}
+
+	.row-360 {
+		padding-top: 6vw;
 	}
 }
 
@@ -5028,6 +5049,10 @@ Primary use:	Showcase Portfolio
 	
 	.img-metodologia {
 		width: 90%;
+	}
+
+	.row-360 {
+		padding-top: 5vw;
 	}
 }
 
@@ -5047,4 +5072,10 @@ Primary use:	Showcase Portfolio
     display: block;
     margin: 0 auto;
     object-fit: contain; /* mantém proporção sem cortar */
+}
+
+@media (max-width: 767px) {
+	.plano-europa-page #hero-bg-image {
+		background-image:url(../images/projects/plano-europa/mobile/capa-project-Plano-Europa-mobile.webp);
+	}
 }
