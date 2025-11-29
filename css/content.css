@@ -1438,8 +1438,13 @@
 }
 
 @media only screen and (max-width: 767px) {
+	.clipped-image-content {
+		padding-left: 0px;
+    	padding-right: 0px;
+	}
 	#video-caption h4 {
-		font-size: 16px;
+		font-size: 22px;
+		line-height: 1.1ems;
 		font-weight: 400;
 		text-transform: none !important;
 	}
