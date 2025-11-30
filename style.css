@@ -36,34 +36,34 @@ Primary use:	Showcase Portfolio
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Light';
-  src: url('fonts/NeueHaasGroteskDisplayLight.otf') format('opentype');
+  src: url('webfonts/NeueHaasGroteskDisplayLight.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Regular';
-  src: url('fonts/NeueHaasGroteskDisplayRegular.otf') format('opentype');
+  src: url('webfonts/NeueHaasGroteskDisplayRegular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Medium';
-  src: url('fonts/NeueHaasGroteskDisplayMedium.otf') format('opentype');
+  src: url('webfonts/NeueHaasGroteskDisplayMedium.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Bold';
-  src: url('fonts/NeueHaasGroteskDisplayBold.otf') format('opentype');
+  src: url('webfonts/NeueHaasGroteskDisplayBold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Black';
-  src: url('fonts/NeueHaasGroteskDisplayBlack.otf') format('opentype');
+  src: url('webfonts/NeueHaasGroteskDisplayBlack.otf') format('opentype');
 }
 
 /* Body font */
-/* @font-face {
+@font-face {
   font-family: 'Karu Light';
-  src: url('fonts/karu-light.otf') format('opentype');
-} */
+  src: url('webfonts/karu-light.otf') format('opentype');
+}
 
 
 
@@ -5080,3 +5080,13 @@ Primary use:	Showcase Portfolio
 		background-image:url(../images/projects/plano-europa/mobile/capa-project-Plano-Europa-mobile.webp);
 	}
 }
+/* 
+.hb-hero-copy {
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.11em;
+    text-transform: unset !important;
+    font-weight: 400 !important;
+    color: rgba(255,255,255,0.9);
+	font-family: 'Karu Light', sans-serif;
+} */
