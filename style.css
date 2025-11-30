@@ -903,6 +903,12 @@ Primary use:	Showcase Portfolio
 	.row_padding_top_custom {
 		padding-top:7vw;
 	}
+
+	@media (max-width: 768px) {
+		.row_padding_top_custom {
+			padding-top: 15vw;
+		}
+	}
 	
 	.row_padding_bottom {
 		padding-bottom:9vw;
@@ -4330,6 +4336,10 @@ Primary use:	Showcase Portfolio
 		font-size: calc(1rem + 1.6vw) !important;
 		line-height: calc(1rem + 2.7vw) !important;
 	}
+	#portfolio-title {
+		padding-bottom: 50px !important;
+		padding-top: 50px !important;
+	}
 }
 
 .hero-caption-contact {
@@ -5053,7 +5063,7 @@ Primary use:	Showcase Portfolio
 	}
 
 	.row-360 {
-		padding-top: 5vw;
+		padding-top: 15vw;
 	}
 }
 
