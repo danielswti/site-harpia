@@ -693,95 +693,102 @@ Function Scroll Effects
 					rotationX:285
 				});
 				
-			        } else {
-					// --- MOBILE ---
-
-					const MIN_VH = 520;
-					const translateMultiplier = window.innerWidth < 480 ? 4.6 : 5.8;
-
-					// Posição dos itens no "carrossel 3D"
-					listItems.forEach(function(item, index) {
-						const rotationAngle = index * angleIncrement;
-						const fontSize = gsap.getProperty(item, "fontSize");
-						const lineHeight = gsap.getProperty(item, "lineHeight");
-						const translateZ = (parseFloat(fontSize) + parseFloat(lineHeight)) * translateMultiplier;
-						
-						gsap.set(item, {
-							rotationX: -rotationAngle,
-							transformOrigin: "center center 0",
-							transform: `rotateX(${-rotationAngle}deg) translateZ(${translateZ}px)`,
-							zIndex: totalItems - index,
-						});
-					});
-
-					const getViewportHeight = () => {
-						const visualViewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-						return Math.max(visualViewport, MIN_VH);
-					};
-
-					function setlistRotatorProperties() {		
-						const vh = getViewportHeight();
-
-						// Alturas proporcionais ao caminho de scroll dos triggers
-						// (mantém o bloco ocupando a viewport enquanto gira)
-						gsap.set(listRotatorWrapper, { height: vh * 6 });   // "trilho" principal
-						gsap.set(listRotatorHeight,  { height: vh * 7 });   // container interno
-						gsap.set(listRotator,       { height: vh });        // altura visível
-
-						ScrollTrigger.refresh();
-					}
-
-					gsap.set(listRotator, { rotationX: -90 });
-
-					setlistRotatorProperties();
-
-					let resizeRaf = null;
-					function handleViewportChange() {
-						if (resizeRaf) return;
-						resizeRaf = requestAnimationFrame(() => {
-							resizeRaf = null;
-							setlistRotatorProperties();
-						});
-					}
-					window.addEventListener('resize', handleViewportChange);
-					window.addEventListener('orientationchange', handleViewportChange);			 
-
-					// --- PINS (título + conteúdo) ---
-
-					gsap.to(listRotatorTitle, {
-						scrollTrigger: {
-							trigger: listRotatorTitle,
-							start: "top top",                 // fixa quando encosta no topo
-							end: () => "+=" + getViewportHeight() * 2.5,
-							pin: true,
-							scrub: true,
-							pinSpacing: false,
-						}
-					});
+			} else {
+				const MIN_VH = 520;
+				const translateMultiplier = window.innerWidth < 420 ? 1.2 : 1.5;
+				
+				listItems.forEach(function(item, index) {
+					const rotationAngle = index * angleIncrement;
+					const fontSize = gsap.getProperty(item, "fontSize");
+					const lineHeight = gsap.getProperty(item, "lineHeight");
+					const translateZ = (parseFloat(fontSize) + parseFloat(lineHeight)) * translateMultiplier;
 					
-					gsap.to(listRotatorPin, {
-						scrollTrigger: {
-							trigger: listRotatorPin,
-							start: "top top",
-							end: () => "+=" + getViewportHeight() * 6, // igual à altura do wrapper
-							pin: true,
-							scrub: true,
-							pinSpacing: false,
-						}
+					gsap.set(item, {
+						rotationX: -rotationAngle,
+						transformOrigin: `center center 0`,
+						transform: `rotateX(${-rotationAngle}deg) translateZ(${translateZ}px)`,
+						zIndex: totalItems - index,
 					});
-
-					// --- ROTAÇÃO DA LISTA ---
-
-					gsap.to(listRotator, {
-						scrollTrigger: {
-							trigger: listRotatorWrapper,
-							start: () => "top +=" + (getViewportHeight() * 0.8),
-							end:   () => "+=" + getViewportHeight() * 5.5,
-							scrub: true,
-						},
-						rotationX: 285
-					});
+				});			
+				
+				const getViewportHeight = () => {
+					const visualViewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+					return Math.max(visualViewport, MIN_VH);
+				};
+				
+				function setMobileListRotatorProperties() {		
+					const vh = getViewportHeight();
+					gsap.set(listRotatorWrapper, { height: vh * 0.4 });
+					gsap.set(listRotatorHeight, { height: vh * 0.8 });
+					gsap.set(listRotator, { height: vh });
+					ScrollTrigger.refresh();
 				}
+				
+				gsap.set(listRotator, { rotationX:-50});
+				
+				setMobileListRotatorProperties();
+				
+				let resizeRaf = null;
+				const handleViewportChange = () => {
+					if (resizeRaf) return;
+					resizeRaf = requestAnimationFrame(() => {
+						resizeRaf = null;
+						setMobileListRotatorProperties();
+					});
+				};
+				window.addEventListener('resize', handleViewportChange);
+				window.addEventListener('orientationchange', handleViewportChange);
+				
+				gsap.to(listRotatorTitle, {
+					scrollTrigger: {
+						trigger: listRotatorTitle,
+						start: function() {
+							const startPin = 25.5;
+							return "top +=" + startPin;
+						},
+						end: function() {
+							const endPin = getViewportHeight() * 8.4;
+							return "+=" + endPin;
+						},
+						pin:true,
+						scrub: true,
+						pinSpacing: false,
+					}
+				});
+				
+				gsap.to(listRotatorPin, {
+					scrollTrigger: {
+						trigger: listRotatorPin,
+						start: function() {
+							const startPin = 0;
+							return "top +=" + startPin;
+						},
+						end: function() {
+							const endPin = getViewportHeight() * 5.4;
+							return "+=" + endPin;
+						},
+						pin:true,
+						scrub: true,
+						pinSpacing: false,
+					}
+				});
+				
+				gsap.to(listRotator, {
+					scrollTrigger: {
+						trigger: listRotatorWrapper,
+						start: function() {
+							const startPin = getViewportHeight() * 0.7;
+							return "top +=" + startPin;
+						},
+						end: function() {
+							const endPin = getViewportHeight() * 5.1;
+							return "+=" + endPin;
+						},
+						scrub: true,
+					},
+					rotationX:550
+				});
+			}
   
 		});
 		
