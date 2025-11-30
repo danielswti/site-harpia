@@ -5254,6 +5254,10 @@ footer:not(.showcase-footer) .socials-wrap {
 
 @media only screen and (max-width: 767px) {
 
+	footer:not(.showcase-footer) {
+		padding: 20px 10px;
+	}
+
     footer:not(.showcase-footer) #footer-container {
         padding: 0 20px 20px;
     }
