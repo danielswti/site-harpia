@@ -1849,7 +1849,7 @@ Primary use:	Showcase Portfolio
 			position:relative;
 			border-left: medium none;
 			color:#222;		
-			font-size:14px;
+			font-size:16px;
 			font-weight:500;
 			line-height:24px;
 			display:block;
@@ -3548,13 +3548,13 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.socials-wrap {
-		width: 240px;
+		/* width: 240px;
 		height: 40px;
 		float:right;
 		margin:0 auto;
 		right:-10px;
 		transform: translateX(0px) translateY(20px)!important;
-		-webkit-transform: translateX(0px) translateY(20px)!important;
+		-webkit-transform: translateX(0px) translateY(20px)!important; */
 	}
 	
 	.socials-wrap:hover {
@@ -3843,8 +3843,8 @@ Primary use:	Showcase Portfolio
 		margin: 0 auto;		
 		height: 20px;
 		line-height: 20px;
-		transform: translateX(0px) translateY(0px)!important;
-		-webkit-transform: translateX(0px) translateY(0px)!important;
+		/* transform: translateX(0px) translateY(0px)!important; */
+		/* -webkit-transform: translateX(0px) translateY(0px)!important; */
 	}
 	
 	.socials-wrap .socials {
@@ -3972,7 +3972,7 @@ Primary use:	Showcase Portfolio
 	}
 	
 	footer.showcase-footer .socials-wrap {
-		display:none;
+		/* display:none; */
 	}
 	
 	.button-text {
@@ -5090,3 +5090,307 @@ Primary use:	Showcase Portfolio
     color: rgba(255,255,255,0.9);
 	font-family: 'Karu Light', sans-serif;
 } */
+
+
+/* --------------------------------------------------
+   Harpia – Footer 2025 (layout tipo Interbrand)
+   -------------------------------------------------- */
+
+footer:not(.showcase-footer) {
+    height: auto;
+    padding: 40px;
+}
+
+/* Container principal do footer */
+footer:not(.showcase-footer) #footer-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 80px;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+}
+
+/* Bloco central com navegação + métricas + copyright */
+footer:not(.showcase-footer) .footer-middle {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: initial;
+}
+
+.hb-footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Linha de navegação (Home / About / Work / Contact) */
+.hb-footer-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hb-footer-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+    text-transform: uppercase;
+    font-size: 16px;
+	font-weight: 500;
+    letter-spacing: 0.12em;
+}
+
+.hb-footer-nav a {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.hb-footer-nav a:hover {
+    opacity: 1;
+}
+
+/* Métricas – 3 colunas grandes no desktop */
+.hb-footer-metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+	padding: 50px 0;
+}
+
+.hb-footer-metric {
+    flex: 1 1 0;
+    min-width: 220px;
+    max-width: 33%;
+}
+
+.hb-footer-metric-number {
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 400;
+    margin: 0 0 8px;
+}
+
+.hb-footer-metric-text {
+    margin: 0;
+    font-size: 17px;
+  	line-height: 1.3em;
+    color: #999;
+    max-width: 360px;
+}
+
+/* Linha de base (copyright) */
+.hb-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Sobrescreve o estilo antigo da .copyright para caber nesse layout */
+footer:not(.showcase-footer) .copyright {
+    position: static;
+    top: auto;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Reposiciona back-to-top e socials dentro do novo grid */
+footer:not(.showcase-footer) #backtotop {
+    position: absolute;
+    left: 80px;
+    bottom: 30px;
+}
+
+footer:not(.showcase-footer) .socials-wrap {
+    position: absolute;
+    right: 80px;
+    bottom: 20px;
+    height: auto;
+}
+
+.hb-footer-inner {
+	text-align: left;
+}
+
+/* --------------------------------------------------
+   Responsivo footer
+   -------------------------------------------------- */
+
+@media only screen and (max-width: 1024px) {
+
+    footer:not(.showcase-footer) #footer-container {
+        padding: 0 40px;
+    }
+
+    .hb-footer-metric-number {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    footer:not(.showcase-footer) #footer-container {
+        padding: 0 20px 20px;
+    }
+
+    .hb-footer-inner {
+        gap: 28px;
+    }
+
+    .hb-footer-nav-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hb-footer-nav {
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    .hb-footer-metrics {
+        flex-direction: column;
+        gap: 24px;
+		padding: 10px 0;
+    }
+
+    .hb-footer-metric {
+        max-width: none;
+		padding-bottom: 15px;
+    }
+
+    .hb-footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Back-to-top e socials descem para baixo no mobile */
+    footer:not(.showcase-footer) #backtotop,
+    footer:not(.showcase-footer) .socials-wrap {
+        position: static;
+        margin-top: 16px;
+    }
+}
+
+
+/* ================================
+   Linha de base do footer
+   ================================ */
+
+.hb-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;            /* alinha pela base */
+    padding: 40px 0px;
+    width: 100%;
+    /* max-width: 1280px; */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Copyright alinhado à esquerda, sem centralização */
+.hb-footer-bottom .copyright {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    max-width: 60%;
+}
+
+/* ================================
+   Socials sempre visíveis
+   ================================ */
+
+.hb-footer-bottom .new-socials-wrap {
+    position: static !important;      /* cancela o absolute antigo */
+    right: auto;
+    bottom: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: #fff;
+}
+
+/* “Follow Us” + ícone de share */
+.new-socials-follow-text-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+	margin-bottom: 20px;
+}
+
+/* lista de ícones */
+.new-socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.new-socials li {
+    display: flex;
+    align-items: center;
+	margin-bottom: 0px !important;
+}
+
+.new-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.new-socials i {
+    color: #fff;
+}
+
+/* ================================
+   Responsivo
+   ================================ */
+
+@media only screen and (max-width: 1024px) {
+    .hb-footer-bottom {
+        flex-direction: row;
+        /* align-items: center; */
+        /* padding: 24px 20px 32px; */
+        gap: 16px;
+		padding: 40px 0 0 0;
+    }
+
+    .hb-footer-bottom .copyright {
+        max-width: 100%;
+        align-items: flex-start;
+    }
+
+    .hb-footer-bottom .new-socials-wrap {
+        align-items: flex-end;
+    }
+
+    .new-socials {
+        justify-content: flex-end;
+    }
+
+	.new-socials-follow-text-icon {
+		display: none;
+	}
+}
