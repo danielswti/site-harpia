@@ -50,56 +50,61 @@ Function Scroll Effects
 		
 		if (document.body.classList.contains("smooth-scroll"))  {
 			
-			const ScrollArea = document.querySelector('#content-scroll');
-			class EdgeEasingPlugin extends Scrollbar.ScrollbarPlugin {
-				constructor() {
-					super(...arguments);
-					this._remainMomentum = {
-						x: 0,
-						y: 0,
-					};
-				}
-				transformDelta(delta) {
-					const { limit, offset, } = this.scrollbar;
-					const x = this._remainMomentum.x + delta.x;
-					const y = this._remainMomentum.y + delta.y;
-					// clamps momentum within [-offset, limit - offset]
-					this.scrollbar.setMomentum(Math.max(-offset.x, Math.min(x, limit.x - offset.x)), Math.max(-offset.y, Math.min(y, limit.y - offset.y)));
-					return { x: 0, y: 0 };
-				}
-				onRender(remainMomentum) {
-					Object.assign(this._remainMomentum, remainMomentum);
-				}
-			}
-			
-			EdgeEasingPlugin.pluginName = 'edgeEasing';
-			Scrollbar.use(EdgeEasingPlugin);
-			
-			// Config
-			
-			
-			if (!isMobile()) {
-				
-				var ScrollbarOptions = {
-					damping:0.1,
-					renderByPixel: true,
-					continuousScrolling: true,
-					syncCallbacks: true,
-				};				
-			}
-			
-			if (isMobile()) {
-			
-				var ScrollbarOptions = {
-					damping:0.5,
-					renderByPixel: true,
-					continuousScrolling: true,
-					syncCallbacks: true,
+		const ScrollArea = document.querySelector('#content-scroll');
+		
+		class EdgeEasingPlugin extends Scrollbar.ScrollbarPlugin {
+			constructor() {
+				super(...arguments);
+				this._remainMomentum = {
+					x: 0,
+					y: 0,
 				};
 			}
+			transformDelta(delta) {
+				const { limit, offset } = this.scrollbar;
+				const x = this._remainMomentum.x + delta.x;
+				const y = this._remainMomentum.y + delta.y;
 
-			// Initialise
-			var scrollbar = Scrollbar.init(ScrollArea, /*ScrollbarOptions*/);			
+				this.scrollbar.setMomentum(
+					Math.max(-offset.x, Math.min(x, limit.x - offset.x)),
+					Math.max(-offset.y, Math.min(y, limit.y - offset.y))
+				);
+
+				return { x: 0, y: 0 };
+			}
+			onRender(remainMomentum) {
+				Object.assign(this._remainMomentum, remainMomentum);
+			}
+		}
+		
+		EdgeEasingPlugin.pluginName = 'edgeEasing';
+
+		// 👉 Só uso o EdgeEasing no desktop; no mobile deixo mais livre
+		if (!isMobile()) {
+			Scrollbar.use(EdgeEasingPlugin);
+		}
+				
+		// Config
+		let ScrollbarOptions;
+		
+		if (!isMobile()) {
+			ScrollbarOptions = {
+				damping: 0.1,          // desktop suave
+				renderByPixel: true,
+				continuousScrolling: true,
+				syncCallbacks: true,
+			};				
+		} else {
+			ScrollbarOptions = {
+				damping: 0.08,         // mobile mais solto (menor que 0.5)
+				renderByPixel: true,
+				continuousScrolling: true,
+				syncCallbacks: true,
+			};
+		}
+
+		// Initialise
+		var scrollbar = Scrollbar.init(ScrollArea, ScrollbarOptions);		
 			
 			
 			ScrollTrigger.scrollerProxy("#content-scroll", {
