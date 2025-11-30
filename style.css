@@ -5409,4 +5409,8 @@ footer:not(.showcase-footer) .socials-wrap {
 	.hb-no-padding-top-mobile {
 		padding-top: 0px !important;
 	}
+	.list-rotator-title {
+		background-color: #f9f9f9;
+		padding-top: 10% !important;
+	}
 }

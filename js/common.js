@@ -694,8 +694,8 @@ Function Scroll Effects
 				});
 				
 			} else {
-				const MIN_VH = 520;
-				const translateMultiplier = window.innerWidth < 420 ? 1.2 : 1.5;
+				const MIN_VH = 720;
+				const translateMultiplier = window.innerWidth < 520 ? 1.2 : 1.5;
 				
 				listItems.forEach(function(item, index) {
 					const rotationAngle = index * angleIncrement;
@@ -718,13 +718,13 @@ Function Scroll Effects
 				
 				function setMobileListRotatorProperties() {		
 					const vh = getViewportHeight();
-					gsap.set(listRotatorWrapper, { height: vh * 0.4 });
-					gsap.set(listRotatorHeight, { height: vh * 0.8 });
+					gsap.set(listRotatorWrapper, { height: vh * 0.5 });
+					gsap.set(listRotatorHeight, { height: vh * 22.8 });
 					gsap.set(listRotator, { height: vh });
 					ScrollTrigger.refresh();
 				}
 				
-				gsap.set(listRotator, { rotationX:-50});
+				gsap.set(listRotator, { rotationX:-150});
 				
 				setMobileListRotatorProperties();
 				
@@ -743,11 +743,11 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorTitle,
 						start: function() {
-							const startPin = 25.5;
+							const startPin = 6.5;
 							return "top +=" + startPin;
 						},
 						end: function() {
-							const endPin = getViewportHeight() * 8.4;
+							const endPin = getViewportHeight() * 1.9;
 							return "+=" + endPin;
 						},
 						pin:true,
@@ -760,11 +760,11 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorPin,
 						start: function() {
-							const startPin = 0;
+							const startPin = 70.9;
 							return "top +=" + startPin;
 						},
 						end: function() {
-							const endPin = getViewportHeight() * 5.4;
+							const endPin = getViewportHeight() * 99.4;
 							return "+=" + endPin;
 						},
 						pin:true,
@@ -777,16 +777,16 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorWrapper,
 						start: function() {
-							const startPin = getViewportHeight() * 0.7;
+							const startPin = getViewportHeight() * 0.9;
 							return "top +=" + startPin;
 						},
 						end: function() {
-							const endPin = getViewportHeight() * 5.1;
+							const endPin = getViewportHeight() * 9.1;
 							return "+=" + endPin;
 						},
 						scrub: true,
 					},
-					rotationX:550
+					rotationX:650
 				});
 			}
   
