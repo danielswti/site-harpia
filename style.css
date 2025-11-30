@@ -906,7 +906,7 @@ Primary use:	Showcase Portfolio
 
 	@media (max-width: 768px) {
 		.row_padding_top_custom {
-			padding-top: 15vw;
+			padding-top: 8vw;
 		}
 	}
 	
@@ -4337,8 +4337,8 @@ Primary use:	Showcase Portfolio
 		line-height: calc(1rem + 2.7vw) !important;
 	}
 	#portfolio-title {
-		padding-bottom: 50px !important;
-		padding-top: 50px !important;
+		padding-bottom: 30px !important;
+		padding-top: 30px !important;
 	}
 }
 
