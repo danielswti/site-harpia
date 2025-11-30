@@ -91,7 +91,7 @@ Function Scroll Effects
 			if (isMobile()) {
 			
 				var ScrollbarOptions = {
-					damping:0.2,
+					damping:0.5,
 					renderByPixel: true,
 					continuousScrolling: true,
 					syncCallbacks: true,
