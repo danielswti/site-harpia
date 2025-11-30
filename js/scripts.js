@@ -221,103 +221,328 @@ function CustomFunction() {
 	// Navegação de projetos com GSAP (3 capas)
 	if (typeof gsap !== "undefined") {
 		const cards = gsap.utils.toArray('.hb-project-card');
-		if (!cards.length) return;
+		if (cards.length) {
+			// índice inicial do card ativo (central)
+			let activeIndex = cards.findIndex(card => card.classList.contains('is-active'));
+			if (activeIndex === -1) activeIndex = 1;
 
-		// índice inicial do card ativo (central)
-		let activeIndex = cards.findIndex(card => card.classList.contains('is-active'));
-		if (activeIndex === -1) activeIndex = 1;
+			function applyLayout() {
+				cards.forEach((card, i) => {
+					const isActive = i === activeIndex;
+					const bg = card.querySelector('.hb-project-bg');
 
-		function applyLayout() {
-			cards.forEach((card, i) => {
-				const isActive = i === activeIndex;
-				const bg = card.querySelector('.hb-project-bg');
-
-				gsap.to(card, {
-					flexBasis: isActive ? '70%' : '15%',
-					duration: 0.6,
-					ease: 'power3.inOut'
-				});
-
-				if (bg) {
-					gsap.to(bg, {
-						scale: isActive ? 1.02 : 1,
-						filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+					gsap.to(card, {
+						flexBasis: isActive ? '70%' : '15%',
 						duration: 0.6,
 						ease: 'power3.inOut'
 					});
-				}
-			});
-		}
 
-		function setActive(index) {
-			activeIndex = index;
+					if (bg) {
+						gsap.to(bg, {
+							scale: isActive ? 1.02 : 1,
+							filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+							duration: 0.6,
+							ease: 'power3.inOut'
+						});
+					}
+				});
+			}
 
-			cards.forEach((card, i) => {
-				card.classList.toggle('is-active', i === activeIndex);
-				card.classList.toggle('is-left',   i <  activeIndex);
-				card.classList.toggle('is-right',  i >  activeIndex);
-			});
+			function setActive(index) {
+				activeIndex = index;
 
-			applyLayout();
-		}
+				cards.forEach((card, i) => {
+					card.classList.toggle('is-active', i === activeIndex);
+					card.classList.toggle('is-left',   i <  activeIndex);
+					card.classList.toggle('is-right',  i >  activeIndex);
+				});
 
-		// layout inicial
-		setActive(activeIndex);
+				applyLayout();
+			}
 
-		// Hover em desktop: traz a capa pro centro
-		if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+			// layout inicial
+			setActive(activeIndex);
+
+			// Hover em desktop: traz a capa pro centro
+			if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+				cards.forEach((card, index) => {
+					card.addEventListener('mouseenter', () => {
+						if (index !== activeIndex) {
+							setActive(index);
+						}
+					});
+				});
+			}
+
+			// Clique: anima e depois navega
 			cards.forEach((card, index) => {
-				card.addEventListener('mouseenter', () => {
+				const link = card.querySelector('.hb-project-link');
+				if (!link) return;
+
+				link.addEventListener('click', (e) => {
+					e.preventDefault();
+
+					const href = link.getAttribute('href');
+					if (!href) return;
+
+					// se for lateral, primeiro traz pro centro
 					if (index !== activeIndex) {
 						setActive(index);
 					}
+
+					const bg = card.querySelector('.hb-project-bg');
+
+					const tl = gsap.timeline({
+						onComplete() {
+							// navega “na mão” sem chamar link.click() de novo
+							window.location.href = href;
+						}
+					});
+
+					if (bg) {
+						tl.to(bg, {
+							scale: 1.08,
+							duration: 0.4,
+							ease: 'power2.out'
+						}).to(bg, {
+							opacity: 0.0,
+							duration: 0.3,
+							ease: 'power2.in'
+						}, '-=0.1');
+					} else {
+						// fallback: se não tiver bg, só navega rápido
+						tl.to(card, { duration: 0.2 });
+					}
 				});
 			});
 		}
-
-		// Clique: anima e depois navega
-		cards.forEach((card, index) => {
-			const link = card.querySelector('.hb-project-link');
-			if (!link) return;
-
-			link.addEventListener('click', (e) => {
-				e.preventDefault();
-
-				const href = link.getAttribute('href');
-				if (!href) return;
-
-				// se for lateral, primeiro traz pro centro
-				if (index !== activeIndex) {
-					setActive(index);
-				}
-
-				const bg = card.querySelector('.hb-project-bg');
-
-				const tl = gsap.timeline({
-					onComplete() {
-						// navega “na mão” sem chamar link.click() de novo
-						window.location.href = href;
-					}
-				});
-
-				if (bg) {
-					tl.to(bg, {
-						scale: 1.08,
-						duration: 0.4,
-						ease: 'power2.out'
-					}).to(bg, {
-						opacity: 0.0,
-						duration: 0.3,
-						ease: 'power2.in'
-					}, '-=0.1');
-				} else {
-					// fallback: se não tiver bg, só navega rápido
-					tl.to(card, { duration: 0.2 });
-				}
-			});
-		});
 	}
 }
+
+    // ==========================
+    // HERO MINIMAL SLIDER
+    // ==========================
+    if (typeof gsap !== "undefined") {
+        initHeroMinimalSlider();
+    }
+
+    function initHeroMinimalSlider() {
+        const slider = document.querySelector('.hb-hero-slider');
+        if (!slider) {
+            console.log('[HeroSlider] .hb-hero-slider NÃO encontrado');
+            return;
+        }
+
+        const slides = Array.from(slider.querySelectorAll('.hb-hero-slide'));
+        const currentEl = slider.querySelector('.hb-hero-current');
+        const totalEl   = slider.querySelector('.hb-hero-total');
+
+        if (!slides.length) {
+            console.log('[HeroSlider] Nenhum .hb-hero-slide encontrado');
+            return;
+        }
+
+		console.log('[HeroSlider] Inicializando com', slides.length, 'slides');
+
+		let currentIndex = slides.findIndex(s => s.classList.contains('is-active'));
+		if (currentIndex === -1) currentIndex = 0;
+		let isAnimating = false;
+		const hasMultipleSlides = slides.length > 1;
+		const AUTO_DELAY = 4000;
+		let autoTimer = null;
+
+		function pauseAutoAdvance() {
+			if (!autoTimer) return;
+			clearTimeout(autoTimer);
+			autoTimer = null;
+		}
+
+		function scheduleAutoAdvance() {
+			if (!hasMultipleSlides) return;
+			pauseAutoAdvance();
+			autoTimer = setTimeout(() => {
+				goToSlide(currentIndex + 1, 1);
+			}, AUTO_DELAY);
+		}
+
+        // Atualiza contador
+        if (totalEl)   totalEl.textContent   = String(slides.length).padStart(2, '0');
+        if (currentEl) currentEl.textContent = String(currentIndex + 1).padStart(2, '0');
+
+        // Estado visual inicial
+        slides.forEach((slide, i) => {
+            if (i === currentIndex) {
+                gsap.set(slide, { opacity: 1, xPercent: 0, scale: 1, zIndex: 2 });
+                slide.classList.add('is-active');
+            } else {
+                gsap.set(slide, { opacity: 0, xPercent: 0, scale: 1, zIndex: 0 });
+                slide.classList.remove('is-active');
+            }
+        });
+
+		scheduleAutoAdvance();
+
+        function goToSlide(newIndex, direction) {
+            if (isAnimating || newIndex === currentIndex) return;
+
+            // loop infinito
+            if (newIndex < 0) newIndex = slides.length - 1;
+            if (newIndex >= slides.length) newIndex = 0;
+
+            const fromSlide = slides[currentIndex];
+            const toSlide   = slides[newIndex];
+            const dir       = direction || 1; // 1 = próximo, -1 = anterior
+
+            isAnimating = true;
+			pauseAutoAdvance();
+
+            // posição inicial do destino
+            gsap.set(toSlide, {
+                xPercent: 10 * dir,
+                opacity: 0,
+                scale: 1.02,
+                zIndex: 3
+            });
+            gsap.set(fromSlide, {
+                xPercent: 0,
+                opacity: 1,
+                scale: 1,
+                zIndex: 2
+            });
+
+            const tl = gsap.timeline({
+                defaults: { duration: 0.7, ease: "power3.out" },
+                onComplete: () => {
+                    fromSlide.classList.remove('is-active');
+                    toSlide.classList.add('is-active');
+
+                    gsap.set(fromSlide, { opacity: 0, xPercent: 0, scale: 1, zIndex: 0 });
+                    gsap.set(toSlide,   { opacity: 1, xPercent: 0, scale: 1, zIndex: 2 });
+
+                    currentIndex = newIndex;
+                    if (currentEl) {
+                        currentEl.textContent = String(currentIndex + 1).padStart(2, '0');
+                    }
+                    isAnimating = false;
+					scheduleAutoAdvance();
+                }
+            });
+
+            tl.to(fromSlide, {
+                xPercent: -10 * dir,
+                opacity: 0,
+                scale: 0.98
+            }, 0).to(toSlide, {
+                xPercent: 0,
+                opacity: 1,
+                scale: 1
+            }, 0);
+        }
+
+        // --------------------------------
+        // 2) SWIPE: mouse + touch
+        // --------------------------------
+		let isDown = false;
+		let startX = 0;
+		let startY = 0;
+		let lastX  = 0;
+		let lastY  = 0;
+		let movedDuringDrag = false;
+		let blockNextClick = false;
+        const SWIPE_THRESHOLD = 40; // px
+		const CLICK_DRAG_THRESHOLD = 6;
+
+        function startDrag(x, y) {
+            isDown = true;
+            startX = x;
+            startY = y;
+            lastX  = x;
+            lastY  = y;
+			movedDuringDrag = false;
+			blockNextClick = false;
+			pauseAutoAdvance();
+        }
+
+        function moveDrag(x, y) {
+            if (!isDown) return;
+            lastX = x;
+            lastY = y;
+
+			if (!movedDuringDrag) {
+				const delta = Math.max(Math.abs(lastX - startX), Math.abs(lastY - startY));
+				if (delta > CLICK_DRAG_THRESHOLD) {
+					movedDuringDrag = true;
+					blockNextClick = true;
+				}
+			}
+        }
+
+        function endDrag() {
+            if (!isDown) return;
+            isDown = false;
+
+            const dx = lastX - startX;
+            const dy = lastY - startY;
+
+            // Só considera swipe se horizontal for dominante
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > SWIPE_THRESHOLD) {
+                if (dx < 0) {
+                    // arrastou pra esquerda -> próximo
+                    goToSlide(currentIndex + 1, 1);
+                } else {
+                    // arrastou pra direita -> anterior
+                    goToSlide(currentIndex - 1, -1);
+                }
+			} else {
+				scheduleAutoAdvance();
+            }
+
+			if (!movedDuringDrag) {
+				blockNextClick = false;
+			}
+			movedDuringDrag = false;
+        }
+
+        // Touch
+		slider.addEventListener('touchstart', (e) => {
+			if (!e.touches || !e.touches.length) return;
+			const t = e.touches[0];
+			startDrag(t.clientX, t.clientY);
+		}, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!e.touches || !e.touches.length) return;
+            const t = e.touches[0];
+            moveDrag(t.clientX, t.clientY);
+        }, { passive: false });
+
+        slider.addEventListener('touchend', endDrag);
+        slider.addEventListener('touchcancel', endDrag);
+
+        // Mouse
+		slider.addEventListener('mousedown', (e) => {
+			startDrag(e.clientX, e.clientY);
+		});
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            moveDrag(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('mouseleave', endDrag);
+
+		slider.addEventListener('dragstart', (e) => {
+			e.preventDefault();
+		});
+
+		slider.addEventListener('click', (e) => {
+			if (!blockNextClick) return;
+			e.preventDefault();
+			e.stopPropagation();
+			blockNextClick = false;
+		}, true);
+    }
 
 }// End CustomFunction
 	

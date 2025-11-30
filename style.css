@@ -60,10 +60,10 @@ Primary use:	Showcase Portfolio
 }
 
 /* Body font */
-@font-face {
+/* @font-face {
   font-family: 'Karu Light';
   src: url('fonts/karu-light.otf') format('opentype');
-}
+} */
 
 
 
@@ -4604,9 +4604,10 @@ Primary use:	Showcase Portfolio
 }
 
 .hb-method-lead {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.2em;
   color: rgba(255,255,255,0.7);
+  min-height: 105px;
 }
 
 /* LISTA NUMERADA */
@@ -4614,8 +4615,8 @@ Primary use:	Showcase Portfolio
   list-style: none;
   margin: 12px 0 0 0;
   padding: 0;
-  font-size: 0.85rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: .9em;
   color: rgba(255,255,255,0.7);
   counter-reset: method-counter;
 }
@@ -4623,7 +4624,7 @@ Primary use:	Showcase Portfolio
 .hb-method-list li {
   counter-increment: method-counter;
   position: relative;
-  padding-left: 22px;
+  padding-left: 25px;
   margin-bottom: 7px;
 }
 
@@ -4632,7 +4633,7 @@ Primary use:	Showcase Portfolio
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 0.8rem;
+  font-size: .9rem;
   color: #ff2f68;
 }
 
