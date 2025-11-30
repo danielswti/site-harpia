@@ -760,11 +760,11 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorPin,
 						start: function() {
-							const startPin = 70.9;
+							const startPin = 90.9;
 							return "top +=" + startPin;
 						},
 						end: function() {
-							const endPin = getViewportHeight() * 99.4;
+							const endPin = getViewportHeight() * 9.4;
 							return "+=" + endPin;
 						},
 						pin:true,
@@ -777,16 +777,16 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorWrapper,
 						start: function() {
-							const startPin = getViewportHeight() * 0.9;
+							const startPin = getViewportHeight() * 0.99;
 							return "top +=" + startPin;
 						},
 						end: function() {
-							const endPin = getViewportHeight() * 9.1;
+							const endPin = getViewportHeight() * 9.9;
 							return "+=" + endPin;
 						},
 						scrub: true,
 					},
-					rotationX:650
+					rotationX:670
 				});
 			}
   
