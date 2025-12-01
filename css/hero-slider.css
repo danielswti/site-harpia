@@ -67,6 +67,14 @@
 } */
 
 /* Centro do slide: textos delicados */
+.hb-hero-card {
+  transform: translateY(7em);
+  /* position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: auto; */
+}
+
 .hb-hero-label {
   font-size: 18px;
   line-height: 1.2em;
@@ -77,29 +85,24 @@
   margin-bottom: 0px;
 }
 
-.hb-hero-copy {
-  max-width: 500px;
+.hb-hero-copy  {
+  font-family: 'Karu Light', sans-serif;
   font-size: 16px;
   line-height: 1.4;
   letter-spacing: 0.11em;
+  text-transform: unset !important;
+  font-weight: 600 !important;
   color: rgba(255,255,255,0.9);
-}
-
-.hb-hero-copy  {
-    font-family: 'Karu Light', sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-    letter-spacing: 0.11em;
-    text-transform: unset !important;
-    font-weight: 600 !important;
-    color: rgba(255,255,255,0.9);
+  max-width: 500px;
+  /* text-align: left; */
 }
 
 /* Indicador (01 / 06) */
 .hb-hero-indicator {
   position: absolute;
   bottom: 32px;
-  left: 50%;
+  left: auto;
+  right: 0;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -110,6 +113,10 @@
   color: rgba(255,255,255,0.6);
   pointer-events: none;
   z-index: 5;
+  background-color: rgba(13, 13, 13, 0.462);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  padding: 10px 10px;
+  border-radius: 3px;
 }
 
 .hb-hero-separator {
@@ -139,10 +146,11 @@
 }
 
 .hb-hero-label, .hb-hero-copy {
-  background-color: rgba(13, 13, 13, 0.88);
+  background-color: rgba(13, 13, 13, 0.621);
   padding: 5px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 0px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(6px);
   color: #fefefe !important;
+  border-radius: 3px;
 }
