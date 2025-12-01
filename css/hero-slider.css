@@ -98,7 +98,7 @@
 }
 
 /* Indicador (01 / 06) */
-.hb-hero-indicator {
+/* .hb-hero-indicator {
   position: absolute;
   bottom: 32px;
   left: auto;
@@ -117,6 +117,39 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   padding: 10px 10px;
   border-radius: 3px;
+} */
+
+.hb-hero-indicator {
+  position: absolute;
+  bottom: 32px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  pointer-events: none;
+  z-index: 5;
+  padding: 15px 15px;
+  border-radius: 3px;
+  isolation: isolate; /* garante que o pseudo fique atrás */
+}
+
+.hb-hero-indicator::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(13,13,13,0.62);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  transform: skew(-15deg); /* ajuste o ângulo como preferir */
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.hb-hero-indicator > * {
+  transform: skew(0deg); /* desfaz o skew para o texto ficar reto */
 }
 
 .hb-hero-separator {
@@ -142,6 +175,9 @@
 
   .hb-hero-indicator {
     bottom: 24px;
+  }
+  .hb-hero-card {
+    transform: translateY(5em);
   }
 }
 
