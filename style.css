@@ -4225,9 +4225,14 @@ Primary use:	Showcase Portfolio
 }
 
 .portfolio-page .img-mask {
-	width: 40vw;
-	height: 100%;
+	width: 35vw;
+	height: auto;
 }
+
+/* .portfolio-page .img-mask {
+	width: 24vw;
+	height: 100%;
+} */
 
 @media (max-width: 900px) {
 	.portfolio-page .img-mask {
@@ -5417,5 +5422,188 @@ footer:not(.showcase-footer) .socials-wrap {
 	.list-rotator-title {
 		background-color: #f9f9f9;
 		padding-top: 10% !important;
+	}
+}
+
+
+/* ORIGIN SECTION -------------------------------------------------- */
+
+.hb-origin-section {
+    position: relative;
+}
+
+.hb-origin-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.hb-origin-col {
+    flex: 1 1 280px;
+}
+
+.hb-origin-left {
+    max-width: 420px;
+}
+
+.hb-origin-center {
+    max-width: 360px;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.hb-origin-right {
+    max-width: 420px;
+}
+
+.hb-origin-overline {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.hb-origin-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+	text-transform: unset !important;
+}
+
+.hb-origin-pink {
+    color: #FF015B;
+	text-transform: capitalize !important; 
+}
+
+.hb-origin-blue {
+    color: #3e7bff;
+	text-transform: capitalize !important; 
+}
+
+.hb-origin-text {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: #d0d0d0 !important;
+    margin-bottom: 1rem;
+}
+
+.hb-origin-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+.hb-origin-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+.hb-origin-caption {
+    font-size: 0.8rem;
+    color: #b5b5b5;
+    margin-top: 1.2rem;
+}
+
+.hb-origin-main-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.hb-origin-metric {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #e4e4e4;
+}
+
+.hb-origin-card {
+    /* background: #111111; */
+    /* border-radius: 10px; */
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hb-origin-card-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: #3e7bff;
+}
+
+.hb-origin-card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+	text-transform: unset !important;
+}
+
+.hb-origin-card-text {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: #d5d5d5;
+    margin-bottom: 0.75rem;
+}
+
+.hb-origin-card-highlight {
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+	text-transform: unset !important;
+}
+
+.hb-origin-eagle-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+.hb-origin-photo-caption {
+    font-size: 0.7rem;
+    color: #9a9a9a;
+    margin-top: 0.6rem;
+}
+
+.hb-origin-card p {
+	color: #d5d5d5;
+}
+
+.hb-origin-left .mb-15 {
+	margin-bottom: 15px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .hb-origin-grid {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hb-origin-grid {
+        flex-direction: column;
+    }
+
+    .hb-origin-title {
+        font-size: 2rem;
+    }
+
+    .hb-origin-card {
+        padding: 0px;
+    }
+	.hb-origin-card-title {
+		margin-top: 15px;
 	}
 }

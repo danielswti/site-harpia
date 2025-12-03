@@ -1676,7 +1676,7 @@
 	
 	.showcase-gallery .clapat-slide {
 		width: 100vw;
-		height:auto;
+		height:600px;
 		box-sizing:border-box;
 		padding:0 80px;
 		display: flex;
@@ -1720,17 +1720,17 @@
 	
 	.showcase-gallery .slide-inner::before {
 		float: left;
-		padding-top: 140%;
+		padding-top: var(--gallery-item-ratio, 140%);
 		content: "";
 	}
 	
 	.showcase-gallery .slide-inner {
 		padding-top: 0;
-		width: 16%;
+		width: 37%;
 		height: auto;
 		margin:0px;
 		overflow:visible;
-		aspect-ratio: 10/14;
+		aspect-ratio: var(--gallery-item-aspect, 10/14);
 	}
 	
 	.showcase-gallery .slide-inner::after {
@@ -1766,8 +1766,8 @@
 	}
 	
 	.showcase-gallery .clapat-slide.s75 .slide-inner {
-		left:75%;
-		transform:translateX(-75%)
+		left:85%;
+		transform:translateX(-85%)
 	}
 	
 	.showcase-gallery .clapat-slide.s25 .slide-inner {
@@ -2208,7 +2208,7 @@
 	}
 	
 	.showcase-gallery .slide-inner {
-		width: 18%;
+		width: 37%;
 		aspect-ratio: 10/14;
 	}
 	

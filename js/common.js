@@ -93,7 +93,7 @@ Function Scroll Effects
 				renderByPixel: true,
 				continuousScrolling: true,
 				syncCallbacks: true,
-			};				
+			};
 		} else {
 			ScrollbarOptions = {
 				damping: 0.08,         // mobile mais solto (menor que 0.1)

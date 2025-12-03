@@ -1204,6 +1204,11 @@
 		padding-left:60px;
 		padding-right:60px;
 	}
+
+	.content-max-width, .content-full-width {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
 	
 }
 

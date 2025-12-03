@@ -2787,6 +2787,42 @@ Function Showcase Gallery
 		
 		if( $('.showcase-gallery').length > 0 ){
 			
+			const updateGalleryItemHeight = () => {
+				const items = document.querySelectorAll('.showcase-gallery .clapat-slide .slide-inner');
+				if (!items.length) {
+					return;
+				}
+
+				const isPhone = window.matchMedia('(max-width: 640px)').matches;
+				const isTablet = window.matchMedia('(max-width: 1200px)').matches && !isPhone;
+				const ratio = isPhone ? 120 : isTablet ? 105 : 90; // desktop items stay visibly shorter
+				const heightUnit = ratio / 10;
+				// const aspect = `10 / 14`;
+				const aspect = `10 / ${heightUnit}`;
+
+				items.forEach((item) => {
+					item.style.setProperty('--gallery-item-ratio', `${ratio}%`);
+					item.style.setProperty('--gallery-item-aspect', aspect);
+				});
+			};
+
+			updateGalleryItemHeight();
+
+			if (window.__harpiaGalleryResizeHandler) {
+				window.removeEventListener('resize', window.__harpiaGalleryResizeHandler);
+			}
+
+			const galleryResizeHandler = (() => {
+				let resizeTimer;
+				return () => {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(updateGalleryItemHeight, 150);
+				};
+			})();
+
+			window.addEventListener('resize', galleryResizeHandler);
+			window.__harpiaGalleryResizeHandler = galleryResizeHandler;
+			
 			$("footer").addClass("showcase-footer");
 			
 			gsap.set($(".showcase-gallery .slide-hero-title span, .showcase-gallery .slide-hero-subtitle span"), { y: 120, opacity: 0 });
