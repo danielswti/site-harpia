@@ -698,102 +698,104 @@ Function Scroll Effects
 					rotationX:285
 				});
 				
-			} else {
-				const MIN_VH = 720;
-				const translateMultiplier = window.innerWidth < 520 ? 1.2 : 1.5;
+			} 
+			
+			// else {
+			// 	const MIN_VH = 720;
+			// 	const translateMultiplier = window.innerWidth < 520 ? 1.2 : 1.5;
 				
-				listItems.forEach(function(item, index) {
-					const rotationAngle = index * angleIncrement;
-					const fontSize = gsap.getProperty(item, "fontSize");
-					const lineHeight = gsap.getProperty(item, "lineHeight");
-					const translateZ = (parseFloat(fontSize) + parseFloat(lineHeight)) * translateMultiplier;
+			// 	listItems.forEach(function(item, index) {
+			// 		const rotationAngle = index * angleIncrement;
+			// 		const fontSize = gsap.getProperty(item, "fontSize");
+			// 		const lineHeight = gsap.getProperty(item, "lineHeight");
+			// 		const translateZ = (parseFloat(fontSize) + parseFloat(lineHeight)) * translateMultiplier;
 					
-					gsap.set(item, {
-						rotationX: -rotationAngle,
-						transformOrigin: `center center 0`,
-						transform: `rotateX(${-rotationAngle}deg) translateZ(${translateZ}px)`,
-						zIndex: totalItems - index,
-					});
-				});			
+			// 		gsap.set(item, {
+			// 			rotationX: -rotationAngle,
+			// 			transformOrigin: `center center 0`,
+			// 			transform: `rotateX(${-rotationAngle}deg) translateZ(${translateZ}px)`,
+			// 			zIndex: totalItems - index,
+			// 		});
+			// 	});			
 				
-				const getViewportHeight = () => {
-					const visualViewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-					return Math.max(visualViewport, MIN_VH);
-				};
+			// 	const getViewportHeight = () => {
+			// 		const visualViewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+			// 		return Math.max(visualViewport, MIN_VH);
+			// 	};
 				
-				function setMobileListRotatorProperties() {		
-					const vh = getViewportHeight();
-					gsap.set(listRotatorWrapper, { height: vh * 0.5 });
-					gsap.set(listRotatorHeight, { height: vh * 22.8 });
-					gsap.set(listRotator, { height: vh });
-					ScrollTrigger.refresh();
-				}
+			// 	function setMobileListRotatorProperties() {		
+			// 		const vh = getViewportHeight();
+			// 		gsap.set(listRotatorWrapper, { height: vh * 0.5 });
+			// 		gsap.set(listRotatorHeight, { height: vh * 22.8 });
+			// 		gsap.set(listRotator, { height: vh });
+			// 		ScrollTrigger.refresh();
+			// 	}
 				
-				gsap.set(listRotator, { rotationX:-150});
+			// 	gsap.set(listRotator, { rotationX:-150});
 				
-				setMobileListRotatorProperties();
+			// 	setMobileListRotatorProperties();
 				
-				let resizeRaf = null;
-				const handleViewportChange = () => {
-					if (resizeRaf) return;
-					resizeRaf = requestAnimationFrame(() => {
-						resizeRaf = null;
-						setMobileListRotatorProperties();
-					});
-				};
-				window.addEventListener('resize', handleViewportChange);
-				window.addEventListener('orientationchange', handleViewportChange);
+			// 	let resizeRaf = null;
+			// 	const handleViewportChange = () => {
+			// 		if (resizeRaf) return;
+			// 		resizeRaf = requestAnimationFrame(() => {
+			// 			resizeRaf = null;
+			// 			setMobileListRotatorProperties();
+			// 		});
+			// 	};
+			// 	window.addEventListener('resize', handleViewportChange);
+			// 	window.addEventListener('orientationchange', handleViewportChange);
 				
-				gsap.to(listRotatorTitle, {
-					scrollTrigger: {
-						trigger: listRotatorTitle,
-						start: function() {
-							const startPin = 6.5;
-							return "top +=" + startPin;
-						},
-						end: function() {
-							const endPin = getViewportHeight() * 1.9;
-							return "+=" + endPin;
-						},
-						pin:true,
-						scrub: true,
-						pinSpacing: false,
-					}
-				});
+			// 	gsap.to(listRotatorTitle, {
+			// 		scrollTrigger: {
+			// 			trigger: listRotatorTitle,
+			// 			start: function() {
+			// 				const startPin = 6.5;
+			// 				return "top +=" + startPin;
+			// 			},
+			// 			end: function() {
+			// 				const endPin = getViewportHeight() * 1.9;
+			// 				return "+=" + endPin;
+			// 			},
+			// 			pin:true,
+			// 			scrub: true,
+			// 			pinSpacing: false,
+			// 		}
+			// 	});
 				
-				gsap.to(listRotatorPin, {
-					scrollTrigger: {
-						trigger: listRotatorPin,
-						start: function() {
-							const startPin = 90.9;
-							return "top +=" + startPin;
-						},
-						end: function() {
-							const endPin = getViewportHeight() * 9.4;
-							return "+=" + endPin;
-						},
-						pin:true,
-						scrub: true,
-						pinSpacing: false,
-					}
-				});
+			// 	gsap.to(listRotatorPin, {
+			// 		scrollTrigger: {
+			// 			trigger: listRotatorPin,
+			// 			start: function() {
+			// 				const startPin = 90.9;
+			// 				return "top +=" + startPin;
+			// 			},
+			// 			end: function() {
+			// 				const endPin = getViewportHeight() * 9.4;
+			// 				return "+=" + endPin;
+			// 			},
+			// 			pin:true,
+			// 			scrub: true,
+			// 			pinSpacing: false,
+			// 		}
+			// 	});
 				
-				gsap.to(listRotator, {
-					scrollTrigger: {
-						trigger: listRotatorWrapper,
-						start: function() {
-							const startPin = getViewportHeight() * 0.99;
-							return "top +=" + startPin;
-						},
-						end: function() {
-							const endPin = getViewportHeight() * 9.9;
-							return "+=" + endPin;
-						},
-						scrub: true,
-					},
-					rotationX:670
-				});
-			}
+			// 	gsap.to(listRotator, {
+			// 		scrollTrigger: {
+			// 			trigger: listRotatorWrapper,
+			// 			start: function() {
+			// 				const startPin = getViewportHeight() * 0.99;
+			// 				return "top +=" + startPin;
+			// 			},
+			// 			end: function() {
+			// 				const endPin = getViewportHeight() * 9.9;
+			// 				return "+=" + endPin;
+			// 			},
+			// 			scrub: true,
+			// 		},
+			// 		rotationX:670
+			// 	});
+			// }
   
 		});
 		

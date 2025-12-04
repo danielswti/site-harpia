@@ -162,6 +162,7 @@
 @media (max-width: 768px) {
   .hb-hero-slider {
     min-height: 480px;
+    max-height: 600px;
   }
 
   .hb-hero-copy {
