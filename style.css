@@ -4865,7 +4865,7 @@ Primary use:	Showcase Portfolio
 }
 
 /* Responsivo – no mobile, vira stack vertical */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .hb-project-rail {
         flex-direction: column;
         height: auto;
@@ -4882,6 +4882,41 @@ Primary use:	Showcase Portfolio
 
     .hb-project-card + .hb-project-card {
         margin-top: 16px;
+    }
+} */
+
+/* --- MOBILE: manter comportamento do desktop (trilho horizontal) --- */
+@media (max-width: 767px) {
+
+    .hb-project-rail {
+        flex-direction: row;      /* volta para linha */
+        align-items: stretch;
+        justify-content: center;
+        padding: 0px;
+        min-height: 70vh;
+    }
+
+    .hb-project-card {
+        flex-basis: 15%;          /* mesmo valor base das laterais */
+        height: 60vh;
+    }
+
+    .hb-project-card.is-active {
+        flex-basis: 70%;          /* central aberto */
+    }
+
+    /* remove margin-top herdado do layout em coluna */
+    .hb-project-card + .hb-project-card {
+        margin-top: 0;
+    }
+
+    .hb-project-info {
+        padding: 24px 20px;
+    }
+
+    .hb-project-title {
+        font-size: 18px;
+        line-height: 1.3;
     }
 }
 
@@ -4996,25 +5031,21 @@ Primary use:	Showcase Portfolio
 }
 
 /* --- MOBILE: MANTER LAYOUT EM LINHA --- */
-@media (max-width: 767px) {
-
-    .hb-project-rail {
-        padding: 0 16px;          /* respiro lateral, mas continua em linha */
-    }
+/* @media (max-width: 767px) {
 
     .hb-project-card {
-        flex: 0 0 60vw;           /* laterais um pouco menores */
+        flex: 0 0 60vw;
         min-height: 220px;
     }
 
     .hb-project-card.is-active {
-        flex: 0 0 80vw;           /* central domina, mas ainda sobra “espiadinha” dos lados */
+        flex: 0 0 80vw;
     }
 
     .hb-project-info {
         padding: 24px 20px;
     }
-}
+} */
 
 .video-portfolio-section video {
   width: 100%;
@@ -5091,11 +5122,6 @@ Primary use:	Showcase Portfolio
     object-fit: contain; /* mantém proporção sem cortar */
 }
 
-@media (max-width: 767px) {
-	.plano-europa-page #hero-bg-image {
-		background-image:url(../images/projects/plano-europa/mobile/capa-project-Plano-Europa-mobile.webp);
-	}
-}
 /* 
 .hb-hero-copy {
     font-size: 16px;

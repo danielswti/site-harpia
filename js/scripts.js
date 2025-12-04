@@ -24,6 +24,7 @@ jQuery(function ($) {
 		PlayVideo();
 		ContactMap();
 		CustomFunction();
+		HeroResponsiveBackground();
 	});
 	
 	
@@ -222,7 +223,6 @@ function CustomFunction() {
 	if (typeof gsap !== "undefined") {
 		const cards = gsap.utils.toArray('.hb-project-card');
 		if (cards.length) {
-			// índice inicial do card ativo (central)
 			let activeIndex = cards.findIndex(card => card.classList.contains('is-active'));
 			if (activeIndex === -1) activeIndex = 1;
 
@@ -263,7 +263,10 @@ function CustomFunction() {
 			// layout inicial
 			setActive(activeIndex);
 
-			// Hover em desktop: traz a capa pro centro
+			// recalcula ao redimensionar (desktop/mobile)
+			window.addEventListener('resize', applyLayout);
+
+			// Hover em desktop
 			if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 				cards.forEach((card, index) => {
 					card.addEventListener('mouseenter', () => {
@@ -285,7 +288,6 @@ function CustomFunction() {
 					const href = link.getAttribute('href');
 					if (!href) return;
 
-					// se for lateral, primeiro traz pro centro
 					if (index !== activeIndex) {
 						setActive(index);
 					}
@@ -294,7 +296,6 @@ function CustomFunction() {
 
 					const tl = gsap.timeline({
 						onComplete() {
-							// navega “na mão” sem chamar link.click() de novo
 							window.location.href = href;
 						}
 					});
@@ -310,7 +311,6 @@ function CustomFunction() {
 							ease: 'power2.in'
 						}, '-=0.1');
 					} else {
-						// fallback: se não tiver bg, só navega rápido
 						tl.to(card, { duration: 0.2 });
 					}
 				});
@@ -545,6 +545,76 @@ function CustomFunction() {
     }
 
 }// End CustomFunction
+
+/*--------------------------------------------------
+Hero Responsive Background
+---------------------------------------------------*/
+
+function HeroResponsiveBackground() {
+	if (typeof window === "undefined" || typeof document === "undefined") {
+		return;
+	}
+
+	if (window.__heroBgMediaQuery && window.__heroBgMediaQuery.mq && window.__heroBgMediaQuery.listener) {
+		const { mq, listener } = window.__heroBgMediaQuery;
+		if (typeof mq.removeEventListener === 'function') {
+			mq.removeEventListener('change', listener);
+		} else if (typeof mq.removeListener === 'function') {
+			mq.removeListener(listener);
+		}
+	}
+	window.__heroBgMediaQuery = null;
+
+	const heroBackgrounds = document.querySelectorAll('[data-mobile-bg]');
+	if (!heroBackgrounds.length) {
+		return;
+	}
+
+	heroBackgrounds.forEach((element) => {
+		if (!element.dataset.desktopBgOriginal) {
+			let desktopBg = element.style.backgroundImage && element.style.backgroundImage !== 'none'
+				? element.style.backgroundImage
+				: '';
+			if (!desktopBg) {
+				const computedBg = window.getComputedStyle(element).backgroundImage;
+				if (computedBg && computedBg !== 'none') {
+					desktopBg = computedBg;
+				}
+			}
+			element.dataset.desktopBgOriginal = desktopBg || '';
+		}
+	});
+
+	const mediaQuery = window.matchMedia('(max-width: 768px)');
+
+	const applyBackgrounds = () => {
+		const isMobile = mediaQuery.matches;
+		heroBackgrounds.forEach((element) => {
+			const mobileBg = element.getAttribute('data-mobile-bg');
+			if (!mobileBg) {
+				return;
+			}
+
+			if (isMobile) {
+				element.style.backgroundImage = `url(${mobileBg})`;
+			} else if (element.dataset.desktopBgOriginal) {
+				element.style.backgroundImage = element.dataset.desktopBgOriginal;
+			} else {
+				element.style.removeProperty('background-image');
+			}
+		});
+	};
+
+	applyBackgrounds();
+
+	const mqListener = () => applyBackgrounds();
+	if (typeof mediaQuery.addEventListener === 'function') {
+		mediaQuery.addEventListener('change', mqListener);
+	} else if (typeof mediaQuery.addListener === 'function') {
+		mediaQuery.addListener(mqListener);
+	}
+	window.__heroBgMediaQuery = { mq: mediaQuery, listener: mqListener };
+}
 	
 /*--------------------------------------------------
 	Function Cleanup Before Ajax
@@ -3723,6 +3793,7 @@ Function Showcase Gallery
 		ContactForm();
 		ContactMap();
 		CustomFunction();
+		HeroResponsiveBackground();
 		
 	}//End Load Via Ajax
 	

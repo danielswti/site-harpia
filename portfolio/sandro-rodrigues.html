@@ -156,10 +156,27 @@
                         </div>
                     </div>
                     <div id="hero-image-wrapper">
-                    	<div id="hero-background-layer" class="parallax-scroll-image">
-                            <div id="hero-bg-image" style="background-image:url(../images/projects/sandro-rodrigues/01-Sandro-Rodrigues_Portfolio_Harpia-copiar.webp)"></div>
+                        <div id="hero-background-layer" class="parallax-scroll-image">
+                            <div id="hero-bg-image">
+                                <picture>
+                                    <!-- IMAGEM PARA MOBILE -->
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="../images/hero/hero-mobile/home-capa-sandro-rodrigues.webp">
+
+                                    <!-- IMAGEM PARA DESKTOP -->
+                                    <source
+                                        media="(min-width: 768px)"
+                                        srcset="../images/projects/sandro-rodrigues/01-Sandro-Rodrigues_Portfolio_Harpia-copiar.webp">
+
+                                    <!-- Fallback (caso o browser não suporte <picture>) -->
+                                    <img
+                                        src="../images/projects/sandro-rodrigues/01-Sandro-Rodrigues_Portfolio_Harpia-copiar.webp"
+                                        alt="Sandro Rodrigues">
+                                </picture>
+                            </div>
                         </div>
-                    </div>                        
+                    </div>                     
                     <!--/Hero Section -->   
                          
                     
