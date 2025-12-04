@@ -3868,6 +3868,11 @@ Primary use:	Showcase Portfolio
 		line-height: 20px;
 		margin: 0 auto;
 	}
+
+	h3 {
+		font-size: calc(1rem + 2.7vw);
+		line-height: calc(1rem + 3.2vw);
+	}
 	
 }
 
@@ -4711,6 +4716,23 @@ Primary use:	Showcase Portfolio
   .hb-counter-item:first-child {
     margin-top: 0;          /* o primeiro não sobe, começa normal */
   }
+
+	.row-360 {
+		padding-bottom: 12%;
+	}
+
+	.hb-method-title {
+  		font-size: 1.1rem;
+		line-height: 1.2em;
+	}
+
+	.hb-method-toggle {
+		margin-top: 5px;
+	}
+
+	.hb-methods-wrapper {
+		gap: 40px;
+	}
 }
 
 .white-icon {
@@ -5307,6 +5329,7 @@ footer:not(.showcase-footer) .socials-wrap {
     .hb-footer-nav {
         flex-wrap: wrap;
         row-gap: 8px;
+		gap: 14px;
     }
 
     .hb-footer-metrics {

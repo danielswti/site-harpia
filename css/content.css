@@ -1538,3 +1538,9 @@
 .text-align-center {
     text-align: center;
 }
+
+@media only screen and (max-width: 767px) {
+	.title-default {
+		margin-bottom: 35px !important;   /* ajuste o espaçamento para telas menores */
+	}
+}
