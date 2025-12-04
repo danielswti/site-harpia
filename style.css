@@ -4000,7 +4000,7 @@ Primary use:	Showcase Portfolio
 
 	
 .red-text {
-	color: #FF015B !important;
+	color: #ff005a !important;
 	font-style: italic;
 }
 
@@ -4585,8 +4585,8 @@ Primary use:	Showcase Portfolio
 }
 
 .hb-method-column.is-open .hb-method-toggle, .hb-method-column.is-open .hb-method-toggle-icon {
-  background: #ff2f68;
-  border-color: #ff2f68;
+  background: #ff005a;
+  border-color: #ff005a;
   color: #0c0c0c !important;
 }
 
@@ -4614,7 +4614,7 @@ Primary use:	Showcase Portfolio
 }
 
 .hb-method-title span:first-child {
-  	color: #ff2f68;
+  	color: #ff005a;
   	font-weight: 500;
 	/* font-style: italic; */
 }
@@ -4650,7 +4650,7 @@ Primary use:	Showcase Portfolio
   left: 0;
   top: 0;
   font-size: .9rem;
-  color: #ff2f68;
+  color: #ff005a;
 }
 
 /* RESPONSIVO */
@@ -5473,7 +5473,7 @@ footer:not(.showcase-footer) .socials-wrap {
 }
 
 .hb-origin-pink {
-    color: #FF015B;
+    color: #ff005a;
 	text-transform: capitalize !important; 
 }
 
