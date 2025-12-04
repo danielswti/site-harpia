@@ -3189,6 +3189,11 @@ Primary use:	Showcase Portfolio
 		background:transparent;
 	}
 	
+	.hero-caption-contact {
+		padding-bottom: 100px !important;
+	}
+
+	
 /*--------------------------------------------------
 	07. Responsive
 ---------------------------------------------------*/			
@@ -3873,12 +3878,20 @@ Primary use:	Showcase Portfolio
 		font-size: calc(1rem + 2.7vw);
 		line-height: calc(1rem + 3.2vw);
 	}
+
+	.hero-caption-contact {
+		padding-bottom: 40px !important;
+	}
 	
 }
 
 
 @media only screen and (max-width: 479px) {	
 	
+	.hero-caption-contact {
+		padding-bottom: 40px !important;
+	}
+
 	.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .two_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .five_sixth {
 		margin-bottom: 20px!important;
 		margin-right: 0%!important;
@@ -4353,9 +4366,6 @@ Primary use:	Showcase Portfolio
 	}
 }
 
-.hero-caption-contact {
-	padding-bottom: 100px !important;
-}
 
 .project-idividual-page .content-full-width {
 	padding: 0px !important;
