@@ -2792,6 +2792,10 @@
 		padding-top: 100%;
 		content: "";
 	}
+
+	.portfolio-page .img-mask {
+		margin-left: 0px;
+	}
 	
 }
 

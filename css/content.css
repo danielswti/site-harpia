@@ -100,7 +100,7 @@
 		z-index:0;
 		opacity:0;
 		overflow:visible;
-		 image-rendering: pixelated;
+		 /* image-rendering: pixelated; */
 	}
 	
 	.load-project-page #hero-bg-image, .load-next-project #hero-bg-image, .load-project-thumb-with-title #hero-bg-image {
