@@ -175,7 +175,8 @@
   }
 
   .hb-hero-indicator {
-    bottom: 24px;
+    bottom: 7px;
+    padding: 10px 15px;
   }
   .hb-hero-card {
     transform: translateY(5em);
