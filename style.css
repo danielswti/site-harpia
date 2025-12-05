@@ -4735,6 +4735,11 @@ Primary use:	Showcase Portfolio
 
 	.row-360 {
 		padding-bottom: 12%;
+		padding-top: 5vw;
+	}
+
+	.row-360-details {
+		padding-bottom: 12vw;
 	}
 
 	.hb-method-title {
@@ -5137,9 +5142,6 @@ Primary use:	Showcase Portfolio
 		width: 90%;
 	}
 
-	.row-360 {
-		padding-top: 15vw;
-	}
 }
 
 .hb-full-video-section {
@@ -5718,21 +5720,25 @@ footer:not(.showcase-footer) .socials-wrap {
 	}
 
 	.hb-origin-img-01 {
-	flex-basis: 27%;
-	height: 150px;
-}
+		flex-basis: 27%;
+		height: 150px;
+	}
 
-.hb-origin-img-02 {
-	flex-basis: 32%;
-	height: 180px;
-}
+	.hb-origin-img-02 {
+		flex-basis: 32%;
+		height: 180px;
+	}
 
-.hb-origin-img-03 {
-	flex-basis: 41%;
-	height: 200px;
-}
+	.hb-origin-img-03 {
+		flex-basis: 41%;
+		height: 200px;
+	}
 
 	.hb-origin-photos .hb-origin-thumb:last-child {
 		grid-column: span 1;
+	}
+
+	.hb-origin-section {
+		padding-top: 17vw;
 	}
 }
