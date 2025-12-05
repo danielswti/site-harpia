@@ -3707,6 +3707,10 @@
 		padding-left: 30px;
 		padding-right: 30px;
 	}
+
+	.clipped-image-gradient {
+		height:25% !important;
+	}
 	
 }
 
