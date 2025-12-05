@@ -3193,7 +3193,7 @@ Primary use:	Showcase Portfolio
 		padding-bottom: 100px !important;
 	}
 
-	
+
 /*--------------------------------------------------
 	07. Responsive
 ---------------------------------------------------*/			
@@ -3880,6 +3880,7 @@ Primary use:	Showcase Portfolio
 	}
 
 	.hero-caption-contact {
+		padding-top: 130px !important;
 		padding-bottom: 40px !important;
 	}
 	
