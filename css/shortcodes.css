@@ -591,7 +591,7 @@
 		display: none;
 		left: 0;
 		position: absolute;
-		width: calc(100% - 40px);
+		width: calc(85% - 40px);
 		z-index: 5;
 		background-color: #eee;
 		padding: 0;

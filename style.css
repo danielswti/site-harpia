@@ -4807,11 +4807,12 @@ Primary use:	Showcase Portfolio
 .video-portfolio-section {
     margin: 0;
     padding: 0;
-    background: #fff;
+    /* background: #fff; */
     min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+	padding: 0 8vw;
 }
 
 /* Vídeo centralizado, sem bordas e ocupando a largura */
@@ -5784,4 +5785,9 @@ footer:not(.showcase-footer) .socials-wrap {
 	.hb-origin-section {
 		padding-top: 17vw;
 	}
+}
+
+.video-border {
+	border: 1px solid #e6e6e654;
+	border-radius: 12px;
 }
