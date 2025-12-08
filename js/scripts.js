@@ -226,6 +226,22 @@ function CustomFunction() {
 			let activeIndex = cards.findIndex(card => card.classList.contains('is-active'));
 			if (activeIndex === -1) activeIndex = 1;
 
+			const isMobileDevice = () => {
+				if (typeof window === 'undefined') return false;
+				if (typeof window.isMobile === 'function') return window.isMobile();
+				return window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches;
+			};
+
+			let primedIndex = null;
+			let primeTimer = null;
+			const clearPrime = () => {
+				if (primeTimer) {
+					clearTimeout(primeTimer);
+					primeTimer = null;
+				}
+				primedIndex = null;
+			};
+
 			function applyLayout() {
 				cards.forEach((card, i) => {
 					const isActive = i === activeIndex;
@@ -277,7 +293,7 @@ function CustomFunction() {
 				});
 			}
 
-			// Clique: anima e depois navega
+			// Clique: anima e depois navega (mobile: lados precisam de 2 toques)
 			cards.forEach((card, index) => {
 				const link = card.querySelector('.hb-project-link');
 				if (!link) return;
@@ -288,8 +304,20 @@ function CustomFunction() {
 					const href = link.getAttribute('href');
 					if (!href) return;
 
-					if (index !== activeIndex) {
+					const isActive = index === activeIndex;
+					const isSideCard = cards.length === 3 ? (index !== 1) : (card.classList.contains('is-left') || card.classList.contains('is-right'));
+
+					if (isMobileDevice() && isSideCard && !isActive) {
+						// primeiro toque: só expande e arma
 						setActive(index);
+						clearPrime();
+						primedIndex = index;
+						primeTimer = setTimeout(clearPrime, 1500);
+						return;
+					}
+
+					if (isMobileDevice() && isActive && primedIndex === index) {
+						clearPrime();
 					}
 
 					const bg = card.querySelector('.hb-project-bg');
@@ -2475,6 +2503,7 @@ Function Showcase Portfolio
 				});
 			}
 			
+			
 			if (!isMobile()) {	
 							
 				$(".showcase-portfolio .clapat-item .slide-inner").on('mouseenter', function() {
@@ -2516,39 +2545,7 @@ Function Showcase Portfolio
 			}			
 
 			
-			$('.showcase-portfolio .trigger-item').on('click', function(e) {
-				var $trigger = $(this);
-
-				// Mobile only: left/right items need a priming tap before navigating
-				if (isMobile() && !$trigger.closest('.showcase-portfolio').hasClass('list-grid')) {
-					var isSideItem = $trigger.closest('.clapat-item').is('.justify-start, .justify-end');
-					if (isSideItem && !$trigger.hasClass('mobile-armed')) {
-						e.preventDefault();
-						e.stopPropagation();
-						e.stopImmediatePropagation();
-
-						$('.showcase-portfolio .trigger-item.mobile-armed').each(function() {
-							var $item = $(this);
-							clearTimeout($item.data('mobileTapTimer'));
-							$item.removeClass('mobile-armed above');
-						});
-
-						$trigger.addClass('mobile-armed above');
-						gsap.to($trigger.find('.section-image'), {duration: 0.35, scale: 1, ease: Power2.easeOut});
-
-						$trigger.data('mobileTapTimer', setTimeout(function() {
-							$trigger.removeClass('mobile-armed above');
-						}, 1500));
-
-						return false;
-					}
-
-					if (isSideItem && $trigger.hasClass('mobile-armed')) {
-						clearTimeout($trigger.data('mobileTapTimer'));
-						$trigger.removeClass('mobile-armed');
-					}
-				}
-
+			$('.trigger-item').on('click', function() {
 				if (!$('.showcase-portfolio').hasClass('list-grid')) {
 					$("body").addClass("load-project-thumb");
 				}
