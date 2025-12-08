@@ -746,7 +746,7 @@ Function Scroll Effects
 						rotateZ: tilt * 0.2,
 						filter: 'blur(8px)',
 						letterSpacing: '0.08em',
-						transformOrigin: 'left center'
+						transformOrigin: 'left left'
 					});
 
 					gsap.to(item, {
