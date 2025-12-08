@@ -2475,6 +2475,49 @@ Function Showcase Portfolio
 				});
 			}
 			
+			// On mobile, require a first tap on side items to "prime" them before navigation
+			if (isMobile()) {
+				var mobileSideTriggers = $('.showcase-portfolio .clapat-item.justify-start .trigger-item, .showcase-portfolio .clapat-item.justify-end .trigger-item');
+				mobileSideTriggers.off('click.mobilePreopen').on('click.mobilePreopen', function(e) {
+					var $trigger = $(this);
+					var resetTimer = $trigger.data('mobileTapTimer');
+					var isArmed = $trigger.data('mobileArmed') === true;
+
+					if (!isArmed) {
+						e.preventDefault();
+						e.stopPropagation();
+						e.stopImmediatePropagation();
+
+						// Clear previous armed states so only one item is primed at a time
+						$('.showcase-portfolio .trigger-item.mobile-armed').each(function() {
+							var $item = $(this);
+							clearTimeout($item.data('mobileTapTimer'));
+							$item.data('mobileArmed', false);
+							$item.removeClass('mobile-armed above');
+						});
+
+						$trigger.addClass('mobile-armed above');
+						$trigger.data('mobileArmed', true);
+
+						// Small visual nudge so the image feels "expanded" on the first tap
+						gsap.to($trigger.find('.section-image'), {duration: 0.35, scale: 1, ease: Power2.easeOut});
+
+						if (resetTimer) {
+							clearTimeout(resetTimer);
+						}
+						$trigger.data('mobileTapTimer', setTimeout(function() {
+							$trigger.data('mobileArmed', false);
+							$trigger.removeClass('mobile-armed above');
+						}, 1500));
+
+						return false;
+					}
+
+					$trigger.data('mobileArmed', false);
+					$trigger.removeClass('mobile-armed');
+				});
+			}
+			
 			
 			if (!isMobile()) {	
 							
