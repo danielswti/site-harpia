@@ -155,6 +155,38 @@ Function Scroll Effects
 		} 
 		
 		
+			const pageHeader = document.querySelector('header');
+			const pageContent = document.querySelector('#page-content');
+
+			const getDefaultHeaderBackgroundMode = () => {
+				if (pageContent && pageContent.classList.contains('dark-content')) {
+					return 'light';
+				}
+				return 'dark';
+			};
+
+			const applyHeaderBackground = (mode = 'dark') => {
+				if (!pageHeader) {
+					return;
+				}
+				if (pageHeader.classList.contains('header-bg-transparent')) {
+					return;
+				}
+				const normalizedMode = mode === 'light' ? 'header-bg-light' : 'header-bg-dark';
+				pageHeader.classList.remove('header-bg-light', 'header-bg-dark');
+				pageHeader.classList.add(normalizedMode);
+			};
+
+			const applyDefaultHeaderBackground = () => {
+				applyHeaderBackground(getDefaultHeaderBackgroundMode());
+			};
+
+			if (pageHeader) {
+				const initialMode = pageHeader.classList.contains('white-header') ? 'light' : getDefaultHeaderBackgroundMode();
+				applyHeaderBackground(initialMode);
+			}
+
+
 		// Hero AutoScroll On Page Load
 		let autoScroll = null;
 
@@ -652,8 +684,13 @@ Function Scroll Effects
 					scrollTrigger: {
 						trigger: listRotatorTitle,
 						start: function() {
-							const startPin = 0;
-							return "top +=" + startPin;
+							if (window.innerWidth < 1920) {
+								const startPin = window.innerHeight * .039;
+								return "top +=" + startPin;
+							} else {
+								const startPin = window.innerHeight * .018;
+								return "top +=" + startPin;
+							}
 						},
 						end: function() {
 							const endPin = window.innerHeight * 2.5;
@@ -1578,7 +1615,6 @@ Function Scroll Effects
 				setTimeout(function() {
 					var changeHeaderColor = gsap.utils.toArray('.change-header-color');	
 					changeHeaderColor.forEach(function(changeHeaderElement) {						
-						var pageHeader = document.querySelector('header');							
 						gsap.to(changeHeaderElement, {
 							scrollTrigger: {
 								trigger: changeHeaderElement,
@@ -1586,16 +1622,24 @@ Function Scroll Effects
 								end: () => `+=${changeHeaderElement.offsetHeight}`,
 								//markers: true,
 								onEnter: function() {
+									if (!pageHeader) { return; }
 									pageHeader.classList.add('white-header');
+									applyHeaderBackground('light');
 								},
 								onEnterBack: function() {
+									if (!pageHeader) { return; }
 									pageHeader.classList.add('white-header');
+									applyHeaderBackground('light');
 								},
 								onLeave: function() {
+									if (!pageHeader) { return; }
 									pageHeader.classList.remove('white-header');
+									applyDefaultHeaderBackground();
 								},
 								onLeaveBack: function() {
+									if (!pageHeader) { return; }
 									pageHeader.classList.remove('white-header');
+									applyDefaultHeaderBackground();
 								} 
 							}
 						});
@@ -1633,6 +1677,36 @@ Function Scroll Effects
 							});
 						}
 					}, 100);
+				});
+			}
+		}
+
+		// Header transparent trigger: add class on any section to force transparent header while in view
+		if (typeof ScrollTrigger !== 'undefined') {
+			const transparentSections = gsap.utils.toArray('.header-transparent-trigger');
+			if (transparentSections.length && pageHeader) {
+				transparentSections.forEach((section) => {
+					ScrollTrigger.create({
+						trigger: section,
+						start: 'top 10%',
+						end: 'bottom 10%',
+						onEnter: () => {
+							pageHeader.classList.remove('header-bg-dark', 'header-bg-light');
+							pageHeader.classList.add('header-bg-transparent');
+						},
+						onEnterBack: () => {
+							pageHeader.classList.remove('header-bg-dark', 'header-bg-light');
+							pageHeader.classList.add('header-bg-transparent');
+						},
+						onLeave: () => {
+							pageHeader.classList.remove('header-bg-transparent');
+							applyDefaultHeaderBackground();
+						},
+						onLeaveBack: () => {
+							pageHeader.classList.remove('header-bg-transparent');
+							applyDefaultHeaderBackground();
+						}
+					});
 				});
 			}
 		}
@@ -1765,6 +1839,7 @@ Function First Load
 			gsap.to("nav", {duration: 0.3, backgroundColor: document.querySelector("#page-content").getAttribute("data-bgcolor")});
 			
 			$('header').removeClass('white-header');
+			applyDefaultHeaderBackground();
 			$("#app").remove();
 			setTimeout(function(){
 				$("#canvas-slider.active").remove();						
@@ -1787,6 +1862,7 @@ Function First Load
 			$(this).parents('.item-with-ul').addClass('hover');
 			gsap.set($(this).find('span'),{yPercent:0});	
 			$('header').removeClass('white-header');
+			applyDefaultHeaderBackground();
 			$("#app").remove();
 			$(".big-title-caption").remove();	
 		});
