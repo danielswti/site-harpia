@@ -232,16 +232,6 @@ function CustomFunction() {
 				return window.matchMedia('(max-width: 1024px)').matches || window.matchMedia('(hover: none)').matches;
 			};
 
-			let primedIndex = null;
-			let primeTimer = null;
-			const clearPrime = () => {
-				if (primeTimer) {
-					clearTimeout(primeTimer);
-					primeTimer = null;
-				}
-				primedIndex = null;
-			};
-
 			function applyLayout() {
 				cards.forEach((card, i) => {
 					const isActive = i === activeIndex;
@@ -276,6 +266,54 @@ function CustomFunction() {
 				applyLayout();
 			}
 
+			// Cria botão de navegação com ícone de seta (apenas mobile)
+			if (isMobileDevice()) {
+				cards.forEach((card) => {
+					const link = card.querySelector('.hb-project-link');
+					if (!link) return;
+
+					const href = link.getAttribute('href');
+					if (!href) return;
+
+					// Cria o botão de navegação
+					const navBtn = document.createElement('a');
+					navBtn.href = href;
+					navBtn.className = 'hb-project-nav-btn';
+					navBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>';
+					
+					// Insere o botão dentro do card
+					card.appendChild(navBtn);
+
+					// Clique no botão navega com animação
+					navBtn.addEventListener('click', (e) => {
+						e.preventDefault();
+						e.stopPropagation();
+
+						const bg = card.querySelector('.hb-project-bg');
+
+						const tl = gsap.timeline({
+							onComplete() {
+								window.location.href = href;
+							}
+						});
+
+						if (bg) {
+							tl.to(bg, {
+								scale: 1.08,
+								duration: 0.4,
+								ease: 'power2.out'
+							}).to(bg, {
+								opacity: 0.0,
+								duration: 0.3,
+								ease: 'power2.in'
+							}, '-=0.1');
+						} else {
+							tl.to(card, { duration: 0.2 });
+						}
+					});
+				});
+			}
+
 			// layout inicial
 			setActive(activeIndex);
 
@@ -293,42 +331,28 @@ function CustomFunction() {
 				});
 			}
 
-			// Clique: anima e depois navega (mobile: lados precisam de 2 toques)
+			// Clique/toque nos cards
 			cards.forEach((card, index) => {
 				const link = card.querySelector('.hb-project-link');
 				if (!link) return;
 
 				link.addEventListener('click', (e) => {
-					e.preventDefault();
-
 					const href = link.getAttribute('href');
 					if (!href) return;
 
 					const isActive = index === activeIndex;
 
-					// Mobile: primeiro toque em card inativo só expande e arma
-					if (isMobileDevice() && !isActive) {
-						clearPrime();
-						setActive(index);
-						primedIndex = index;
-						primeTimer = setTimeout(clearPrime, 2500);
+					// Mobile: toque apenas expande o card, não navega
+					if (isMobileDevice()) {
+						e.preventDefault();
+						if (!isActive) {
+							setActive(index);
+						}
 						return;
 					}
 
-					// Mobile: card ativo — se armado, navega; se não, arma
-					if (isMobileDevice() && isActive) {
-						if (primedIndex !== index) {
-							// Arma para segundo toque
-							clearPrime();
-							primedIndex = index;
-							primeTimer = setTimeout(clearPrime, 2500);
-							return;
-						}
-						// Armado — segue para navegação
-					}
-
-					// Limpa estado de priming antes de navegar
-					clearPrime();
+					// Desktop: clique navega normalmente com animação
+					e.preventDefault();
 
 					const bg = card.querySelector('.hb-project-bg');
 
