@@ -760,7 +760,7 @@ Function Scroll Effects
 						scrollTrigger: {
 							trigger: item,
 							start: 'top 85%',
-							end: 'top 36%',
+							end: 'top 60%',
 							scrub: true,
 							invalidateOnRefresh: true
 						}
