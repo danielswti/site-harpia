@@ -266,14 +266,17 @@ function CustomFunction() {
 				applyLayout();
 			}
 
-			// Cria botão de navegação com ícone de seta (apenas mobile)
+			// Mobile: desabilita links originais e adiciona botão de navegação
 			if (isMobileDevice()) {
-				cards.forEach((card) => {
+				cards.forEach((card, index) => {
 					const link = card.querySelector('.hb-project-link');
 					if (!link) return;
 
 					const href = link.getAttribute('href');
 					if (!href) return;
+
+					// Desabilita o link original no mobile
+					link.style.pointerEvents = 'none';
 
 					// Cria o botão de navegação
 					const navBtn = document.createElement('a');
@@ -311,6 +314,17 @@ function CustomFunction() {
 							tl.to(card, { duration: 0.2 });
 						}
 					});
+
+					// Toque no card expande
+					card.addEventListener('click', (e) => {
+						// Ignora se clicou no botão
+						if (e.target.closest('.hb-project-nav-btn')) return;
+						
+						e.preventDefault();
+						if (index !== activeIndex) {
+							setActive(index);
+						}
+					});
 				});
 			}
 
@@ -320,63 +334,54 @@ function CustomFunction() {
 			// recalcula ao redimensionar (desktop/mobile)
 			window.addEventListener('resize', applyLayout);
 
-			// Hover em desktop
-			if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+			// Desktop: Hover e clique
+			if (!isMobileDevice()) {
+				// Hover em desktop
+				if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+					cards.forEach((card, index) => {
+						card.addEventListener('mouseenter', () => {
+							if (index !== activeIndex) {
+								setActive(index);
+							}
+						});
+					});
+				}
+
+				// Clique navega
 				cards.forEach((card, index) => {
-					card.addEventListener('mouseenter', () => {
-						if (index !== activeIndex) {
-							setActive(index);
+					const link = card.querySelector('.hb-project-link');
+					if (!link) return;
+
+					link.addEventListener('click', (e) => {
+						e.preventDefault();
+
+						const href = link.getAttribute('href');
+						if (!href) return;
+
+						const bg = card.querySelector('.hb-project-bg');
+
+						const tl = gsap.timeline({
+							onComplete() {
+								window.location.href = href;
+							}
+						});
+
+						if (bg) {
+							tl.to(bg, {
+								scale: 1.08,
+								duration: 0.4,
+								ease: 'power2.out'
+							}).to(bg, {
+								opacity: 0.0,
+								duration: 0.3,
+								ease: 'power2.in'
+							}, '-=0.1');
+						} else {
+							tl.to(card, { duration: 0.2 });
 						}
 					});
 				});
 			}
-
-			// Clique/toque nos cards
-			cards.forEach((card, index) => {
-				const link = card.querySelector('.hb-project-link');
-				if (!link) return;
-
-				link.addEventListener('click', (e) => {
-					const href = link.getAttribute('href');
-					if (!href) return;
-
-					const isActive = index === activeIndex;
-
-					// Mobile: toque apenas expande o card, não navega
-					if (isMobileDevice()) {
-						e.preventDefault();
-						if (!isActive) {
-							setActive(index);
-						}
-						return;
-					}
-
-					// Desktop: clique navega normalmente com animação
-					e.preventDefault();
-
-					const bg = card.querySelector('.hb-project-bg');
-
-					const tl = gsap.timeline({
-						onComplete() {
-							window.location.href = href;
-						}
-					});
-
-					if (bg) {
-						tl.to(bg, {
-							scale: 1.08,
-							duration: 0.4,
-							ease: 'power2.out'
-						}).to(bg, {
-							opacity: 0.0,
-							duration: 0.3,
-							ease: 'power2.in'
-						}, '-=0.1');
-					} else {
-						tl.to(card, { duration: 0.2 });
-					}
-				});
-			});
 		}
 	}
 }
