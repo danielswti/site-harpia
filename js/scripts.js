@@ -36,7 +36,7 @@ function CustomFunction() {
 
     //Add here your custom js code
 
-	// Sticky + expansão do "Work" no portfólio
+	// Sticky do título no portfólio da home
 	if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
 		gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +76,7 @@ function CustomFunction() {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 25%",      // ajusta conforme o layout mobile
-					end: "bottom bottom-=60%",     // aqui ele solta quando a seção termina
+					end: "bottom bottom-=59%",     // aqui ele solta quando a seção termina
 					pin: portfolioTitle,
 					pinSpacing: false
 					// markers: true

@@ -4782,7 +4782,7 @@ Primary use:	Showcase Portfolio
 	}
 
 	.row-360-home {
-		padding-top: 12vw;
+		padding-top: 15vw;
 	}
 
 	.hb-method-title {
@@ -4796,6 +4796,10 @@ Primary use:	Showcase Portfolio
 
 	.hb-methods-wrapper {
 		gap: 40px;
+	}
+
+	.hb-methods-row {
+		padding-bottom: 15vw;
 	}
 }
 
