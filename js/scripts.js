@@ -305,21 +305,30 @@ function CustomFunction() {
 					if (!href) return;
 
 					const isActive = index === activeIndex;
-					const isSideCard = cards.length === 3 ? (index !== 1) : (card.classList.contains('is-left') || card.classList.contains('is-right'));
 
-					// Mobile: primeiro toque em card lateral inativo só expande e arma
-					if (isMobileDevice() && isSideCard && !isActive) {
+					// Mobile: primeiro toque em card inativo só expande e arma
+					if (isMobileDevice() && !isActive) {
 						clearPrime();
 						setActive(index);
 						primedIndex = index;
-						primeTimer = setTimeout(clearPrime, 2000);
+						primeTimer = setTimeout(clearPrime, 2500);
 						return;
 					}
 
-					// Mobile: segundo toque ou card central — navega
-					if (isMobileDevice()) {
-						clearPrime();
+					// Mobile: card ativo — se armado, navega; se não, arma
+					if (isMobileDevice() && isActive) {
+						if (primedIndex !== index) {
+							// Arma para segundo toque
+							clearPrime();
+							primedIndex = index;
+							primeTimer = setTimeout(clearPrime, 2500);
+							return;
+						}
+						// Armado — segue para navegação
 					}
+
+					// Limpa estado de priming antes de navegar
+					clearPrime();
 
 					const bg = card.querySelector('.hb-project-bg');
 
