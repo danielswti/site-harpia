@@ -76,7 +76,7 @@ function CustomFunction() {
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 26%",      // ajusta conforme o layout mobile
-					end: "bottom bottom-=59%",     // aqui ele solta quando a seção termina
+					end: "bottom bottom-=55%",     // aqui ele solta quando a seção termina
 					pin: portfolioTitle,
 					pinSpacing: false
 					// markers: true
@@ -307,16 +307,17 @@ function CustomFunction() {
 					const isActive = index === activeIndex;
 					const isSideCard = cards.length === 3 ? (index !== 1) : (card.classList.contains('is-left') || card.classList.contains('is-right'));
 
+					// Mobile: primeiro toque em card lateral inativo só expande e arma
 					if (isMobileDevice() && isSideCard && !isActive) {
-						// primeiro toque: só expande e arma
-						setActive(index);
 						clearPrime();
+						setActive(index);
 						primedIndex = index;
-						primeTimer = setTimeout(clearPrime, 1500);
+						primeTimer = setTimeout(clearPrime, 2000);
 						return;
 					}
 
-					if (isMobileDevice() && isActive && primedIndex === index) {
+					// Mobile: segundo toque ou card central — navega
+					if (isMobileDevice()) {
 						clearPrime();
 					}
 
