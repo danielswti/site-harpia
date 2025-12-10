@@ -4840,7 +4840,7 @@ Primary use:	Showcase Portfolio
 
 /* Cada bloco ocupa metade da largura menos metade do espaçamento central */
 .continuous-two-images .continuous-image {
-    width: calc(50% - 10px); /* se quiser um "gap" de ~20px entre elas */
+    width: calc(50% - 0px); /* se quiser um "gap" de ~20px entre elas */
 }
 
 /* Garante que a imagem ocupe todo o bloco */
@@ -4881,6 +4881,7 @@ Primary use:	Showcase Portfolio
     min-height: 85vh;
 	padding-top: 4vw;
 	padding-bottom: 4vw;
+    touch-action: pan-y;  /* permite scroll vertical no mobile */
 }
 
 /* Cada capa de projeto */
@@ -4890,6 +4891,7 @@ Primary use:	Showcase Portfolio
     height: clamp(220px, 75vh, 90vh);
     cursor: pointer;
     transition: filter 0.3s ease-out;
+    touch-action: pan-y;  /* permite scroll vertical no mobile */
 }
 
 /* Capa central aberta */
@@ -5346,6 +5348,7 @@ Primary use:	Showcase Portfolio
   display: block;
 }
 
+
 @media only screen and (min-width: 1920px) {
 
 	.row-img-metodologia {
@@ -5392,6 +5395,9 @@ Primary use:	Showcase Portfolio
 		width: 90%;
 	}
 
+	.video-portfolio-tubarao video {
+		height: 200px;
+	}
 }
 
 .hb-full-video-section {

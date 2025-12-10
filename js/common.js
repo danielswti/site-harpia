@@ -1514,7 +1514,7 @@ Function Scroll Effects
 		
 		if ($(".content-row").hasClass("light-section")) {
 			$(".light-section").each(function(i) {				
-				$(this).wrap( "<div class='light-section-wrapper'><div class='light-section-container content-max-width'></div></div>" );
+				$(this).wrap( "<div class='light-section-wrapper'><div class='light-section-container'></div></div>" );
 				$("body").find(".light-section-wrapper").each(function(i) {				
 					$(this).css('background-color', function () {
 						return $(this).children().children().data('bgcolor')

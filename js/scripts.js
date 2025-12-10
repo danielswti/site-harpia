@@ -332,16 +332,31 @@ function CustomFunction() {
 						}
 					});
 
-					// Toque no card expande
-					card.addEventListener('click', (e) => {
+					// Toque no card expande (apenas tap, não interfere com scroll)
+					let touchStartY = 0;
+					let touchStartX = 0;
+					
+					card.addEventListener('touchstart', (e) => {
+						touchStartY = e.touches[0].clientY;
+						touchStartX = e.touches[0].clientX;
+					}, { passive: true });
+
+					card.addEventListener('touchend', (e) => {
 						// Ignora se clicou no botão
 						if (e.target.closest('.hb-project-nav-btn')) return;
 						
-						e.preventDefault();
+						const touchEndY = e.changedTouches[0].clientY;
+						const touchEndX = e.changedTouches[0].clientX;
+						const deltaY = Math.abs(touchEndY - touchStartY);
+						const deltaX = Math.abs(touchEndX - touchStartX);
+						
+						// Se moveu mais de 10px, é scroll, não tap
+						if (deltaY > 10 || deltaX > 10) return;
+						
 						if (index !== activeIndex) {
 							setActive(index);
 						}
-					});
+					}, { passive: true });
 				});
 			}
 
