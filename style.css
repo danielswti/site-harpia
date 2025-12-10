@@ -4927,11 +4927,14 @@ Primary use:	Showcase Portfolio
     color: #ffffff;
     z-index: 2;
     pointer-events: none;
+	background-color: #0c0c0c70;
+	border-radius: 3px;
 }
 
 .hb-project-label {
     display: inline-block;
     font-size: 11px;
+	line-height: 1.3em;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     opacity: 0.8;
@@ -4940,6 +4943,7 @@ Primary use:	Showcase Portfolio
 .hb-project-title {
     margin-top: 6px;
     font-size: 20px;
+	line-height: 1.1em;
 }
 
 /* Efeito “fechado”: escurece laterais */
@@ -5095,10 +5099,11 @@ Primary use:	Showcase Portfolio
 .hb-project-info {
     position: absolute;
     z-index: 2;
-    padding: 32px 40px;
+    padding: 30px 25px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+	height: 100px;
 }
 
 /* label “Next” / “Now” e título – mantém seu tema */
@@ -5112,7 +5117,7 @@ Primary use:	Showcase Portfolio
 
 .hb-project-title {
     font-size: 20px;
-	line-height: calc(1rem + 1vw) !important;
+	line-height: 1.3em;
 }
 
 /* hover / foco – anima levemente as laterais */
@@ -5165,6 +5170,123 @@ Primary use:	Showcase Portfolio
         width: 24px;
         height: 24px;
         stroke: #fff;
+    }
+}
+
+/* ===================================
+   PROJECT NAVIGATION V2 (info abaixo)
+   =================================== */
+
+.hb-project-rail-v2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 40px 0;
+    gap: 20px;
+}
+
+.hb-project-card-v2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 15%;
+    cursor: pointer;
+    color: #fff;
+    transition: flex-basis 0.6s ease, transform 0.6s ease, opacity 0.6s ease;
+}
+
+.hb-project-card-v2.is-active {
+    flex: 0 0 70%;
+}
+
+.hb-project-link-v2 {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hb-project-bg-v2 {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.hb-project-card-v2.is-left .hb-project-bg-v2,
+.hb-project-card-v2.is-right .hb-project-bg-v2 {
+    filter: brightness(0.7);
+}
+
+.hb-project-card-v2.is-active .hb-project-bg-v2 {
+    transform: scale(1.02);
+    filter: brightness(1);
+}
+
+.hb-project-card-v2:not(.is-active):hover .hb-project-bg-v2 {
+    transform: scale(1.03);
+    opacity: 0.85;
+}
+
+/* Info abaixo da imagem */
+.hb-project-info-v2 {
+    padding: 16px 8px 0 8px;
+    text-align: left;
+}
+
+.is-left .hb-project-info-v2 {
+    padding-left: 50px;
+}
+
+.hb-project-label-v2 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.hb-project-title-v2 {
+    font-size: 18px;
+    line-height: 1.3em;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Mobile v2 */
+@media (max-width: 1024px) {
+    .hb-project-rail-v2 {
+        padding: 20px 10px;
+        gap: 10px;
+    }
+
+    .hb-project-card-v2 {
+        flex: 0 0 15%;
+        min-height: auto;
+    }
+
+    .hb-project-card-v2.is-active {
+        flex: 0 0 70%;
+    }
+
+    .hb-project-link-v2 {
+        aspect-ratio: 10/14;
+    }
+
+    .hb-project-info-v2 {
+        padding: 12px 4px 0 4px;
+    }
+
+    .hb-project-title-v2 {
+        font-size: 14px;
     }
 }
 
