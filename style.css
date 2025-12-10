@@ -5038,7 +5038,7 @@ Primary use:	Showcase Portfolio
   .hb-project-card {
     flex: 0 0 auto;
     width: 100%;
-    min-height: 220px;
+    /* min-height: 220px; */
     border-radius: 0;
   }
 
@@ -5071,7 +5071,7 @@ Primary use:	Showcase Portfolio
 /* cards base */
 .hb-project-card {
     position: relative;
-    flex: 0 0 32vw;         /* laterais “fechadas” */
+    flex: 0 0 15%;         /* laterais "fechadas" */
     min-height: 260px;
     cursor: pointer;
     color: #fff;
@@ -5081,8 +5081,13 @@ Primary use:	Showcase Portfolio
         opacity 0.6s ease;
 }
 
+.hb-project-card.is-left,
+.hb-project-card.is-right {
+    flex: 0 0 15%;         /* garante igualdade para ambos os lados */
+}
+
 .hb-project-card.is-active {
-    flex: 0 0 56vw;         /* card central “aberto” */
+    flex: 0 0 70%;         /* card central "aberto" */
 }
 
 /* fundo das capas */
@@ -5132,19 +5137,45 @@ Primary use:	Showcase Portfolio
 }
 
 @media (max-width: 1024px) {
+    /* Tamanho dos cards controlado pelo JS/GSAP */
+    .hb-project-card,
+    .hb-project-card.is-left,
+    .hb-project-card.is-right {
+        flex: 0 0 10% !important;     /* laterais menores - mesmo tamanho para ambos */
+        min-width: 0;                  /* permite encolher */
+        overflow: visible;             /* permite ver o texto abaixo */
+    }
+    
+    .hb-project-card.is-active {
+        flex: 0 0 80% !important;     /* card ativo maior */
+    }
+
+    /* Info controlado via GSAP - estado inicial */
+    .hb-project-info-v2 {
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
+    }
+
+    /* Pointer events no card ativo */
+    .hb-project-card.is-active .hb-project-info-v2 {
+        pointer-events: auto;
+    }
+
     .hb-project-nav-btn {
         display: flex;
         align-items: center;
         justify-content: center;
         position: absolute;
         bottom: 20px;
-        right: 20px;
-        width: 56px;
-        height: 56px;
+        left: 20%;
+        transform: translateX(50%) translateY(10px);
+        width: 50px;
+    	height: 50px;
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        /* border: 1px solid rgba(255, 255, 255, 0.15); */
         border-radius: 12px;
         z-index: 10;
         color: #fff;
@@ -5156,19 +5187,19 @@ Primary use:	Showcase Portfolio
 
     .hb-project-card.is-active .hb-project-nav-btn {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
 
     .hb-project-nav-btn:hover,
     .hb-project-nav-btn:active {
         background: rgba(0, 0, 0, 0.7);
         border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(0) scale(1.05);
+        transform: translateX(-50%) translateY(0) scale(1.05);
     }
 
     .hb-project-nav-btn svg {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         stroke: #fff;
     }
 }
@@ -5241,9 +5272,9 @@ Primary use:	Showcase Portfolio
     text-align: left;
 }
 
-.is-left .hb-project-info-v2 {
+/* .is-left .hb-project-info-v2 {
     padding-left: 50px;
-}
+} */
 
 .hb-project-label-v2 {
     font-size: 11px;

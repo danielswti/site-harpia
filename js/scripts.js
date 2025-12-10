@@ -233,12 +233,19 @@ function CustomFunction() {
 			};
 
 			function applyLayout() {
+				const isMobile = isMobileDevice();
+				
 				cards.forEach((card, i) => {
 					const isActive = i === activeIndex;
 					const bg = card.querySelector('.hb-project-bg');
+					const info = card.querySelector('.hb-project-info-v2');
+
+					// Mobile: ativo 80%, inativos 10% | Desktop: ativo 70%, inativos 15%
+					const activeBasis = isMobile ? '80%' : '70%';
+					const inactiveBasis = isMobile ? '10%' : '15%';
 
 					gsap.to(card, {
-						flexBasis: isActive ? '70%' : '15%',
+						flexBasis: isActive ? activeBasis : inactiveBasis,
 						duration: 0.6,
 						ease: 'power3.inOut'
 					});
@@ -249,6 +256,16 @@ function CustomFunction() {
 							filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
 							duration: 0.6,
 							ease: 'power3.inOut'
+						});
+					}
+
+					// Anima info no mobile: fade da esquerda para direita
+					if (info && isMobile) {
+						gsap.to(info, {
+							opacity: isActive ? 1 : 0,
+							x: isActive ? 0 : -20,
+							duration: 0.5,
+							ease: 'power2.out'
 						});
 					}
 				});
