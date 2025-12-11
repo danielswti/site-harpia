@@ -117,7 +117,7 @@
                 <!-- Main -->
                 <div id="main">
                 
-                    <!-- Hero Section -->
+                                        <!-- Hero Section -->
                     <div id="hero" class="has-image autoscroll hero-fade header-transparent-trigger">
                         <div id="hero-styles">
                             <div id="hero-caption" class="content-full-width text-align-center parallax-scroll-caption">
@@ -156,10 +156,27 @@
                         </div>
                     </div>
                     <div id="hero-image-wrapper">
-                    	<div id="hero-background-layer" class="parallax-scroll-image">
-                            <div id="hero-bg-image" style="background-image:url(../images/projects/sanabria-aesthetics/01-Capa-SanabriaAesthetics_Portfolio_Harpia.webp)"></div>
+                        <div id="hero-background-layer" class="parallax-scroll-image">
+                            <div id="hero-bg-image">
+                                <picture>
+                                    <!-- IMAGEM PARA MOBILE -->
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="../images/projects/sanabria-aesthetics/banners/01-Projetos-Sanabria-Aesthetics-mobile.webp">
+
+                                    <!-- IMAGEM PARA DESKTOP -->
+                                    <source
+                                        media="(min-width: 768px)"
+                                        srcset="../images/projects/sanabria-aesthetics/01-Capa-SanabriaAesthetics_Portfolio_Harpia.webp">
+
+                                    <!-- Fallback (caso o browser não suporte <picture>) -->
+                                    <img
+                                        src="../images/projects/sanabria-aesthetics/01-Capa-SanabriaAesthetics_Portfolio_Harpia.webp"
+                                        alt="Sanabria Aesthetics Hero Image">
+                                </picture>
+                            </div>
                         </div>
-                    </div>                        
+                    </div>                     
                     <!--/Hero Section -->   
                          
                     
