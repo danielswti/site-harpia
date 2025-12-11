@@ -4463,6 +4463,12 @@ Primary use:	Showcase Portfolio
 	max-height: 1080px !important;
 }
 
+@media (max-width: 767px) {
+	.screen-height {
+		min-height: 0 !important;
+	}
+}
+
 /* Seção do vídeo full viewport, sem padding, conteúdo centralizado */
 .video-hero-section {
     margin: 0;
@@ -6002,4 +6008,52 @@ footer:not(.showcase-footer) .socials-wrap {
 .video-border {
 	border: 1px solid #e6e6e654;
 	border-radius: 12px;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.border-top {
+	border-top: 1px solid #f1f1f1;
+}
+
+/* Fix para linha residual no clipped-image */
+.clipped-image-wrapper {
+	margin-bottom: -2px;
+	background-color: #0c0c0c;
+}
+
+.clipped-image-wrapper::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 100%;
+	height: 10px;
+	background-color: #0c0c0c;
+	z-index: 20;
+}
+
+.clipped-image-pin {
+	background-color: #0c0c0c;
+}
+
+.clipped-image-gradient {
+	height: 40% !important;
+	bottom: -1px !important;
+}
+
+.clipped-image-wrapper + .about-row,
+.clipped-image-wrapper + .content-row {
+	margin-top: -5px;
+	position: relative;
+	z-index: 50;
+}
+
+.about-row {
+	position: relative;
+	z-index: 100;
+	margin-top: -10px;
+	background-color: #0c0c0c;
 }

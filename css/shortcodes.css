@@ -2930,7 +2930,7 @@
 		opacity:1;
 		background-color:#0c0c0c;
 		z-index:10;
-		-webkit-mask-image: linear-gradient(transparent, black 85%);
+		-webkit-mask-image: linear-gradient(transparent, black 100%);
 		mask-image: linear-gradient(transparent, black 85%);
 	}
 	
