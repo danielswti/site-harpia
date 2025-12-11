@@ -6057,3 +6057,16 @@ footer:not(.showcase-footer) .socials-wrap {
 	margin-top: -10px;
 	background-color: #0c0c0c;
 }
+
+.bold {
+	font-weight: 600 !important;
+}
+
+.hb-hero-subtitle-project {
+	font-size: 1.1rem;
+	line-height: 1.4em;
+	margin-top: 12px;
+	color: rgba(255,255,255,0.8);
+	text-transform: unset !important;
+	font-weight: 400 !important;
+}

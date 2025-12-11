@@ -790,20 +790,24 @@ Function Page Load
 						gsap.set($("#hero-bg-image"), {scale:1.1 , opacity:0});
 						gsap.set($("#hero-caption .hero-title span"), {y: 120, opacity:0});					
 						gsap.set($("#hero-caption .hero-subtitle span"), {y: 30, opacity:0});
+						gsap.set($("#hero-caption .hb-hero-subtitle-project"), {y: 30, opacity:0});
 						
 						gsap.to($("#hero-bg-image"), {duration: 1, scale:1 , opacity:1, delay:0.2, ease:Power2.easeOut});
 						gsap.to($("#hero-caption .caption-timeline span"), {duration: 0.7, y: 0, opacity:1, stagger:0.1, delay:0.7, ease:Power3.easeOut, onComplete: function() {
 							gsap.to($(".hero-footer-left, .hero-footer-right"), {duration: 1, y:0, opacity:1, delay:0, ease:Power2.easeOut});																				
 							gsap.to($("#main-page-content, #page-nav"), {duration: 0.4, opacity:1, delay:0, ease:Power2.easeOut});
 						}});
+						gsap.to($("#hero-caption .hb-hero-subtitle-project"), {duration: 0.7, y: 0, opacity:1, delay:1, ease:Power3.easeOut});
 						
 					} else {													
 						gsap.set($("#hero-caption .hero-title span"), {y: 120, opacity:0});					
 						gsap.set($("#hero-caption .hero-subtitle span"), {y: 30, opacity:0});
+						gsap.set($("#hero-caption .hb-hero-subtitle-project"), {y: 30, opacity:0});
 						
 						gsap.to($("#hero-caption .caption-timeline span"), {duration: 0.7, y: 0, opacity:1, stagger:0.1, delay:0.8, ease:Power3.easeOut, onComplete: function() {							
 							gsap.to($(".error-button"), {duration: 0.3, y: 0, opacity:1, rotation:0, delay:0, ease:Power2.easeOut});
 						}});
+						gsap.to($("#hero-caption .hb-hero-subtitle-project"), {duration: 0.7, y: 0, opacity:1, delay:1.1, ease:Power3.easeOut});
 						
 						gsap.to($("#main-page-content, #page-nav"), {duration: 0.3, opacity:1, delay:1.4, ease:Power2.easeOut});
 						
