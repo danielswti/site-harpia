@@ -4446,14 +4446,14 @@ Primary use:	Showcase Portfolio
 }
 
 .portfolio-content {
-	padding-left: 5% !important;
-	padding-right: 5% !important;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 @media (max-width: 900px) {
 	.portfolio-content {
-		padding-left: 5% !important;
-		padding-right: 5% !important;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
@@ -5593,7 +5593,7 @@ footer:not(.showcase-footer) .socials-wrap {
 	}
 
     footer:not(.showcase-footer) #footer-container {
-        padding: 0 20px 20px;
+        padding: 0 10px 20px;
     }
 
     .hb-footer-inner {
