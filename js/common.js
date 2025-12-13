@@ -685,7 +685,7 @@ Function Scroll Effects
 						trigger: listRotatorTitle,
 						start: function() {
 							if (window.innerWidth < 1920) {
-								const startPin = window.innerHeight * .039;
+								const startPin = window.innerHeight * .089;
 								return "top +=" + startPin;
 							} else {
 								const startPin = window.innerHeight * .018;

@@ -49,10 +49,11 @@ function CustomFunction() {
 			
 			// Full HD DESKTOP
 			mm.add("(min-width: 1920px)", () => {
+				portfolioTitle.style.maxWidth = '1070px';
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 15%",
-					end: "bottom bottom-=40%",
+					end: "bottom bottom-=50%",
 					pin: portfolioTitle,
 					pinSpacing: false
 					// markers: true
@@ -61,6 +62,7 @@ function CustomFunction() {
 
 			// Notebook
 			mm.add("(min-width: 1025px) and (max-width: 1919px)", () => {
+				portfolioTitle.style.maxWidth = '870px';
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 20%",
@@ -73,6 +75,7 @@ function CustomFunction() {
 
 			// MOBILE / TABLET
 			mm.add("(max-width: 1024px)", () => {
+				portfolioTitle.style.maxWidth = '600px';
 				ScrollTrigger.create({
 					trigger: portfolioRow,
 					start: "top 26%",      // ajusta conforme o layout mobile

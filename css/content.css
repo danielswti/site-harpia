@@ -110,8 +110,8 @@
 	}
 	
 	.hero-title {
-		font-size: calc(1rem + 4.15vw);
-		line-height: calc(1rem + 4.5vw);
+		font-size: calc(1rem + 5.15vw);
+		line-height: 1em;
 		font-weight:700;
 		position: relative;
 		display:block;
@@ -1290,7 +1290,7 @@
 	}
 	
 	.hero-title, .next-hero-title {
-		font-size: calc(1rem + 4.15vw);
+		font-size: calc(1rem + 5.15vw);
 		line-height: calc(1rem + 4.7vw);
 	}
 	

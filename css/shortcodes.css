@@ -3091,6 +3091,8 @@
 	}
 	
 	.list-rotator-title {
+		font-family: 'Releway', sans-serif;
+		font-weight: 700;
 		position:absolute;
 		margin:0 auto;
 		display:table;

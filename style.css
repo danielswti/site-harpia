@@ -605,9 +605,15 @@ Primary use:	Showcase Portfolio
 		vertical-align: middle;
 		height:auto;
 	}
+
+	h1 {
+		font-family: 'Neue Haas Grotesk Display Black', sans-serif;
+		font-size: 10rem;
+	}
 		
-	h1, h2, h3, h5, h6 {		
+	h2, h3, h5, h6 {		
 		font-family: 'mona-sansextrabold_wide';
+		font-family: 'Raleway', sans-serif;
 		color:#000;
 		margin-bottom:20px;
 	}
@@ -621,8 +627,9 @@ Primary use:	Showcase Portfolio
 	}
 	
 	.secondary-font-title, em {
-		font-family: 'mona-sanslight_wide';
+		font-family: 'Neue Haas Grotesk Display Light', sans-serif;
 		font-style:normal;
+		font-weight: 300;
 	}
 
 	h4 {
@@ -632,33 +639,33 @@ Primary use:	Showcase Portfolio
 	
 	.big-title{
 		font-size: calc(1rem + 4.15vw);
-		line-height: calc(1rem + 4.5vw);
+		line-height: 1.5em;
 	}
 	
 	h1{
 		font-size: calc(1rem + 4.15vw);
-		line-height: calc(1rem + 4.5vw);
+		line-height: 1.5em;
 	}
 	
 	h2{
-		font-size: calc(1rem + 3vw);
-		line-height: calc(1rem + 3.5vw);
+		font-size: calc(1rem + 1.9vw);
+		line-height: 1.1em;
 	}
 	
 	h3{
 		font-size: calc(1rem + 1.7vw);
-		line-height: calc(1rem + 2.2vw);
+		line-height: 1.5em;
 		font-weight: 500;
 	}
 	
 	h4{
 		font-size: calc(1rem + 1vw);
-		line-height: calc(1rem + 1.6vw);
+		line-height: 1.5em;
 	}
 	
 	h5{
 		font-size: calc(1rem + 0.6vw);
-		line-height: calc(1rem + 1.5vw);
+		line-height: 1.5em;
 	}
 	
 	h6 {
@@ -698,18 +705,18 @@ Primary use:	Showcase Portfolio
 	
 	p {
 		font-size:16px;
-		line-height: 30px;
+		line-height: 1.5;
 		font-weight:400;
 		margin-bottom: 20px;
 		color:#444;
 	}
 	
 	.light-content p, .dark-section p{
-		color:#777;
+		color:#fff;
 	}
 	
 	.light-content .light-section p {
-		color:#444;
+		color:#fff;
 	}
 	
 	.bigger {
@@ -4064,6 +4071,11 @@ Primary use:	Showcase Portfolio
 	
 .red-text {
 	color: #ff005a !important;
+	font-weight: 800;
+}
+	
+.red-text-italic {
+	color: #ff005a !important;
 	font-style: italic;
 }
 
@@ -4268,9 +4280,11 @@ Primary use:	Showcase Portfolio
     z-index: 1;
 }
 
-#portfolio-title {
+#portfolio-title h2 {
     position: relative;   /* deixa o GSAP cuidar dos transforms */
     z-index: 10;
+	/* font-family: 'Neue Haas Grotesk Display Medium', sans-serif !important; */
+	font-weight: 700;
 }
 
 /* Ajusta o título do portfólio */
@@ -4672,6 +4686,7 @@ Primary use:	Showcase Portfolio
 
 /* TÍTULOS E TEXTOS (mantendo o que já tínhamos) */
 .hb-method-title {
+  font-family: 'Neue Haas Grotesk Display Bold', sans-serif;
   font-size: 1.3rem;
   letter-spacing: 0.08em;
   text-transform: none !important;
@@ -4681,13 +4696,13 @@ Primary use:	Showcase Portfolio
 
 .hb-method-title span:first-child {
   	color: #ff005a;
-  	font-weight: 500;
+  	font-weight: 600;
 	/* font-style: italic; */
 }
 
 .hb-method-lead {
   font-size: 1.1rem;
-  line-height: 1.2em;
+  /* line-height: 1.2em; */
   color: rgba(255,255,255,0.7);
   min-height: 105px;
 }
@@ -4697,7 +4712,7 @@ Primary use:	Showcase Portfolio
   list-style: none;
   margin: 12px 0 0 0;
   padding: 0;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   line-height: .9em;
   color: rgba(255,255,255,0.7);
   counter-reset: method-counter;
@@ -5814,8 +5829,8 @@ footer:not(.showcase-footer) .socials-wrap {
 }
 
 .hb-origin-text {
-    font-size: 1.1rem;
-    line-height: 1.2;
+    /* font-size: 1.1rem; */
+    /* line-height: 1.2; */
     color: #d0d0d0 !important;
     margin-bottom: 1rem;
 }
@@ -5880,6 +5895,7 @@ footer:not(.showcase-footer) .socials-wrap {
     font-size: 0.95rem;
     line-height: 1.7;
     color: #e4e4e4;
+	font-size: 0.8rem;
 }
 
 .hb-origin-card {
@@ -6069,4 +6085,23 @@ footer:not(.showcase-footer) .socials-wrap {
 	color: rgba(255,255,255,0.8);
 	text-transform: unset !important;
 	font-weight: 400 !important;
+}
+
+/* Botão */
+.button-border {
+	font-family: 'Releway', sans-serif;
+	font-weight: 500;
+}
+
+.list-rotator-title {
+		font-family: 'Releway', sans-serif;
+		font-weight: 500;
+}
+
+.row_padding_top_services {
+	padding-top: 2vw !important;
+}
+
+.row_padding_bottom_services {
+	padding-bottom: 2vw !important;
 }
