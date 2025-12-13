@@ -221,6 +221,132 @@ function CustomFunction() {
 		});
 	}
 	});
+
+	// ============
+	// ANIMAÇÕES DE ENTRADA - HARPIA BRAND THEME
+	// Padrão: fade + slide up, power3.out, start 80%
+	// ============
+	if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+		gsap.registerPlugin(ScrollTrigger);
+		
+		// ---------------------------------
+		// COUNTER SECTION (Título + Imagem)
+		// ---------------------------------
+		const counterSection = document.querySelector('.row-360-home');
+		const sectionTitle = counterSection ? counterSection.querySelector('.page-title') : null;
+		const metodologiaImg = counterSection ? counterSection.querySelector('.img-metodologia') : null;
+		
+		if (counterSection && sectionTitle) {
+			// Estado inicial
+			gsap.set(sectionTitle, {
+				opacity: 0,
+				y: 30
+			});
+			
+			// Timeline do título
+			gsap.to(sectionTitle, {
+				scrollTrigger: {
+					trigger: counterSection,
+					start: 'top 80%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				ease: 'power3.out'
+			});
+		}
+		
+		// Imagem da metodologia
+		if (metodologiaImg) {
+			gsap.set(metodologiaImg, {
+				opacity: 0,
+				y: 40
+			});
+			
+			gsap.to(metodologiaImg, {
+				scrollTrigger: {
+					trigger: metodologiaImg,
+					start: 'top 85%',
+					toggleActions: 'play none none none'
+				},
+				opacity: 1,
+				y: 0,
+				duration: 0.9,
+				ease: 'power3.out'
+			});
+		}
+		
+		// ---------------------------------
+		// METHOD DETAILS SECTION
+		// ---------------------------------
+		const methodColumns = gsap.utils.toArray('.hb-method-column');
+		
+		if (methodColumns.length) {
+			// Estado inicial
+			gsap.set('.hb-method-column', { 
+				opacity: 0, 
+				y: 40
+			});
+			
+			gsap.set('.hb-method-title', { 
+				opacity: 0, 
+				y: 20
+			});
+			
+			gsap.set('.hb-method-lead', { 
+				opacity: 0, 
+				y: 15
+			});
+			
+			gsap.set('.hb-method-toggle', { 
+				opacity: 0,
+				scale: 0.8
+			});
+			
+			// Timeline principal
+			const methodsTl = gsap.timeline({
+				scrollTrigger: {
+					trigger: '.hb-methods-row',
+					start: 'top 80%',
+					toggleActions: 'play none none none'
+				}
+			});
+			
+			// Colunas com stagger
+			methodsTl.to('.hb-method-column', {
+				opacity: 1,
+				y: 0,
+				duration: 0.7,
+				ease: 'power3.out',
+				stagger: 0.12
+			})
+			// Títulos
+			.to('.hb-method-title', {
+				opacity: 1,
+				y: 0,
+				duration: 0.6,
+				ease: 'power3.out',
+				stagger: 0.1
+			}, '-=0.5')
+			// Textos descritivos
+			.to('.hb-method-lead', {
+				opacity: 1,
+				y: 0,
+				duration: 0.5,
+				ease: 'power3.out',
+				stagger: 0.08
+			}, '-=0.4')
+			// Botões toggle
+			.to('.hb-method-toggle', {
+				opacity: 1,
+				scale: 1,
+				duration: 0.4,
+				ease: 'power3.out',
+				stagger: 0.06
+			}, '-=0.3');
+		}
+	}
 	
 	// Navegação de projetos com GSAP (3 capas)
 	if (typeof gsap !== "undefined") {
