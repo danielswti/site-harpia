@@ -8,6 +8,27 @@
   background-color: #0c0c0c; /* fallback */
 }
 
+/* Animação de fade elegante */
+@keyframes hbFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hbFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Cada slide ocupa a tela inteira */
 .hb-hero-slide {
   position: absolute;
@@ -74,30 +95,46 @@
   right: auto;
   transform: none;
   max-width: 600px;
+  opacity: 0;
+}
+
+/* Animação dos textos quando o slide está ativo */
+.hb-hero-slide.is-active .hb-hero-card {
+  animation: hbFadeInUp 0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .hb-hero-label {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3em;
   font-weight: 600 !important;
   letter-spacing: 0.12em;
   text-transform: uppercase !important;
   color: #ffffff;
   margin-bottom: 10px;
-  text-shadow: -1px 1px 4px rgba(0,0,0,.5);
+  text-shadow: -1px 1px 4px rgba(0,0,0,.65);
+  opacity: 0;
+}
+
+.hb-hero-slide.is-active .hb-hero-label {
+  animation: hbFadeInUp 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards;
 }
 
 .hb-hero-copy  {
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   text-transform: none !important;
   font-weight: 300 !important;
   color: rgba(255,255,255,0.85);
   max-width: 580px;
-  text-shadow: -1px 1px 4px rgba(0,0,0,.5);
+  text-shadow: -1px 1px 4px rgba(0,0,0,.65);
   margin-bottom: 0 !important;
+  opacity: 0;
+}
+
+.hb-hero-slide.is-active .hb-hero-copy {
+  animation: hbFadeInUp 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.12s forwards;
 }
 
 /* Indicador (01 / 06) */
@@ -116,6 +153,8 @@
   z-index: 5;
   padding: 0;
   text-shadow: -1px 1px 4px rgba(0,0,0,.5);
+  opacity: 0;
+  animation: hbFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
 .hb-hero-indicator::before {
