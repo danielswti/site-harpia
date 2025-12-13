@@ -39,10 +39,10 @@
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   padding: 0 24px;
   text-decoration: none;
   color: inherit;
@@ -68,94 +68,68 @@
 
 /* Centro do slide: textos delicados */
 .hb-hero-card {
-  transform: translateY(7em);
-  /* position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: auto; */
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  right: auto;
+  transform: none;
+  max-width: 600px;
 }
 
 .hb-hero-label {
-  font-size: 18px;
-  line-height: 1.2em;
-  font-weight: 400 !important;
-  letter-spacing: 0.18em;
-  text-transform: unset !important;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 0px;
+  font-size: 14px;
+  line-height: 1.3em;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase !important;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-shadow: -1px 1px 4px rgba(0,0,0,.5);
 }
 
 .hb-hero-copy  {
-  font-family: 'Karu Light', sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: 0.11em;
-  text-transform: unset !important;
-  font-weight: 600 !important;
-  color: rgba(255,255,255,0.9);
-  max-width: 500px;
-  /* text-align: left; */
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-transform: none !important;
+  font-weight: 300 !important;
+  color: rgba(255,255,255,0.85);
+  max-width: 580px;
+  text-shadow: -1px 1px 4px rgba(0,0,0,.5);
+  margin-bottom: 0 !important;
 }
 
 /* Indicador (01 / 06) */
-/* .hb-hero-indicator {
-  position: absolute;
-  bottom: 32px;
-  left: auto;
-  right: 0;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  pointer-events: none;
-  z-index: 5;
-  background-color: rgba(13, 13, 13, 0.462);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  padding: 10px 10px;
-  border-radius: 3px;
-} */
-
 .hb-hero-indicator {
   position: absolute;
-  bottom: 32px;
-  right: 25px;
+  bottom: 60px;
+  right: 40px;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: #ffffff;
   pointer-events: none;
   z-index: 5;
-  padding: 15px 15px;
-  border-radius: 3px;
-  isolation: isolate; /* garante que o pseudo fique atrás */
+  padding: 0;
+  text-shadow: -1px 1px 4px rgba(0,0,0,.5);
 }
 
 .hb-hero-indicator::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(13,13,13,0.62);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-  transform: skew(-15deg); /* ajuste o ângulo como preferir */
-  border-radius: inherit;
-  z-index: -1;
+  display: none;
 }
 
 .hb-hero-indicator > * {
-  transform: skew(0deg); /* desfaz o skew para o texto ficar reto */
+  transform: none;
 }
 
 .hb-hero-separator {
   width: 32px;
   height: 1px;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.6);
 }
 
 /* Responsivo */
@@ -166,8 +140,12 @@
   }
 
   .hb-hero-copy {
-    font-size: 14px;
-    max-width: 340px;
+    font-size: 13px;
+    max-width: 280px;
+  }
+
+  .hb-hero-label {
+    font-size: 12px;
   }
 
   .hb-hero-link {
@@ -175,23 +153,25 @@
   }
 
   .hb-hero-indicator {
-    bottom: 7px;
-    padding: 10px 15px;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    transform: none;
+    font-size: 11px;
   }
+  
   .hb-hero-card {
-    transform: translateY(5em);
+    bottom: 80px;
+    left: 20px;
+    max-width: 300px;
   }
 }
 
 .hb-hero-label, .hb-hero-copy {
-  background-color: rgba(13, 13, 13, 0.621);
-  padding: 5px 30px;
-  border: 0px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  color: #fefefe !important;
-  border-radius: 3px;
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  border-radius: 0;
 }
